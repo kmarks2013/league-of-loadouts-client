@@ -2,13 +2,14 @@ import React, { Component } from 'react'
 
 export default class LoginForm extends Component {
     state = {
+        
         username:'',
         password: ''
     }
 
-    handleSubmit = (evt) => {
+    handleSubmit = (evt, ) => {
         evt.preventDefault()
-        console.log('i was submitted', this.state.username)
+        console.log('i was submitted', this.state.username)    
     }
 
     handleChange = (evt) => {
