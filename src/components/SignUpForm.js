@@ -1,14 +1,16 @@
 import React, { Component } from 'react'
 
-export default class LoginForm extends Component {
+export default class SignUpForm extends Component {
     state = {
+        name: '',
+        age: '',
         username:'',
         password: ''
     }
 
     handleSubmit = (evt) => {
         evt.preventDefault()
-        console.log('i was submitted', this.state.username)
+        console.log('i was submitted', this.state)
     }
 
     handleChange = (evt) => {
@@ -18,10 +20,25 @@ export default class LoginForm extends Component {
         })
     }
 
+
     render() {
         return (
             <div>
             <form onSubmit={this.handleSubmit}>
+                <label>Name</label>
+                <input
+                    type="text"
+                    value={this.state.name}
+                    name="name"
+                    onChange={this.handleChange}
+                />
+                <label>Age</label>
+                <input
+                    type="number"
+                    value={this.state.age}
+                    name="age"
+                    onChange={this.handleChange}
+                />
                 <label>Username</label>
                 <input
                     type="text"
@@ -36,6 +53,7 @@ export default class LoginForm extends Component {
                     name="password"
                     onChange={this.handleChange}
                 />
+                
                 <input type="submit" />
             </form>
             </div>
