@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { ChampionInfo } from './ChampionInfo'
-import championActions from '../Redux/championActions'
+import championActions from '../../Redux/championActions'
 
 class ChampionTile extends Component {
     render() {

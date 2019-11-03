@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import ChampionList from '../components/ChampionList'
-import ChampionInfo from '../components/ChampionInfo'
-import ItemList from '../components/ItemList'
-import ItemInfo from '../components/ItemInfo'
+import ChampionList from '../components/champions/ChampionList'
+import ChampionInfo from '../components/champions/ChampionInfo'
+import ItemList from '../components/items/ItemList'
+import ItemInfo from '../components/items/ItemInfo'
 
 
 
@@ -14,8 +14,8 @@ export default class ContentContainer extends Component {
             <p>this should render loadout indexes and shows, champ index and shows, and item index and show conditionally</p>
             <ItemList />
             <ItemInfo />
-            {/* <ChampionList /> */}
-            {/* <ChampionInfo /> */}
+            {/* <ChampionList />
+            <ChampionInfo /> */}
             </div>
         )
     }
