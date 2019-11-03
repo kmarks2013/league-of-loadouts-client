@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-export class characterTile extends Component {
+export class ChampionTile extends Component {
     render() {
         return (
             <div>
-                
+                I will render an imgage and name card for each ChampionTile
             </div>
         )
     }
@@ -19,4 +19,4 @@ const mapDispatchToProps = {
     
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(characterTile)
+export default connect(mapStateToProps, mapDispatchToProps)(ChampionTile)

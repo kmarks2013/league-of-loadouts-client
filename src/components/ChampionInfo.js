@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-export class characterInfo extends Component {
+export class ChampionInfo extends Component {
     render() {
         return (
             <div>
@@ -19,4 +19,4 @@ const mapDispatchToProps = {
     
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(characterInfo)
+export default connect(mapStateToProps, mapDispatchToProps)(ChampionInfo)

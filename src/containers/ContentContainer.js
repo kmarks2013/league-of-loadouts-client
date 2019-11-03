@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
-import { characterList } from '../components/characterList'
+import { ChampionList } from '../components/ChampionList'
 
 
-export default class contentContainer extends Component {
+
+export default class ContentContainer extends Component {
     render() {
         return (
             <div>
-                <characterList />
+            <p>this should render different content conditionally</p>
+            <ChampionList />
             </div>
         )
     }
