@@ -25,7 +25,7 @@ export class Login extends Component {
       }
     
     render() {
-        console.log(this.props)
+        // console.log(this.props)
         return (
             <div>
                 <button onClick={this.loginClick}>Login</button>
@@ -40,7 +40,7 @@ export class Login extends Component {
     }
 }
 
-const mapStateToProps = state => ({user: state })
+const mapStateToProps = state => ({user: state.user })
 
 const mapDispatchToProps = {
     logoutUser: Actions.logoutUser,

@@ -13,5 +13,4 @@ const fetchChampionsFromDB = () => dispatch => {
 
 export default {
     fetchChampionsFromDB
-
 }
