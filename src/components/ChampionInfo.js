@@ -5,7 +5,7 @@ export class ChampionInfo extends Component {
     render() {
         return (
             <div>
-                
+                hello from the info
             </div>
         )
     }

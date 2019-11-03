@@ -4,12 +4,12 @@ import './App.css';
 import NavBar from './containers/NavBar';
 import FormConatiner from './containers/FormConatiner';
 import ContentContainer from './containers/ContentContainer';
-// import Actions from './Redux/actions'
+import Actions from './Redux/championActions'
 
 
 export class App extends Component {
  componentDidMount() {
-
+    this.props.fetchChampionsFromDB()
  }
 
   render() {
@@ -27,8 +27,8 @@ export class App extends Component {
 //     stateObj: state
 // })
 
-// const mapDispatchToProps = {
-//   fetchNotes: Actions.persistUserFromAPI
-// }
+const mapDispatchToProps = {
+  fetchChampionsFromDB: Actions.fetchChampionsFromDB
+}
 
-export default connect()(App)
+export default connect(null, mapDispatchToProps)(App)

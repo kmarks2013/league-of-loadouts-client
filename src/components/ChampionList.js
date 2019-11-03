@@ -8,7 +8,7 @@ export class ChampionList extends Component {
     render() {
         return (
             <div>
-                THis  should render the list of champions as tiles
+                This  should render the list of champions as tiles
                 <ChampionTile />
             </div>
         )
