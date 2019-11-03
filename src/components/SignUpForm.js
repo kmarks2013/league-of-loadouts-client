@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
-export default class SignUpForm extends Component {
+export class SignUpForm extends Component {
     state = {
         name: '',
         age: '',
@@ -59,4 +60,15 @@ export default class SignUpForm extends Component {
             </div>
         )
     }
+
 }
+
+const mapStateToProps = (state) => ({
+    
+})
+
+const mapDispatchToProps = {
+    
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUpForm)

@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import Actions from '../Redux/actions'
 
-export default class Login extends Component {
-
+export class Login extends Component {
     loginClick = () => {
         console.log('i should open up a login form')
     }
@@ -11,6 +12,7 @@ export default class Login extends Component {
     }
     logoutClick = () => {
         console.log('i should clear local storage')
+        this.props.logoutUser()
     }
     newLoadoutClick = () => {
         console.log('i should open up a new loadout up form')
@@ -29,3 +31,11 @@ export default class Login extends Component {
         )
     }
 }
+
+const mapDispatchToProps = {
+    logoutUser: Actions.logoutUser
+}
+
+
+
+export default connect(null, mapDispatchToProps)(Login)
