@@ -1,26 +1,34 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { ChampionTile } from './ChampionTile'
+import ChampionTile from './ChampionTile'
 
-export class ChampionList extends Component {
-    // renderCharacterTiles = () => 
+class ChampionList extends Component {
+    renderCharacterTiles = () => {
+        // console.log(this.props.champions)
+        return this.props.champions.map(champion => {
+          return  <ChampionTile key={champion.id} champion={champion} />
+        })
+    }
 
     render() {
         return (
             <div>
-                This  should render the list of champions as tiles
-                <ChampionTile />
+            <h1> All Champions </h1> 
+                {this.renderCharacterTiles()}
             </div>
         )
     }
 }
 
-const mapStateToProps = (state) => ({
-    
-})
-
-const mapDispatchToProps = {
-    
+const mapStateToProps = (state) => {
+    // console.log(state)
+  return {
+      champions: state.champions  
+  }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ChampionList)
+// const mapDispatchToProps = {
+    
+// }
+
+export default connect(mapStateToProps)(ChampionList)

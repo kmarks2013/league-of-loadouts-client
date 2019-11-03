@@ -5,7 +5,7 @@ import championReducer from './championReducer'
 
 const reducers = combineReducers({
     user: userReducer,
-    champion: championReducer
+    champions: championReducer
 })
 
 export default createStore(reducers, applyMiddleware(thunk))
