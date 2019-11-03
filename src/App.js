@@ -1,16 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import './App.css';
 import NavBar from './containers/NavBar';
 import FormConatiner from './containers/FormConatiner';
+import Actions from './Redux/actions'
 
-function App() {
-  return (
-    <div className="App">
-      <NavBar />
-      <FormConatiner />
-    </div>
-  );
+
+export class App extends Component {
+  // componentDidMount(){
+  //   if (localStorage.token){
+  //     this.props.persistUserFromAPI()
+  //   }
+  // }
+
+  render() {
+    return (
+      <div>
+        <NavBar />
+        <FormConatiner />
+      </div>
+    )
+  }
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+    stateObj: state
+})
+
+const mapDispatchToProps = {
+  // persistUserFromAPI: Actions.persistUserFromAPI
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
