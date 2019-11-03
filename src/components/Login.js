@@ -17,8 +17,15 @@ export class Login extends Component {
     newLoadoutClick = () => {
         console.log('i should open up a new loadout up form')
     }
+
+    componentDidMount(){
+        if (localStorage.token){
+          this.props.persistUserFromAPI()
+        }
+      }
     
     render() {
+        console.log(this.props)
         return (
             <div>
                 <button onClick={this.loginClick}>Login</button>
@@ -26,16 +33,19 @@ export class Login extends Component {
                 <button onClick={this.logoutClick}>Logout</button>
                 <button onClick={this.newLoadoutClick}>New Loadout</button>
            
+                <p>{this.props.user ? this.props.user.username : 'null'}</p>
                 <p>When a user is logged in i should then render a make a new loadout button and a username and a logout button</p>
             </div>
         )
     }
 }
 
+const mapStateToProps = state => ({user: state })
+
 const mapDispatchToProps = {
-    logoutUser: Actions.logoutUser
+    logoutUser: Actions.logoutUser,
+    persistUserFromAPI: Actions.persistUserFromAPI
 }
 
 
-
-export default connect(null, mapDispatchToProps)(Login)
+export default connect(mapStateToProps, mapDispatchToProps)(Login)
