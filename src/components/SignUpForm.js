@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import Actions from '../Redux/actions'
 
 export class SignUpForm extends Component {
     state = {
@@ -11,7 +12,14 @@ export class SignUpForm extends Component {
 
     handleSubmit = (evt) => {
         evt.preventDefault()
-        console.log('i was submitted', this.state)
+        console.log('i was submitted', localStorage)
+        this.props.createNewUserToDB(this.state)
+        this.setState({
+            name: '',
+            age: '',
+            username: '',
+            password: ''
+        })
     }
 
     handleChange = (evt) => {
@@ -63,12 +71,12 @@ export class SignUpForm extends Component {
 
 }
 
-const mapStateToProps = (state) => ({
+// const mapStateToProps = (state) => ({
     
-})
+// })
 
 const mapDispatchToProps = {
-    
+    createNewUserToDB: Actions.createNewUserToDB
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignUpForm)
+export default connect(null, mapDispatchToProps)(SignUpForm)
