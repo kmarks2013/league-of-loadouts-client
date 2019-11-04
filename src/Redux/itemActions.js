@@ -5,8 +5,8 @@ const getItemsAction = items => ({
 
 const fetchItemsFromDB = () => dispatch => {
     fetch('http://localhost:3000/items')
-    .then(res = res.json())
-    .then(itemsArr => {
+    .then(res => res.json())
+    .then(itemsArr =>{
         dispatch(getItemsAction(itemsArr))
     })
 }

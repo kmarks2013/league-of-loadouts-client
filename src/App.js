@@ -4,12 +4,14 @@ import './App.css';
 import NavBar from './containers/NavBar';
 import FormConatiner from './containers/FormConatiner';
 import ContentContainer from './containers/ContentContainer';
-import Actions from './Redux/championActions'
+import championActions from './Redux/championActions'
+import itemActions from './Redux/itemActions';
 
 
 export class App extends Component {
  componentDidMount() {
     this.props.fetchChampionsFromDB()
+    this.props.fetchItemsFromDB()
  }
 
   render() {
@@ -29,7 +31,8 @@ export class App extends Component {
 // })
 
 const mapDispatchToProps = {
-  fetchChampionsFromDB: Actions.fetchChampionsFromDB
+  fetchChampionsFromDB: championActions.fetchChampionsFromDB,
+  fetchItemsFromDB: itemActions.fetchItemsFromDB
 }
 
 export default connect(null, mapDispatchToProps)(App)
