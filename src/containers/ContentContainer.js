@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import ChampionList from '../components/champions/ChampionList'
-import ChampionInfo from '../components/champions/ChampionInfo'
-import ItemList from '../components/items/ItemList'
+// import ChampionList from '../components/champions/ChampionList'
+// import ChampionInfo from '../components/champions/ChampionInfo'
+// import ItemList from '../components/items/ItemList'
 import ItemInfo from '../components/items/ItemInfo'
-import LoadoutList from '../components/loadouts/LoadoutList'
-import LoadoutCard from '../components/loadouts/LoadoutCard'
-import LoadoutInfo from '../components/loadouts/LoadoutInfo'
+// import LoadoutList from '../components/loadouts/LoadoutList'
+// import LoadoutCard from '../components/loadouts/LoadoutCard'
+// import LoadoutInfo from '../components/loadouts/LoadoutInfo'
 
 
 

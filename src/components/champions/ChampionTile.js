@@ -19,7 +19,7 @@ class ChampionTile extends Component {
 }
 
 const mapStateToProps = (state) => ({
-
+    
 })
 
 const mapDispatchToProps = {

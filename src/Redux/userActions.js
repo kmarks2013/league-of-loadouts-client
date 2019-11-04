@@ -50,7 +50,7 @@ const loginUserToDB = userData => dispatch => {
 }
 
 const  logoutUser = () => dispatch => {
-    dispatch(clearUserAction)
+    dispatch(clearUserAction())
     localStorage.clear()
 }
 

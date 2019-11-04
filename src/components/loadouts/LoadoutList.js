@@ -4,7 +4,7 @@ import LoadoutCard from './LoadoutCard'
 
 class LoadoutList extends Component {
     renderLoadoutCards = () => {
-        console.log(this.props.loadouts)
+        // console.log(this.props.loadouts)
         return this.props.loadouts.map(loadout => {
           return  <LoadoutCard key={loadout.id} loadout={loadout} />
         })
@@ -14,7 +14,7 @@ class LoadoutList extends Component {
         // console.log(this.props)
         return (
             <div>
-                i will render all loadouts
+                <h1>Loadouts</h1>
                 {this.renderLoadoutCards()}
             </div>
         )
