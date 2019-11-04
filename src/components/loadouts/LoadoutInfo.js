@@ -6,6 +6,7 @@ class LoadoutInfo extends Component {
         return (
             <div>
                 <h1>Name</h1>
+                
                 <h2>Champion</h2>
                 <h2>User</h2>
             </div>
@@ -14,7 +15,7 @@ class LoadoutInfo extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    
+   
 })
 
 const mapDispatchToProps = {

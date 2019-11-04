@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Actions from '../../Redux/userActions'
+import {Route, NavLink, Link } from 'react-router-dom'
+import { SignUpForm } from '../SignUpForm'
 
 export class Login extends Component {
     loginClick = () => {
@@ -29,11 +31,15 @@ export class Login extends Component {
         return (
             <div>
                 <button onClick={this.loginClick}>Login</button>
+                <NavLink to='/signup'>
                 <button onClick={this.signUpClick}>Sign-up</button>
+                </NavLink>
+                    
+                {/* <NavLink to='/signup'>Sign-up </NavLink> */}
                 <button onClick={this.logoutClick}>Logout</button>
                 <button onClick={this.newLoadoutClick}>New Loadout</button>
            
-                <p>{this.props.user ? this.props.user.username : 'null'}</p>
+                <p>{this.props.user && this.props.user.id ? this.props.user.username : 'no logged in'}</p>
                 <p>When a user is logged in i should then render a make a new loadout button and a username and a logout button</p>
             </div>
         )

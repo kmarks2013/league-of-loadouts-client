@@ -1,11 +1,12 @@
-const initialState = {
-
-}
+const initialState = [
+    
+]
 
 export default (state = initialState, { type, payload }) => {
     switch (type) {
 
     case "GET_LOADOUTS":
+        // console.log(payload, "i am not fetching right now?")
         return payload
     case "CREATE_LOADOUT":
         return [...state, payload]
