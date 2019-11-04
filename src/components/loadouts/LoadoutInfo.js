@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
- 
-class ItemTile extends Component {
+
+class LoadoutInfo extends Component {
     render() {
         return (
             <div>
-                <h2> {this.props.item.name} </h2>
+                <h1>Name</h1>
+                <h2>Champion</h2>
+                <h2>User</h2>
             </div>
         )
     }
@@ -19,4 +21,4 @@ const mapDispatchToProps = {
     
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ItemTile)
+export default connect(mapStateToProps, mapDispatchToProps)(LoadoutInfo)

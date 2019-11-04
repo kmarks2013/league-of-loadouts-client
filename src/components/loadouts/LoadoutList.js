@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
- 
-class ItemTile extends Component {
+import LoadoutCard from './LoadoutCard'
+
+class LoadoutList extends Component {
     render() {
         return (
             <div>
-                <h2> {this.props.item.name} </h2>
+                i will render all loadouts
+                <LoadoutCard/>
             </div>
         )
     }
@@ -19,4 +21,4 @@ const mapDispatchToProps = {
     
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ItemTile)
+export default connect(mapStateToProps, mapDispatchToProps)(LoadoutList)

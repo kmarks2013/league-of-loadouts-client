@@ -2,19 +2,35 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 class ItemInfo extends Component {
+
+    renderItem = () => {
+        if (this.props.item){
+           return (
+               <div>
+                <h2> {this.props.item.name}</h2>
+                <h2>Item Description</h2>
+                <p>{this.props.item.description}</p>
+               </div>
+           )
+        } else 
+            return (
+            <div>
+
+            </div>
+            )
+    }
+
     render() {
         return (
             <div>
-                <h2> Item Name</h2>
-                <h2>Item Description</h2>
-                <p>description text</p>
+                {this.renderItem()}
             </div>
         )
     }
 }
 
 const mapStateToProps = (state) => ({
-    
+    item: state.items[0]
 })
 
 const mapDispatchToProps = {

@@ -23,7 +23,8 @@ class ChampionList extends Component {
 const mapStateToProps = (state) => {
     // console.log(state)
   return {
-      champions: state.champions  
+      champions: state.champions 
+       
   }
 }
 
