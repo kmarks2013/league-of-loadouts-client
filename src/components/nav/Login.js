@@ -1,15 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Actions from '../../Redux/userActions'
+import {Route, NavLink, Link } from 'react-router-dom'
+import { LoginForm } from './LoginForm'
+
 
 export class Login extends Component {
-    loginClick = () => {
-        console.log('i should open up a login form')
-    }
 
-    signUpClick = () => {
-        console.log('i should open up a sign up form')
-    }
     logoutClick = () => {
         console.log('i should clear local storage')
         this.props.logoutUser()
@@ -28,12 +25,21 @@ export class Login extends Component {
         // console.log(this.props)
         return (
             <div>
-                <button onClick={this.loginClick}>Login</button>
-                <button onClick={this.signUpClick}>Sign-up</button>
+                <NavLink to='/'>
+                <button>Home</button>
+                </NavLink>
+                <NavLink to='/login'>
+                <button>Login</button>
+                </NavLink>
+                <NavLink to='/signup'>
+                <button>Sign-up</button>
+                </NavLink>
+                    
+                {/* <NavLink to='/signup'>Sign-up </NavLink> */}
                 <button onClick={this.logoutClick}>Logout</button>
                 <button onClick={this.newLoadoutClick}>New Loadout</button>
            
-                <p>{this.props.user ? this.props.user.username : 'null'}</p>
+                <p>{this.props.user && this.props.user.id ? this.props.user.username : 'no logged in'}</p>
                 <p>When a user is logged in i should then render a make a new loadout button and a username and a logout button</p>
             </div>
         )

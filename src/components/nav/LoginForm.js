@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Actions from '../../Redux/userActions'
 
-export class LoginForm extends Component {
+class LoginForm extends Component {
     state = {
         
         username:'',
@@ -12,6 +12,7 @@ export class LoginForm extends Component {
     handleSubmit = (evt, ) => {
         evt.preventDefault()
         console.log('i was submitted', this.state.username) 
+        debugger
         this.props.loginUserToDB(this.state)  
         this.setState({
             username: '',
@@ -27,6 +28,7 @@ export class LoginForm extends Component {
     }
 
     render() {
+        console.log(this.props)
         return (
             <div>
             <form onSubmit={this.handleSubmit}>

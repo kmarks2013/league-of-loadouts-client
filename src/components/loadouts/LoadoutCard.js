@@ -6,7 +6,7 @@ class LoadoutCard extends Component {
     render() {
         return (
             <div>
-                i will render a loadout LoadoutCard
+                <h1>{this.props.loadout.name}</h1>
             </div>
         )
     }

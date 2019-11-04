@@ -15,12 +15,12 @@ export default class ContentContainer extends Component {
             <div>
 
             <p>this should render loadout indexes and shows, champ index and shows, and item index and show conditionally</p>
-            {/* <ItemList /> */}
-            {/* <ItemInfo /> */}
-            {/* <ChampionList />
-            <ChampionInfo /> */}
+            {/* <ItemList />  */}
+            <ItemInfo /> 
+            {/* <ChampionList/>       
+            <ChampionInfo /> 
             <LoadoutList />
-            <LoadoutInfo />
+            <LoadoutInfo /> */}
             </div>
         )
     }
