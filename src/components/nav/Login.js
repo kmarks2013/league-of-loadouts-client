@@ -2,16 +2,11 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Actions from '../../Redux/userActions'
 import {Route, NavLink, Link } from 'react-router-dom'
-import { SignUpForm } from '../SignUpForm'
+import { LoginForm } from './LoginForm'
+
 
 export class Login extends Component {
-    loginClick = () => {
-        console.log('i should open up a login form')
-    }
 
-    signUpClick = () => {
-        console.log('i should open up a sign up form')
-    }
     logoutClick = () => {
         console.log('i should clear local storage')
         this.props.logoutUser()
@@ -30,9 +25,14 @@ export class Login extends Component {
         // console.log(this.props)
         return (
             <div>
-                <button onClick={this.loginClick}>Login</button>
+                <NavLink to='/'>
+                <button>Home</button>
+                </NavLink>
+                <NavLink to='/login'>
+                <button>Login</button>
+                </NavLink>
                 <NavLink to='/signup'>
-                <button onClick={this.signUpClick}>Sign-up</button>
+                <button>Sign-up</button>
                 </NavLink>
                     
                 {/* <NavLink to='/signup'>Sign-up </NavLink> */}

@@ -7,8 +7,14 @@ import ContentContainer from './containers/ContentContainer';
 import championActions from './Redux/championActions'
 import itemActions from './Redux/itemActions';
 import loadoutActions from './Redux/loadoutActions';
-import { Route } from 'react-router-dom'
-import { SignUpForm } from './components/SignUpForm';
+import { Route, Switch } from 'react-router-dom'
+import SignUpForm from './components/SignUpForm';
+import LoadoutList from './components/loadouts/LoadoutList';
+import ChampionList from './components/champions/ChampionList';
+import ItemList from './components/items/ItemList';
+import Sidebar from './components/Sidebar';
+import LoginForm from './components/nav/LoginForm';
+
 
 
 
@@ -22,10 +28,18 @@ export class App extends Component {
   render() {
     return (
       <div>
-
         <NavBar />
+        <Sidebar />
+        <Switch>
         <Route path='/signup' component = {SignUpForm} />
-        {/* <ContentContainer /> */}
+        <Route path='/login' component={LoginForm} />
+        <Route path='/loadouts' component = {LoadoutList} />
+        <Route path='/champions' component = {ChampionList} />
+        <Route path='/items' component={ItemList} />
+        <Route path='/' exact component={LoadoutList} />
+        </Switch>
+        <ContentContainer />
+        <FormConatiner />
       </div>
     )
   }
