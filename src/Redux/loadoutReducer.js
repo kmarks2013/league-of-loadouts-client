@@ -9,7 +9,7 @@ export default (state = initialState, { type, payload }) => {
         // console.log(payload, "i am not fetching right now?")
         return payload
     case "CREATE_LOADOUT":
-        return [...state, payload]
+        return [payload, ...state]
     case "DELETE_LOADOUT":
         return handleDeleteLoadout(state, payload)
     case "UPDATE_LOADOUT":

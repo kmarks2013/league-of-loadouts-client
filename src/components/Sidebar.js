@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Route, NavLink, Link } from 'react-router-dom'
+import { NavLink} from 'react-router-dom'
 export default class Sidebar extends Component {
     render() {
         return (

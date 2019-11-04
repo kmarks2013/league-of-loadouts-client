@@ -6,7 +6,8 @@ class LoadoutCard extends Component {
     render() {
         return (
             <div>
-                <h1>{this.props.loadout.name}</h1>
+                <h2>{this.props.loadout.name}</h2>
+                <h6>{this.props.loadout.user}</h6>
             </div>
         )
     }
