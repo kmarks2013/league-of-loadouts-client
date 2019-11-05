@@ -8,14 +8,14 @@ class LoadoutList extends Component {
     renderLoadoutCards = () => {
         // console.log(this.props.loadouts)
         return this.props.loadouts.map(loadout => {
-          return  <LoadoutCard key={loadout.id} handleClick={this.props.handleClick} loadout={loadout} />
+          return  <LoadoutCard key={loadout.id} loadoutClick={this.props.loadoutClick} loadout={loadout} />
         })
     }
 
     render() {
         // console.log(this.props)
         return (
-            <div className='loadouts'>
+            <div className='content'>
                 <h1>Loadouts</h1>
                 {this.renderLoadoutCards()}
             </div>

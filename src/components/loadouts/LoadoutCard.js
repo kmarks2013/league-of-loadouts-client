@@ -6,10 +6,10 @@ class LoadoutCard extends Component {
 
 
     render() {
-        // console.log(this.props)
+        console.log(this.props)
         
         return (
-            <div className='loadout-cards' onClick={() =>{this.props.handleClick(this.props.loadout)}}>
+            <div className='content' onClick={() =>{this.props.loadoutClick(this.props.loadout)}}>
                 <h2>{this.props.loadout.name}</h2>
                 <h6>{this.props.loadout.user.username}</h6>
             </div>

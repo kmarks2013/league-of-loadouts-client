@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 class ItemTile extends Component {
     render() {
         return (
-            <div>
+            <div className='content' onClick={() =>{this.props.itemClick(this.props.item)}} >
                 <h2> {this.props.item.name} </h2>
             </div>
         )
