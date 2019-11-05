@@ -17,7 +17,7 @@ import { connect } from 'react-redux'
 }
 
 const mapStateToProps = (state) => ({
-    champion: state.champions[0]
+    // champion: state.champion
 })
 
 const mapDispatchToProps = {

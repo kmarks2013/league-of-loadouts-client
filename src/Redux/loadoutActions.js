@@ -1,3 +1,6 @@
+const url= 'http://localhost:3000/loadouts'
+
+
 const getLoadoutsAction = loadouts => ({
     type: "GET_LOADOUTS",
     payload: loadouts
@@ -5,6 +8,11 @@ const getLoadoutsAction = loadouts => ({
 
 const createNewLoadout = loadout => ({
     type: "CREATE_LOADOUT",
+    payload: loadout
+})
+
+const loadoutAction = loadout => ({
+    type: "LOADOUT",
     payload: loadout
 })
 
@@ -25,7 +33,7 @@ const createNewLoadout = loadout => ({
 
 
 const fetchLoadoutsFromDB = () => dispatch => {
-    fetch('http://localhost:3000/loadouts')
+    fetch(url)
 
     .then(res => res.json())
     .then(laodoutsArr =>{
@@ -33,8 +41,16 @@ const fetchLoadoutsFromDB = () => dispatch => {
     })
 }
 
+// const fecthLoadout = () => dispatch => {
+//     fetch('url ')
+// }
+const getLoadout = (loadoutObj) => dispatch => {
+    dispatch(loadoutAction(loadoutObj))
+}
+ 
+
 const newLoadoutPost = (loadoutData) => dispatch => {
-    fetch('http://localhost:3000/loadouts' ,{
+    fetch(url ,{
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -50,5 +66,6 @@ const newLoadoutPost = (loadoutData) => dispatch => {
 
 export default {
     fetchLoadoutsFromDB,
-    newLoadoutPost 
+    newLoadoutPost,
+    getLoadout 
 }

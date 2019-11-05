@@ -30,7 +30,7 @@ class ItemInfo extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    item: state.items[0]
+    
 })
 
 const mapDispatchToProps = {

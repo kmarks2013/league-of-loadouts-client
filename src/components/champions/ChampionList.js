@@ -6,7 +6,7 @@ class ChampionList extends Component {
     renderCharacterTiles = () => {
         // console.log(this.props.champions)
         return this.props.champions.map(champion => {
-          return  <ChampionTile key={champion.id} champion={champion} />
+          return  <ChampionTile key={champion.id} championClick= {this.props.championClick} champion={champion} />
         })
     }
 
