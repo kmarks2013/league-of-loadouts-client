@@ -14,16 +14,30 @@ import ChampionList from './components/champions/ChampionList';
 import ItemList from './components/items/ItemList';
 import Sidebar from './components/Sidebar';
 import LoginForm from './components/nav/LoginForm';
+import LoadoutInfo from './components/loadouts/LoadoutInfo';
 
 
 
 
 export class App extends Component {
+
+  state={
+    loadout: {}
+  }
  componentDidMount() {
     this.props.fetchChampionsFromDB()
     this.props.fetchItemsFromDB()
     this.props.fetchLoadoutsFromDB()
  }
+
+
+ handleClick = (loadout) => {
+  console.log("i was clicked", loadout)
+  // this.props.getLoadout(this.props.loadout)
+  this.setState({
+    loadout
+  })
+}
 
   render() {
     return (
@@ -34,12 +48,13 @@ export class App extends Component {
         <Route path='/signup' component = {SignUpForm} />
         <Route path='/login' component={LoginForm} />
         <Route path='/loadouts' component = {LoadoutList} />
+        {/* <Route path='/loadouts/:id' render={() => <LoadoutInfo loadout={this.state.loadout}/>}/> */}
         <Route path='/champions' component = {ChampionList} />
         <Route path='/items' component={ItemList} />
-        <Route path='/' exact component={LoadoutList} />
+        {/* <Route path='/' exact render={ () => <LoadoutList/>} /> */}
         </Switch>
-        <ContentContainer />
-        <FormConatiner />
+        <ContentContainer loadout={this.state.loadout}/>
+        {/* <FormConatiner /> */}
       </div>
     )
   }
