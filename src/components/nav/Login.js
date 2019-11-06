@@ -37,7 +37,9 @@ export class Login extends Component {
                     
                 {/* <NavLink to='/signup'>Sign-up </NavLink> */}
                 <button onClick={this.logoutClick}>Logout</button>
+                <NavLink to='/newloadout'>
                 <button onClick={this.newLoadoutClick}>New Loadout</button>
+                </NavLink>
            
                 <p>{this.props.user && this.props.user.id ? this.props.user.username : 'no logged in'}</p>
                 <p>When a user is logged in i should then render a make a new loadout button and a username and a logout button</p>
