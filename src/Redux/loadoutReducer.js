@@ -11,6 +11,7 @@ export default (state = initialState, { type, payload }) => {
     case "CREATE_LOADOUT":
         return [payload, ...state]
     case "DELETE_LOADOUT":
+        // console.log(state)
         return handleDeleteLoadout(state, payload)
     case "UPDATE_LOADOUT":
         return handleUpdateLoadout(state, payload)
