@@ -3,11 +3,6 @@ import { connect } from 'react-redux'
 
 class LoadoutItemsForm extends Component {
     itemsSelection = () => {
-    
-        // return this.props.champions.forEach(champion => {
-        //     // console.log(champion.name)
-        //     return <option value='champion'>Aatrox</option>
-        // })
         return (
             <React.Fragment>
                 { 
@@ -20,8 +15,8 @@ class LoadoutItemsForm extends Component {
     }
     render() {
         return (
-            <div>
-              <form onSubmit={this.handleSubmit}>
+            <React.Fragment>
+              {/* <form onSubmit={this.handleSubmit}> */}
                     <label>Item 1 </label> 
                     <select name='item' onChange={this.handleChange}>
                         {this.itemsSelection()}
@@ -46,9 +41,7 @@ class LoadoutItemsForm extends Component {
                     <select name='item' onChange={this.handleChange}>
                         {this.itemsSelection()}
                     </select>
-                    <input type='submit'></input>
-                </form>  
-            </div>
+            </React.Fragment>
         )
     }
 }

@@ -16,20 +16,16 @@ const loadoutAction = loadout => ({
     payload: loadout
 })
 
-// const createLoadoutAction = loadout => ({
-//     type: "CREATE_LOADOUTS",
-//     payload: loadout
-// })
 
-// const deleteLoadoutAction = loadoutId => ({
-//     type: "DELETE_LOADOUTS",
-//     payload: loadoutId
-// })
+const deleteLoadoutAction = loadoutId => ({
+    type: "DELETE_LOADOUTS",
+    payload: loadoutId
+})
 
-// const updateLoadoutsAction = loadout => ({
-//     type: "UPDATE_LOADOUTS",
-//     payload: loadout
-// })
+const updateLoadoutAction = loadout => ({
+    type: "UPDATE_LOADOUTS",
+    payload: loadout
+})
 
 
 const fetchLoadoutsFromDB = () => dispatch => {
@@ -40,14 +36,6 @@ const fetchLoadoutsFromDB = () => dispatch => {
         dispatch(getLoadoutsAction(laodoutsArr))
     })
 }
-
-// const fecthLoadout = () => dispatch => {
-//     fetch('url ')
-// }
-const getLoadout = (loadoutObj) => dispatch => {
-    dispatch(loadoutAction(loadoutObj))
-}
- 
 
 const newLoadoutPost = (loadoutData) => dispatch => {
     fetch(url ,{
@@ -64,8 +52,42 @@ const newLoadoutPost = (loadoutData) => dispatch => {
     })
 }
 
+const updateLoadoutFromDB = loadout => dispatch => {
+    fetch(url + `/${loadout.id}`, {
+        method: 'PATCH',
+        headers:{
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+        },
+        body: JSON.stringify(loadout)
+    })
+    .then(res => res.json())
+    .then(updatedLoadout => {
+        dispatch(updateLoadoutAction(updatedLoadout))
+    })
+}
+
+const deleteLoadoutFromDB = loadoutId => dispatch => {
+    // dispatch(deleteLoadoutAction(loadoutId))
+    fetch(url + `/${loadoutId}`, {
+      method: 'DELETE'
+    }).then(res => res.json())
+    .then(() => dispatch(deleteLoadoutAction(loadoutId)));
+  };
+
+// const fecthLoadout = () => dispatch => {
+//     fetch('url ')
+// }
+const getLoadout = (loadoutObj) => dispatch => {
+    dispatch(loadoutAction(loadoutObj))
+}
+ 
+
+
 export default {
     fetchLoadoutsFromDB,
     newLoadoutPost,
-    getLoadout 
+    getLoadout,
+    deleteLoadoutFromDB,
+    updateLoadoutFromDB
 }
