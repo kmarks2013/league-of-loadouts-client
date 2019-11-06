@@ -23,7 +23,7 @@ const deleteLoadoutAction = loadoutId => ({
 })
 
 const updateLoadoutAction = loadout => ({
-    type: "UPDATE_LOADOUTS",
+    type: "UPDATE_LOADOUT",
     payload: loadout
 })
 
@@ -52,14 +52,14 @@ const newLoadoutPost = (loadoutData) => dispatch => {
     })
 }
 
-const updateLoadoutFromDB = loadout => dispatch => {
+const updateLoadoutFromDB = (loadout, payload) => dispatch => {
     fetch(url + `/${loadout.id}`, {
         method: 'PATCH',
         headers:{
         'Content-Type': 'application/json',
         Accept: 'application/json'
         },
-        body: JSON.stringify(loadout)
+        body: JSON.stringify(payload)
     })
     .then(res => res.json())
     .then(updatedLoadout => {

@@ -18,7 +18,7 @@ class LoadoutInfo extends Component {
     //     }
     // }
     state = {
-        name:'',
+        name: this.props.loadout.name,
         editMode: false
     }
 
@@ -30,8 +30,11 @@ class LoadoutInfo extends Component {
     }
 
     handleSubmit = (evt) => {
+        
         evt.preventDefault()
-        console.log(this.state)
+        console.log(this.state, 'i should updage the loadout name and add items to the loadout')
+        // formData  
+        this.props.updateLoadoutFromDB(this.props.loadout, this.state)
     }
     
     handleDelete = () => {
@@ -122,7 +125,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-    deleteLoadoutFromDB: Actions.deleteLoadoutFromDB  
+    deleteLoadoutFromDB: Actions.deleteLoadoutFromDB, 
+    updateLoadoutFromDB: Actions.updateLoadoutFromDB
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoadoutInfo)
