@@ -12,7 +12,6 @@ class LoginForm extends Component {
     handleSubmit = (evt, ) => {
         evt.preventDefault()
         console.log('i was submitted', this.state.username) 
-        debugger
         this.props.loginUserToDB(this.state)  
         this.setState({
             username: '',

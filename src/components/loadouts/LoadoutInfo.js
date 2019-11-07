@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import LoadoutItemsForm from './LoadoutItemsForm'
 import Actions from '../../Redux/loadoutActions'
 import loadoutActions from '../../Redux/loadoutActions'
+import {Route, NavLink, Link } from 'react-router-dom'
 
 class LoadoutInfo extends Component {
     // editDeleteButtons = () =>  {
@@ -41,7 +42,7 @@ class LoadoutInfo extends Component {
     }
 
     handleChange = (evt) => {
-        console.log(evt.target.value, evt.target.name)
+        // console.log(evt.target.value, evt.target.name)
         this.setState({
             [evt.target.name]: evt.target.value
         })
@@ -56,7 +57,7 @@ class LoadoutInfo extends Component {
         const loadoutItems = [this.state.item1, this.state.item2, this.state.item3, this.state.item4, this.state.item5, this.state.item6]
         const formData =  {loadout_id: this.props.loadout.id, items_array: loadoutItems}
         this.newLoadoutItemPost(formData)
-        console.log(loadoutItems)
+        // console.log(loadoutItems)
     }
     
     handleDelete = () => {
@@ -123,8 +124,26 @@ class LoadoutInfo extends Component {
         return null
     }
 
-    showLoadoutItems = () => {
-        
+    itemDoubleClick = (event, itemId) => {
+        console.log('i was clicked twice and i should be deleted', itemId)
+        // fetch(`http://localhost:3000/loadout_items/${itemId}`, {
+        //     method: 'DELETE'
+        // }).then(res => res.json())
+    }
+
+
+    renderLoadoutItems = () => {
+        console.log(this.props.loadout.loadout_items)
+        return this.props.loadout.items.map(item => {
+          return (
+                <div onDoubleClick={ (evt) => this.itemDoubleClick(evt, item.id)}>
+                <li>{item.name}</li>
+                <NavLink to={`/items/${item.name}`} >
+                <button>View Item info</button>
+                </NavLink>
+                </div>
+          )
+        })
     }
     
     render() {
@@ -136,9 +155,10 @@ class LoadoutInfo extends Component {
                 
                 <h2>Champion</h2>
                 <h2>{loadout && loadout.id ? loadout.user.username : null}</h2>
-                
+                <h2> Items</h2>
+                {this.renderLoadoutItems()}
                 <button onClick={this.handleEditMode}> {this.state.editMode? 'Cancel Edit' :'Edit Loadout'} </button>
-                <button onClick={this.handleDelete}>Delete Comment</button>
+                <button onClick={this.handleDelete}>Delete Loadout</button>
                 {this.editForm()}
                 {/* {this.editDeleteButtons()} */}
             </div>

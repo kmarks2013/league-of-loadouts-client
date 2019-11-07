@@ -5,7 +5,7 @@ import LoginForm from '../components/nav/LoginForm'
 export default class NavBar extends Component {
     render() {
         return (
-            <div>
+            <div >
                 {/* NavLink to='/signup'>
                 <button onClick={this.signUpClick}>Sign-up</button>
                 </NavLink> */}
