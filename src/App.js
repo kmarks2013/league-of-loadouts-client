@@ -15,6 +15,7 @@ import ItemList from './components/items/ItemList';
 import Sidebar from './components/Sidebar';
 import LoginForm from './components/nav/LoginForm';
 import LoadoutInfo from './components/loadouts/LoadoutInfo';
+import LoadoutForm from './components/LoadoutForm';
 
 
 
@@ -75,7 +76,7 @@ itemClick = (item) => {
         <Route path='/items' exact render={ () => <ItemList  itemClick={this.itemClick}/>} />
        
         {/* <Route path='/loadouts/:id' render={() => <LoadoutInfo loadout={this.state.loadout}/>}/> */}
-
+        <Route path='/newloadout' component={LoadoutForm} />
         <Route path='/' exact render={ () => <LoadoutList  loadoutClick={this.loadoutClick}/>} />
         </Switch>
         <ContentContainer loadout={this.state.loadout}  champion={this.state.champion} item={this.state.item} />

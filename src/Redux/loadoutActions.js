@@ -27,6 +27,7 @@ const updateLoadoutAction = loadout => ({
     payload: loadout
 })
 
+ 
 
 const fetchLoadoutsFromDB = () => dispatch => {
     fetch(url)

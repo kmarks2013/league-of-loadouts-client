@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import LoadoutItemsForm from './LoadoutItemsForm'
 import Actions from '../../Redux/loadoutActions'
+import loadoutActions from '../../Redux/loadoutActions'
 
 class LoadoutInfo extends Component {
     // editDeleteButtons = () =>  {
@@ -19,11 +20,28 @@ class LoadoutInfo extends Component {
     // }
     state = {
         name: this.props.loadout.name,
-        editMode: false
+        editMode: false,
+        item1: 1,
+        item2: 1,
+        item3: 1,
+        item4: 1,
+        item5: 1,
+        item6: 1,
+    }
+
+    newLoadoutItemPost = (formData) => {
+        fetch('http://localhost:3000/loadout_items',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/json'
+            },
+            body: JSON.stringify(formData)
+        }).then(res => res.json())
     }
 
     handleChange = (evt) => {
-        console.log(evt.target.value)
+        console.log(evt.target.value, evt.target.name)
         this.setState({
             [evt.target.name]: evt.target.value
         })
@@ -32,9 +50,13 @@ class LoadoutInfo extends Component {
     handleSubmit = (evt) => {
         
         evt.preventDefault()
-        console.log(this.state, 'i should updage the loadout name and add items to the loadout')
+        // console.log(this.state, 'i should updage the loadout name and add items to the loadout')
         // formData  
         this.props.updateLoadoutFromDB(this.props.loadout, this.state)
+        const loadoutItems = [this.state.item1, this.state.item2, this.state.item3, this.state.item4, this.state.item5, this.state.item6]
+        const formData =  {loadout_id: this.props.loadout.id, items_array: loadoutItems}
+        this.newLoadoutItemPost(formData)
+        console.log(loadoutItems)
     }
     
     handleDelete = () => {
@@ -43,7 +65,7 @@ class LoadoutInfo extends Component {
     }
 
     handleEditMode = () => {
-        console.log(this.state.editMode)
+        // console.log(this.state.editMode)
         this.setState({
             editMode: !this.state.editMode
         })
@@ -69,27 +91,27 @@ class LoadoutInfo extends Component {
             <label>Name</label>
             <input onChange={this.handleChange} type='text' name='name' value={this.state.name} />
             <label>Item 1 </label> 
-                    <select name='item' onChange={this.handleChange}>
+                    <select name='item1' onChange={this.handleChange}>
                         {this.itemsSelection()}
                     </select>
                     <label>Item 2 </label> 
-                    <select name='item' onChange={this.handleChange}>
+                    <select name='item2' onChange={this.handleChange}>
                         {this.itemsSelection()}
                     </select>
                     <label>Item 3 </label> 
-                    <select name='item' onChange={this.handleChange}>
+                    <select name='item3' onChange={this.handleChange}>
                         {this.itemsSelection()}
                     </select>
                     <label>Item 4 </label> 
-                    <select name='item' onChange={this.handleChange}>
+                    <select name='item4' onChange={this.handleChange}>
                         {this.itemsSelection()}
                     </select>
                     <label>Item 5 </label> 
-                    <select name='item' onChange={this.handleChange}>
+                    <select name='item5' onChange={this.handleChange}>
                         {this.itemsSelection()}
                     </select>
                     <label>Item 6 </label> 
-                    <select name='item' onChange={this.handleChange}>
+                    <select name='item6' onChange={this.handleChange}>
                         {this.itemsSelection()}
                     </select>
             <input type='submit'></input> 
@@ -100,16 +122,21 @@ class LoadoutInfo extends Component {
         else
         return null
     }
+
+    showLoadoutItems = () => {
+        
+    }
     
     render() {
         const {loadout} = this.props 
-        console.log(this.props, this.props.user)
+        // console.log(this.props, this.props.user)
         return (
             <div>
                 <h1>{loadout && loadout.id ? loadout.name : null} </h1>
                 
                 <h2>Champion</h2>
                 <h2>{loadout && loadout.id ? loadout.user.username : null}</h2>
+                
                 <button onClick={this.handleEditMode}> {this.state.editMode? 'Cancel Edit' :'Edit Loadout'} </button>
                 <button onClick={this.handleDelete}>Delete Comment</button>
                 {this.editForm()}
