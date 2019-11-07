@@ -24,26 +24,36 @@ export class Login extends Component {
     render() {
         // console.log(this.props)
         return (
-            <div>
+                <div>
                 <NavLink to='/'>
-                <button>Home</button>
+                <button  >Home</button>
                 </NavLink>
+
+               
                 <NavLink to='/login'>
                 <button>Login</button>
                 </NavLink>
-                <NavLink to='/signup'>
+
+                
+                <NavLink class="navbar-end" to='/signup'>
                 <button>Sign-up</button>
                 </NavLink>
                     
                 {/* <NavLink to='/signup'>Sign-up </NavLink> */}
+                
                 <button onClick={this.logoutClick}>Logout</button>
-                <NavLink to='/newloadout'>
+               
+                <NavLink to='/loadouts/new'>
                 <button onClick={this.newLoadoutClick}>New Loadout</button>
                 </NavLink>
+    
            
                 <p>{this.props.user && this.props.user.id ? this.props.user.username : 'no logged in'}</p>
-                <p>When a user is logged in i should then render a make a new loadout button and a username and a logout button</p>
-            </div>
+
+
+            
+                </div>
+
         )
     }
 }

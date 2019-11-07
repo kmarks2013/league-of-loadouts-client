@@ -2,18 +2,18 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { ChampionInfo } from './ChampionInfo'
 import championActions from '../../Redux/championActions'
+import {Route, NavLink, Link } from 'react-router-dom'
 
 class ChampionTile extends Component {
     render() {
+        const {champion} = this.props
         // console.log(this.props)
         return (
-            <div className='content' onClick={() =>{this.props.championClick(this.props.champion)}} >
-            <h2>{this.props.champion.name}</h2> 
-                {/* I will render an imgage and name card for each ChampionTile 
-                when a ChampionTile is clicked it will render:
-                <ChampionInfo/> */}
-                
+            <NavLink to={`/champions/${champion.name}`}>
+            <div className='content' onClick={() =>{this.props.championClick(champion)}} >
+            <h2>{champion.name}</h2>
             </div>
+            </NavLink>
         )
     }
 }
