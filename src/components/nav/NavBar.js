@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Actions from '../../Redux/userActions'
-import {Route, NavLink, Link } from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 import { LoginForm } from './LoginForm'
 
 
