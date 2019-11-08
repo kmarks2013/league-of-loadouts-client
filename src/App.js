@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import './App.css';
-import NavBar from './containers/NavBar';
-import FormConatiner from './containers/FormConatiner';
-import ContentContainer from './containers/ContentContainer';
+import NavBar from './components/nav/NavBar';
 import championActions from './Redux/championActions'
 import itemActions from './Redux/itemActions';
 import loadoutActions from './Redux/loadoutActions';
@@ -134,8 +132,6 @@ renderChampions = (renderProps) => {
 
         <Route path='/' exact render={ () => <LoadoutList  loadoutClick={this.loadoutClick}/>} />
         </Switch>
-        <ContentContainer loadout={this.state.loadout}  champion={this.state.champion} item={this.state.item} />
-        {/* <FormConatiner /> */}
       </div>
     )
   }
