@@ -21,37 +21,52 @@ export class Login extends Component {
         }
       }
     
+    loginLogout = () =>{
+        if (this.props.user && this.props.user.id){
+            return (
+                <div className='navbar-end'>
+
+                <p>{this.props.user.username} </p>
+                    <div className='buttons'>
+                        <button className='button' onClick={console.log('take me to my profile')}>Profile</button>
+                        <button  className='button' onClick={this.logoutClick}>Logout</button>
+                        <NavLink to='/loadouts/new'>
+                        <button className='button' onClick={this.newLoadoutClick}>New Loadout</button>
+                        </NavLink>
+                    </div>
+                </div>
+            )
+        }
+            return(
+                <div className='navbar-end'>
+                    <div className='buttons'>
+                    <NavLink to='/login'>
+                    <button className='button is-light' >Login</button>
+                    </NavLink>
+
+                    <NavLink  to='/signup'>
+                    <button className='button is-light' >Sign-up</button>
+                    </NavLink>
+                    </div>
+                </div>
+            )
+    }
+
+
     render() {
         // console.log(this.props)
         return (
-                <div>
-                <NavLink to='/'>
-                <button  >Home</button>
-                </NavLink>
-
-               
-                <NavLink to='/login'>
-                <button>Login</button>
-                </NavLink>
-
-                
-                <NavLink class="navbar-end" to='/signup'>
-                <button>Sign-up</button>
-                </NavLink>
-                    
-                {/* <NavLink to='/signup'>Sign-up </NavLink> */}
-                
-                <button onClick={this.logoutClick}>Logout</button>
-               
-                <NavLink to='/loadouts/new'>
-                <button onClick={this.newLoadoutClick}>New Loadout</button>
-                </NavLink>
-    
-           
-                <p>{this.props.user && this.props.user.id ? this.props.user.username : 'no logged in'}</p>
-
-
-            
+                <div calssName='navbar'>
+                    <div className='navbar-menu'>
+                        <div className='navbar-menu'>
+                        <NavLink  to='/'>
+                        <button className='button' >Home</button>
+                        </NavLink>
+                        </div>
+                        <div >
+                            {this.loginLogout()}
+                        </div>
+                    </div>
                 </div>
 
         )

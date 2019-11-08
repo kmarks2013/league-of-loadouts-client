@@ -124,19 +124,28 @@ class LoadoutInfo extends Component {
         return null
     }
 
-    itemDoubleClick = (event, itemId) => {
-        console.log('i was clicked twice and i should be deleted', itemId)
-        // fetch(`http://localhost:3000/loadout_items/${itemId}`, {
-        //     method: 'DELETE'
-        // }).then(res => res.json())
+    itemDoubleClick = (event, itemId, loadoutId) => {
+        console.log('i was clicked twice and i should be deleted', itemId, loadoutId)
+        fetch(`http://localhost:3000/loadout_items/`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/json'
+            },
+            body: JSON.stringify({
+                item_id: itemId,
+                loadout_id: loadoutId
+                
+            })
+        }).then(res => res.json())
     }
 
 
     renderLoadoutItems = () => {
-        console.log(this.props.loadout.loadout_items)
+        console.log(this.props.loadout.items, this.props.loadout.loadout_items)
         return this.props.loadout.items.map(item => {
           return (
-                <div onDoubleClick={ (evt) => this.itemDoubleClick(evt, item.id)}>
+                <div onDoubleClick={ (evt) => this.itemDoubleClick(evt, item.id, this.props.loadout.id)}>
                 <li>{item.name}</li>
                 <NavLink to={`/items/${item.name}`} >
                 <button>View Item info</button>

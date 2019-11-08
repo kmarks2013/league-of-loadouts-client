@@ -11,7 +11,7 @@ class ChampionTile extends Component {
         return (
             <NavLink to={`/champions/${champion.name}`}>
             <div className='content' onClick={() =>{this.props.championClick(champion)}} >
-            <h2>{champion.name}</h2>
+            <h2 className="title">{champion.name}</h2>
             </div>
             </NavLink>
         )

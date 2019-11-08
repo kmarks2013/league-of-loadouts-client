@@ -18,7 +18,7 @@ const loadoutAction = loadout => ({
 
 
 const deleteLoadoutAction = loadoutId => ({
-    type: "DELETE_LOADOUTS",
+    type: "DELETE_LOADOUT",
     payload: loadoutId
 })
 
