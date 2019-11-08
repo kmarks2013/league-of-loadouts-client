@@ -27,7 +27,7 @@ export default class ContentContainer extends Component {
 
     render() {
         return (
-            <div>
+            <div className='column'>
 
             {/* <ItemList />  */}
             {/* <ChampionList/>        */}
