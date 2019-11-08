@@ -3,15 +3,16 @@ import { NavLink} from 'react-router-dom'
 export default class Sidebar extends Component {
     render() {
         return (
-            <div>
+            <div className='buttons'>
+
                 <NavLink to='/loadouts'>
-                <button>Loadouts</button>
+                <button className='button'>Loadouts</button>
                 </NavLink>
                 <NavLink to='/champions'>
-                <button>Champions</button>
+                <button className='button'>Champions</button>
                 </NavLink>
                 <NavLink to='/items'>
-                <button>Items</button>
+                <button className='button'>Items</button>
                 </NavLink>
             </div>
         )

@@ -109,8 +109,15 @@ renderChampions = (renderProps) => {
   render() {
     return (
       <div>
+
+        <div className='navbar' > 
         <NavBar />
+        </div>
+       <div className='columns'>
         <Sidebar />
+        <div className='column is-one-fifth'>
+        </div>
+       </div> 
         <Switch>
         <Route path='/signup' component = {SignUpForm} />
         <Route path='/login' component={LoginForm} />
@@ -127,7 +134,7 @@ renderChampions = (renderProps) => {
 
         <Route path='/' exact render={ () => <LoadoutList  loadoutClick={this.loadoutClick}/>} />
         </Switch>
-        {/* <ContentContainer loadout={this.state.loadout}  champion={this.state.champion} item={this.state.item} /> */}
+        <ContentContainer loadout={this.state.loadout}  champion={this.state.champion} item={this.state.item} />
         {/* <FormConatiner /> */}
       </div>
     )
