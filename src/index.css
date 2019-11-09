@@ -12,6 +12,47 @@ code {
     monospace;
 }
 
+
+.lol-wrapper {
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 15% 80% 15%;
+    grid-template-rows: 10% 90%;
+    grid-template-areas:
+        'navbar navbar navbar'
+        'sidebar content-container .';
+    background-color: #ededed;
+}
+
+.navbar{
+  grid-area: navbar;
+  background-color: gold;
+  display: grid;
+  grid-template-columns: 50% 50% ;
+  grid-template-areas: 
+        'navbar-menu login';
+}
+
+.navbar-menu {
+  display: inline-block;
+  margin-left: 2%;
+  grid-area: navbar-menu;
+  border-style: solid black 1px;
+}
+
+.login {
+  display: inline-block;
+  margin-left: 65%;
+  grid-area: login;
+  border-style: solid black 1px;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  background-color: red;
+}
+
 .loadout-cards {
   border-style: solid black 1px;
 }

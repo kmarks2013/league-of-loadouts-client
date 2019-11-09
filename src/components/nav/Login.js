@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Actions from '../../Redux/userActions'
 
-class LoginForm extends Component {
+class Login extends Component {
     state = {
         
         username:'',
@@ -57,4 +57,4 @@ const mapDispatchToProps = {
     loginUserToDB: Actions.loginUserToDB
 }
 
-export default connect(null, mapDispatchToProps)(LoginForm)
+export default connect(null, mapDispatchToProps)(Login)

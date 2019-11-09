@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Actions from '../../Redux/userActions'
 import {NavLink} from 'react-router-dom'
-import { LoginForm } from './LoginForm'
+import Login from './Login'
 
 
-export class Login extends Component {
+export class NavBar extends Component {
 
     logoutClick = () => {
         console.log('i should clear local storage')
@@ -24,7 +24,7 @@ export class Login extends Component {
     loginLogout = () =>{
         if (this.props.user && this.props.user.id){
             return (
-                <div className='navbar-end'>
+                <div className='login'>
 
                 <p>{this.props.user.username} </p>
                     <div className='buttons'>
@@ -38,7 +38,7 @@ export class Login extends Component {
             )
         }
             return(
-                <div className='navbar-end'>
+                <div className='login'>
                     <div className='buttons'>
                     <NavLink to='/login'>
                     <button className='button is-light' >Login</button>
@@ -56,19 +56,16 @@ export class Login extends Component {
     render() {
         // console.log(this.props)
         return (
-                <div calssName='navbar'>
-                    <div className='navbar-menu'>
+                
+                    <div className='navbar' >
                         <div className='navbar-menu'>
                         <NavLink  to='/'>
                         <button className='button' >Home</button>
                         </NavLink>
                         </div>
-                        <div >
                             {this.loginLogout()}
-                        </div>
                     </div>
-                </div>
-
+                
         )
     }
 }
@@ -81,4 +78,4 @@ const mapDispatchToProps = {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar)

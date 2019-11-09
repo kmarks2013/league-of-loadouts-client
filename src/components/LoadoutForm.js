@@ -49,18 +49,20 @@ class LoadoutForm extends Component {
     render() {
         console.log(this.props.champions)
         return (
-            <div>
-            <h1>Create a New Loadout</h1>
-                <form onSubmit={this.handleSubmit}>
-                    <label>Name</label>
-                    <input  onChange={this.handleChange} type='text' name="name" value={this.state.name}/> 
+            <div className='form-container'>
+                <div className='loadout-form'>
+                <h1>Create a New Loadout</h1>
+                    <form onSubmit={this.handleSubmit}>
+                        <label>Name</label>
+                        <input  onChange={this.handleChange} type='text' name="name" value={this.state.name}/> 
 
-                    <label>Select a Champion</label>
-                    <select name='champion' onChange={this.handleChange}>
-                        {this.championsSelection()}
-                    </select>
-                    <input type='submit'></input>
-                </form>
+                        <label>Select a Champion</label>
+                        <select name='champion' onChange={this.handleChange}>
+                            {this.championsSelection()}
+                        </select>
+                        <input type='submit'></input>
+                    </form>
+                </div>
             </div>
         )
     }

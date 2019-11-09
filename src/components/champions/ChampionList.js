@@ -12,9 +12,11 @@ class ChampionList extends Component {
 
     render() {
         return (
-            <div>
-            <h1> All Champions </h1> 
-                {this.renderCharacterTiles()}
+            <div className='content-container'>
+                <div className='content-tiles'>
+                <h1> All Champions </h1> 
+                    {this.renderCharacterTiles()}
+                </div>
             </div>
         )
     }
