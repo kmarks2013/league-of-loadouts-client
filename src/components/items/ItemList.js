@@ -10,10 +10,12 @@ class ItemList extends Component {
     }
     render() {
         return (
-            <div>
+            
+            <div className='content-container'>
+                <div className='content-tiles'>
                 <h1>All Items</h1>
-                {/* <ItemTile /> */}
                 {this.renderItemTiles()}
+                </div>
             </div>
         )
     }

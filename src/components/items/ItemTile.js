@@ -6,13 +6,11 @@ class ItemTile extends Component {
     render() {
         const {item} = this.props
         return (
-
+            <div className='item-tile' onClick={() =>{this.props.itemClick(item)}} >
             <NavLink to={`/items/${item.name}`} >
-
-            <div className='content' onClick={() =>{this.props.itemClick(item)}} >
                 <h2> {item.name} </h2>
-            </div>
             </NavLink>
+            </div>
         )
     }
 }

@@ -32,39 +32,41 @@ class SignUpForm extends Component {
 
     render() {
         return (
-            <div>
-            <form onSubmit={this.handleSubmit}>
-                <label>Name</label>
-                <input
-                    type="text"
-                    value={this.state.name}
-                    name="name"
-                    onChange={this.handleChange}
-                />
-                <label>Age</label>
-                <input
-                    type="number"
-                    value={this.state.age}
-                    name="age"
-                    onChange={this.handleChange}
-                />
-                <label>Username</label>
-                <input
-                    type="text"
-                    value={this.state.username}
-                    name="username"
-                    onChange={this.handleChange}
-                />
-                <label>Password</label>
-                <input
-                    type="password"
-                    value={this.state.password}
-                    name="password"
-                    onChange={this.handleChange}
-                />
-                
-                <input type="submit" />
-            </form>
+            <div className='form-container'>
+                <div className='signup-form'>
+                    <form onSubmit={this.handleSubmit}>
+                        <label>Name</label>
+                        <input
+                            type="text"
+                            value={this.state.name}
+                            name="name"
+                            onChange={this.handleChange}
+                        />
+                        <label>Age</label>
+                        <input
+                            type="number"
+                            value={this.state.age}
+                            name="age"
+                            onChange={this.handleChange}
+                        />
+                        <label>Username</label>
+                        <input
+                            type="text"
+                            value={this.state.username}
+                            name="username"
+                            onChange={this.handleChange}
+                        />
+                        <label>Password</label>
+                        <input
+                            type="password"
+                            value={this.state.password}
+                            name="password"
+                            onChange={this.handleChange}
+                        />
+                        
+                        <input type="submit" />
+                    </form>
+                </div>
             </div>
         )
     }

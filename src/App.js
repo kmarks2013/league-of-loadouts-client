@@ -11,62 +11,28 @@ import LoadoutList from './components/loadouts/LoadoutList';
 import ChampionList from './components/champions/ChampionList';
 import ItemList from './components/items/ItemList';
 import Sidebar from './components/Sidebar';
-import LoginForm from './components/nav/LoginForm';
-import LoadoutInfo from './components/loadouts/LoadoutInfo';
+import Login from './components/nav/Login';
+import LoadoutCard from './components/loadouts/LoadoutCard';
 import LoadoutForm from './components/LoadoutForm';
-import ChampionInfo from './components/champions/ChampionInfo';
-import ItemInfo from './components/items/ItemInfo';
+import ChampionCard from './components/champions/ChampionCard';
+import ItemCard from './components/items/ItemCard';
 
 
 
 
 export class App extends Component {
 
-  state={
-    loadout: null,
-    champion: null,
-    item: null
-  }
  componentDidMount() {
     this.props.fetchChampionsFromDB()
     this.props.fetchItemsFromDB()
     this.props.fetchLoadoutsFromDB()
  }
 
-
-loadoutClick = (loadout) => {
-  console.log("i was clicked", loadout)
-  // this.props.getLoadout(this.props.loadout)
-  this.setState({
-    loadout,
-    champion: null,
-    item:null
-  })
-}
-
-championClick = (champion) => {
-  console.log('champ was clicked', champion)
-  this.setState({
-    loadout: null,
-    champion,
-    item:null
-  })
-}
-
-itemClick = (item) => {
-  // console.log('champ was clicked', item)
-  this.setState({
-    loadout: null,
-    champion: null,
-    item
-  })
-}
-
 renderItems = (renderProps) => {
   const slug = renderProps.match.params.slug
   const item = this.props.items.find(item => item.name === slug)
   if (item) {
-    return <ItemInfo item={item} />
+    return <ItemCard item={item} />
   }
   else {
       return <div>Not Found</div>
@@ -81,7 +47,7 @@ renderLoadout = (renderProps) => {
   // console.log(slug)
   // console.log(loadout)
   if (loadout){
-    return <LoadoutInfo loadout={loadout} />
+    return <LoadoutCard loadout={loadout} />
   }
   else {
       return <div>Not Found</div>
@@ -94,7 +60,7 @@ renderChampions = (renderProps) => {
   const slug = renderProps.match.params.slug
   const champion = this.props.champions.find(champion => champion.name === slug)
   if (champion) {
-    return <ChampionInfo champion={champion}/>
+    return <ChampionCard champion={champion}/>
   }
   else {
     return <div>Not Found</div>
@@ -106,19 +72,15 @@ renderChampions = (renderProps) => {
 
   render() {
     return (
-      <div>
+      <div className='lol-wrapper'>
 
-        <div className='navbar' > 
         <NavBar />
-        </div>
-       <div className='columns'>
+
         <Sidebar />
-        <div className='column is-one-fifth'>
-        </div>
-       </div> 
+        
         <Switch>
         <Route path='/signup' component = {SignUpForm} />
-        <Route path='/login' component={LoginForm} />
+        <Route path='/login' component={Login} />
        
         <Route path='/champions' exact render={ () => <ChampionList  championClick={this.championClick}/>} />
         <Route path='/champions/:slug' exact render={this.renderChampions} /> 
