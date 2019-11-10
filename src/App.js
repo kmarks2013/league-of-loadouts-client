@@ -88,11 +88,11 @@ renderChampions = (renderProps) => {
         <Route path='/items/:slug' exact render={this.renderItems} />
         {/* <Route path='/loadouts/:id' render={() => <LoadoutInfo loadout={this.state.loadout}/>}/> */}
         
-        <Route path='/loadouts' exact render={ () => <LoadoutList  loadoutClick={this.loadoutClick}/>} />
+        <Route path='/loadouts' exact render={ () => <LoadoutList />} />
         <Route path='/loadouts/new' component={LoadoutForm} />
         <Route path='/loadouts/:slug' exact render={this.renderLoadout} />
 
-        <Route path='/' exact render={ () => <LoadoutList  loadoutClick={this.loadoutClick}/>} />
+        <Route path='/' exact render={ () => <LoadoutList />} />
         </Switch>
       </div>
     )
