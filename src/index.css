@@ -26,6 +26,8 @@ code {
 }
 
 .navbar{
+  height: auto;
+  width: auto;
   grid-area: navbar;
   background-color: gold;
   display: grid;
@@ -43,16 +45,33 @@ code {
 
 .login {
   display: inline-block;
-  margin-left: 65%;
+  margin-left: 50%;
   grid-area: login;
   border-style: solid black 1px;
 }
 
 .sidebar {
+  height: auto;
+  width: auto;
   grid-area: sidebar;
   background-color: red;
 }
 
 .loadout-cards {
   border-style: solid black 1px;
+}
+
+.content-container {
+  grid-area: content-container;
+  display: inline-block;
+  overflow: auto;
+}
+
+.champion-tile{
+  width: 30% auto;
+  text-align: center;
+  float: left;
+  margin: 40px;
+  box-shadow: 3px 3px 5px 6px #ccc;
+  border-radius: 15px;
 }

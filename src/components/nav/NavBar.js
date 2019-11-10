@@ -15,6 +15,10 @@ export class NavBar extends Component {
         console.log('i should open up a new loadout up form')
     }
 
+    profileClick = () => {
+        console.log('take me to my profile')
+    }
+
     componentDidMount(){
         if (localStorage.token){
           this.props.persistUserFromAPI()
@@ -28,7 +32,7 @@ export class NavBar extends Component {
 
                 <p>{this.props.user.username} </p>
                     <div className='buttons'>
-                        <button className='button' onClick={console.log('take me to my profile')}>Profile</button>
+                        <button className='button' onClick={this.profileClick}>Profile</button>
                         <button  className='button' onClick={this.logoutClick}>Logout</button>
                         <NavLink to='/loadouts/new'>
                         <button className='button' onClick={this.newLoadoutClick}>New Loadout</button>

@@ -146,7 +146,8 @@ class LoadoutCard extends Component {
         return this.props.loadout.items.map(item => {
           return (
                 <div className='loadout-item' onDoubleClick={ (evt) => this.itemDoubleClick(evt, item.id, this.props.loadout.id)}>
-                <li>{item.name}</li>
+                <img src={`./items_images/${item.api_num}.png`} />
+                <p>{item.name}</p>
                 <NavLink to={`/items/${item.name}`} >
                 <button>View Item info</button>
                 </NavLink>
@@ -163,7 +164,10 @@ class LoadoutCard extends Component {
                     <div className='loadout-card'>
                     <h1>{loadout && loadout.id ? loadout.name : null} </h1>
                     <h2>Champion</h2>
-                    <h2>{loadout && loadout.id ? loadout.user.username : null}</h2>
+                    {/* <img src={`./champion_tiles/${loadout.champion.name}_0.jpg`} height='100' width='100'/> */}
+                    <img src={`./champion_tiles/${loadout.champion.name}_0.jpg`} ></img>
+                    <h3>{loadout && loadout.id ? loadout.champion.name : null}</h3>
+                    <p>{loadout && loadout.id ? loadout.user.username : null}</p>
                     <h2> Items</h2>
                     {this.renderLoadoutItems()}
                     <button onClick={this.handleEditMode}> {this.state.editMode? 'Cancel Edit' :'Edit Loadout'} </button>

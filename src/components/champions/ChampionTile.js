@@ -9,7 +9,7 @@ class ChampionTile extends Component {
         const {champion} = this.props
         // console.log(this.props)
         return (
-            <div className='champion-tile' onClick={() =>{this.props.championClick(champion)}} >
+            <div className='champion-tile' >
             <NavLink to={`/champions/${champion.name}`}>
             <h2 className="title">{champion.name}</h2>
             <img src={`./champion_tiles/${champion.name}_0.jpg`} height='100' width='100'/>

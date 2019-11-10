@@ -82,9 +82,9 @@ renderChampions = (renderProps) => {
         <Route path='/signup' component = {SignUpForm} />
         <Route path='/login' component={Login} />
        
-        <Route path='/champions' exact render={ () => <ChampionList  championClick={this.championClick}/>} />
+        <Route path='/champions' exact render={ () => <ChampionList />} />
         <Route path='/champions/:slug' exact render={this.renderChampions} /> 
-        <Route path='/items' exact render={ () => <ItemList  itemClick={this.itemClick}/>} />
+        <Route path='/items' exact render={ () => <ItemList />} />
         <Route path='/items/:slug' exact render={this.renderItems} />
         {/* <Route path='/loadouts/:id' render={() => <LoadoutInfo loadout={this.state.loadout}/>}/> */}
         
