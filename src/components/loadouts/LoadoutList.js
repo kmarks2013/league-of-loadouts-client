@@ -8,7 +8,7 @@ class LoadoutList extends Component {
     renderLoadoutCards = () => {
         // console.log(this.props.loadouts)
         return this.props.loadouts.map(loadout => {
-          return  <LoadoutTile key={loadout.id} loadoutClick={this.props.loadoutClick} loadout={loadout} />
+          return  <LoadoutTile key={loadout.id} loadout={loadout} />
         })
     }
 

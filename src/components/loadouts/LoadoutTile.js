@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import {Route, NavLink, Link } from 'react-router-dom'
 
 
-class Loadout extends Component {
+class LoadoutTile extends Component {
 
     renderLoadoutItems = () => {
         console.log(this.props.loadout)
@@ -16,7 +16,7 @@ class Loadout extends Component {
         // console.log(this.props)
         const {loadout} = this.props
         return (
-            <div className='loadout-tile' onClick={() =>{this.props.loadoutClick(this.props.loadout)}}>
+            <div className='loadout-tile' >
             <NavLink to={`/loadouts/${loadout.id}`}>
                 <h2>{this.props.loadout.name}</h2>
                 <h6>{this.props.loadout.user.username}</h6>
@@ -37,4 +37,4 @@ const mapDispatchToProps = {
 
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Loadout)
+export default connect(mapStateToProps, mapDispatchToProps)(LoadoutTile)
