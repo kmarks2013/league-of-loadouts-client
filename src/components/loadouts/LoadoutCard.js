@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 // import LoadoutItemsForm from './LoadoutItemsForm'
 import Actions from '../../Redux/loadoutActions'
-import {NavLink} from 'react-router-dom'
+import {NavLink, withRouter} from 'react-router-dom'
 
 class LoadoutCard extends Component {
     // editDeleteButtons = () =>  {
@@ -62,6 +62,7 @@ class LoadoutCard extends Component {
     handleDelete = () => {
         console.log('this loadout should be gone')
         this.props.deleteLoadoutFromDB(this.props.loadout.id)
+        this.props.history.push('/loadouts')
     }
 
     handleEditMode = () => {
@@ -146,7 +147,7 @@ class LoadoutCard extends Component {
         return this.props.loadout.items.map(item => {
           return (
                 <div className='loadout-item' onDoubleClick={ (evt) => this.itemDoubleClick(evt, item.id, this.props.loadout.id)}>
-                <img src={`./items_images/${item.api_num}.png`} alt="" />
+                <img src={`/items_images/${item.api_num}.png`} alt="" />
                 <p>{item.name}</p>
                 <NavLink to={`/items/${item.name}`} >
                 <button>View Item info</button>
@@ -173,7 +174,7 @@ class LoadoutCard extends Component {
                     <h1>{loadout && loadout.id ? loadout.name : null} </h1>
                     <h2>Champion</h2>
                     {/* <img src={`./champion_tiles/${loadout.champion.name}_0.jpg`} height='100' width='100'/> */}
-                    <img src={`./champion_tiles/${loadout.champion.name}_0.jpg`} alt=""></img>
+                    <img src={`/champion_tiles/${loadout.champion.name}_0.jpg`} alt=""></img>
                     <h3>{loadout && loadout.id ? loadout.champion.name : null}</h3>
                     <p>{loadout && loadout.id ? loadout.user_name : null}</p>
                     <h2> Items</h2>
@@ -201,4 +202,4 @@ const mapDispatchToProps = {
     getLoadoutItems: Actions.getLoadoutItems
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoadoutCard)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LoadoutCard))

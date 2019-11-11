@@ -4,6 +4,17 @@ const setUserAction = userObj => ({
     payload: userObj
 })
 
+const updateUserAction = userObj =>({
+    type: 'UPDATE_USER',
+    pauload: userObj
+})
+
+const deleteUserAction = userId => ({
+    type: "DELETE_USER",
+    payload: userId
+})
+
+
 const clearUserAction = () => ({
     type: "CLEAR_USER"
 })
@@ -59,6 +70,7 @@ const loginUserToDB = userData => dispatch => {
             dispatch(setUserAction(userObj))
         })
     localStorage.token = data.token
+    localStorage.id = data.user.id
     })
 }
 
@@ -68,7 +80,7 @@ const  logoutUser = () => dispatch => {
 }
 
 const createNewUserToDB = userData => dispatch => {
-    fetch ('http://localhost:3000/users', {
+    fetch('http://localhost:3000/users', {
         method:  'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -79,14 +91,25 @@ const createNewUserToDB = userData => dispatch => {
     .then(data =>{
             dispatch(setUserAction(data.user))
             localStorage.token = data.token
+            localStorage.id = data.user.id
     })
 }
 
 
+const updateUser = (user, payload) => dispatch => {
+    console.log = (user)
+    // fetch(`http://localhost:3000/users/${user.id}`)
+}
+
+const deleteUserFromDB = (userId) => dispatch => {
+    console.log('i should dispatch the delete user action')
+}
+ 
 export default {
     persistUserFromAPI,
     loginUserToDB,
     logoutUser,
-    createNewUserToDB
-
+    createNewUserToDB,
+    updateUser,
+    deleteUserFromDB
 }

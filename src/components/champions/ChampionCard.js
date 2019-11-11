@@ -23,7 +23,7 @@ import { connect } from 'react-redux'
         return (
             <div className='content-container'>
                 <div className='champion-card'>
-                    <img src={this.props.champion && this.props.champion.id ? `./champion_tiles/${this.props.champion.name}_0.jpg` : null} alt={this.props.champion.name}/>
+                    <img src={this.props.champion && this.props.champion.id ? `/champion_tiles/${this.props.champion.name}_0.jpg` : null} alt={this.props.champion.name}/>
                     <h2>{this.props.champion && this.props.champion.id ? this.props.champion.name: null }</h2>
                     
                     <h3>Lore</h3>
