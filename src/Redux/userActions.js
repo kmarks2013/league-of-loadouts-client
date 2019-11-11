@@ -4,16 +4,6 @@ const setUserAction = userObj => ({
     payload: userObj
 })
 
-const updateUserAction = userObj =>({
-    type: 'UPDATE_USER',
-    pauload: userObj
-})
-
-const deleteUserAction = userId => ({
-    type: "DELETE_USER",
-    payload: userId
-})
-
 
 const clearUserAction = () => ({
     type: "CLEAR_USER"
@@ -31,8 +21,6 @@ const clearUserAction = () => ({
 //         dispatch(setUserAction(user))
 //     })
 // }
-
-
 
 const persistUserFromAPI = () => dispatch => {
     fetch('http://localhost:3000/persist', {
@@ -95,14 +83,31 @@ const createNewUserToDB = userData => dispatch => {
     })
 }
 
-
-const updateUser = (user, payload) => dispatch => {
-    console.log = (user)
-    // fetch(`http://localhost:3000/users/${user.id}`)
+const updateUserInDB = (user, payload) => dispatch => {
+    console.log(user, payload)
+    fetch(`http://localhost:3000/users/${user.id}`,{
+        method: 'PATCH',
+        headers:{
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+        },
+        body: JSON.stringify(payload)
+    })
+    .then(res => res.json())
+    .then(updatedUser => {
+        // console.log(updatedUser)
+        dispatch(setUserAction(updatedUser))
+    })
 }
 
+
 const deleteUserFromDB = (userId) => dispatch => {
-    console.log('i should dispatch the delete user action')
+    console.log('i should dispatch the delete user action and clear local storage', userId) 
+    fetch(`http://localhost:3000/users/${userId}`,{
+        method: 'DELETE' 
+    }).then(res => res.json())
+    .then( () => dispatch(clearUserAction()))       
+    localStorage.clear() 
 }
  
 export default {
@@ -110,6 +115,6 @@ export default {
     loginUserToDB,
     logoutUser,
     createNewUserToDB,
-    updateUser,
+    updateUserInDB,
     deleteUserFromDB
 }

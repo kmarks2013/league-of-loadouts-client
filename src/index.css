@@ -65,6 +65,8 @@ code {
   grid-area: content-container;
   display: inline-block;
   overflow: auto;
+  background-color: grey;
+  color: white;
 }
 
 .champion-tile{

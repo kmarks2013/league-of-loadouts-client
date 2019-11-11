@@ -2,18 +2,20 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import LoadoutTile from '../loadouts/LoadoutTile'
 import userActions from '../../Redux/userActions'
-
+import { NavLink} from 'react-router-dom'
 
 export class Profile extends Component {
+
     renderLoadoutTiles = () => {
-        return this.props.loadouts.map(loadout => {
-          return  <LoadoutTile key={loadout.id} loadout={loadout} />
-        })
+        if (this.props.loadouts.length > 0){
+            return this.props.loadouts.map(loadout => {
+              return  <LoadoutTile key={loadout.id} loadout={loadout} />
+            })
+        }else
+            return null
+
     }
 
-    editClick = () => {
-        console.log('i should open up a form to update a user profile')
-    }
 
     deleteClick = () => {
         console.log('i should delete a user profile')
@@ -24,7 +26,9 @@ export class Profile extends Component {
         if (this.props.user.id === parseInt(localStorage.id)){
             return (
                 <>
-                <button onClick={this.editClick}>Edit Profile</button>
+                <NavLink to={`/user/${this.props.user.username}/edit`}>
+                <button >Edit Profile</button>
+                </NavLink>
                 <button onClick={this.deleteClick}>Delete Account</button>            
                 </>
             )
@@ -38,7 +42,7 @@ export class Profile extends Component {
     render() {
         const {user: {name, username, age }} = this.props
         return (
-            <div>
+            <div className="content-container">
                 <h1>Hello {username}!</h1>
                 {this.renderEditDeleteButtons()}
                 <h2>Bio</h2>
