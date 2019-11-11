@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Actions from '../../Redux/userActions'
-import {NavLink} from 'react-router-dom'
+import {NavLink, withRouter} from 'react-router-dom'
 // import Login from './Login'
 
 
@@ -10,7 +10,9 @@ export class NavBar extends Component {
     logoutClick = () => {
         console.log('i should clear local storage')
         this.props.logoutUser()
+        this.props.history.push('/')
     }
+    
     newLoadoutClick = () => {
         console.log('i should open up a new loadout up form')
     }
@@ -84,4 +86,4 @@ const mapDispatchToProps = {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(NavBar)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NavBar))

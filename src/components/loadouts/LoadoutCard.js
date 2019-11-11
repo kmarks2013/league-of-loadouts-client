@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 // import LoadoutItemsForm from './LoadoutItemsForm'
 import Actions from '../../Redux/loadoutActions'
-import {NavLink} from 'react-router-dom'
+import {NavLink, withRouter} from 'react-router-dom'
 
 class LoadoutCard extends Component {
     // editDeleteButtons = () =>  {
@@ -62,6 +62,7 @@ class LoadoutCard extends Component {
     handleDelete = () => {
         console.log('this loadout should be gone')
         this.props.deleteLoadoutFromDB(this.props.loadout.id)
+        this.props.history.push('/loadouts')
     }
 
     handleEditMode = () => {
@@ -201,4 +202,4 @@ const mapDispatchToProps = {
     getLoadoutItems: Actions.getLoadoutItems
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoadoutCard)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LoadoutCard))
