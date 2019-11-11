@@ -5,7 +5,7 @@ import ItemTile from './ItemTile'
 class ItemList extends Component {
     renderItemTiles = () => {
         return this.props.items.map(item => {
-            return <ItemTile key={item.id} itemClick={this.props.itemClick} item={item} />
+            return <ItemTile key={item.id}  item={item} />
         })
     }
     render() {

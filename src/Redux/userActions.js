@@ -21,6 +21,8 @@ const clearUserAction = () => ({
 //     })
 // }
 
+
+
 const persistUserFromAPI = () => dispatch => {
     fetch('http://localhost:3000/persist', {
       headers: {
@@ -30,7 +32,12 @@ const persistUserFromAPI = () => dispatch => {
     })
       .then(r => r.json())
       .then(user => {
-        dispatch(setUserAction(user));
+          fetch(`http://localhost:3000/users/${user.id}`)
+          .then(res => res.json())
+          .then(userObj => {
+              console.log(userObj)
+              dispatch(setUserAction(userObj))
+          })
       });
   };
 
@@ -44,8 +51,14 @@ const loginUserToDB = userData => dispatch => {
     })
     .then(res => res.json())
     .then(data =>{
-        dispatch(setUserAction(data.user))
-        localStorage.token = data.token
+        // console.log(data)
+        fetch(`http://localhost:3000/users/${data.user.id}`)
+        .then(res => res.json())
+        .then(userObj => {
+            console.log(userObj)
+            dispatch(setUserAction(userObj))
+        })
+    localStorage.token = data.token
     })
 }
 

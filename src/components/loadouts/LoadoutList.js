@@ -5,7 +5,7 @@ import LoadoutTile from './LoadoutTile'
 class LoadoutList extends Component {
 
     
-    renderLoadoutCards = () => {
+    renderLoadoutTiles = () => {
         // console.log(this.props.loadouts)
         return this.props.loadouts.map(loadout => {
           return  <LoadoutTile key={loadout.id} loadout={loadout} />
@@ -18,7 +18,7 @@ class LoadoutList extends Component {
             <div className='content-container'>
                 <div className='loadout-tiles'>
                     <h1>Loadouts</h1>
-                    {this.renderLoadoutCards()}
+                    {this.renderLoadoutTiles()}
                 </div>
             </div>
         )

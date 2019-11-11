@@ -15,6 +15,8 @@ export default (state = initialState, { type, payload }) => {
         return handleDeleteLoadout(state, payload)
     case "UPDATE_LOADOUT":
         return handleUpdateLoadout(state, payload)
+    case 'LOADOUT_ITEMS':
+        return handleDeleteLoadoutItems(state,payload)
     default:
         return state
     }
@@ -23,9 +25,27 @@ export default (state = initialState, { type, payload }) => {
 
 // hanndlers
 
+
 const handleDeleteLoadout = (loadouts, loadoutId) =>
     loadouts.filter(loadout => loadout.id !== loadoutId)
 
+// // const handleDeleteLoadoutItem = (loadouts, loadoutId) =>
+//      loadouts.filter(loadout => loadout.id !== loadoutId)
+
+const handleDeleteLoadoutItems = (loadouts, currentLoadout, itemId) => {
+    return loadouts.map(loadout => {
+            if (loadout.id === currentLoadout.id) {
+                return {
+                    ...currentLoadout,
+                    items: currentLoadout.items.fitler(item => item.id !== itemId )
+
+                }  
+            } 
+            else {
+                return loadout
+            }
+        })
+}
 
 const handleUpdateLoadout = (loadouts, updatedLoadout) =>
     loadouts.map(loadout => (loadout.id === updatedLoadout.id ? updatedLoadout:loadout ))

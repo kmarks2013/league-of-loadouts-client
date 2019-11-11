@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import LoadoutItemsForm from './LoadoutItemsForm'
+// import LoadoutItemsForm from './LoadoutItemsForm'
 import Actions from '../../Redux/loadoutActions'
-import loadoutActions from '../../Redux/loadoutActions'
-import {Route, NavLink, Link } from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 
 class LoadoutCard extends Component {
     // editDeleteButtons = () =>  {
@@ -138,6 +137,7 @@ class LoadoutCard extends Component {
                 
             })
         }).then(res => res.json())
+        .then(this.props.getLoadoutItems(loadoutId))
     }
 
 
@@ -146,13 +146,22 @@ class LoadoutCard extends Component {
         return this.props.loadout.items.map(item => {
           return (
                 <div className='loadout-item' onDoubleClick={ (evt) => this.itemDoubleClick(evt, item.id, this.props.loadout.id)}>
-                <li>{item.name}</li>
+                <img src={`./items_images/${item.api_num}.png`} alt="" />
+                <p>{item.name}</p>
                 <NavLink to={`/items/${item.name}`} >
                 <button>View Item info</button>
                 </NavLink>
                 </div>
           )
         })
+    }
+
+    renderTotalCost = () => {
+        let totalCost = 0
+         this.props.loadout.items.forEach(item => {
+             totalCost += parseInt(item.cost)
+        })
+        return totalCost
     }
     
     render() {
@@ -163,9 +172,14 @@ class LoadoutCard extends Component {
                     <div className='loadout-card'>
                     <h1>{loadout && loadout.id ? loadout.name : null} </h1>
                     <h2>Champion</h2>
-                    <h2>{loadout && loadout.id ? loadout.user.username : null}</h2>
+                    {/* <img src={`./champion_tiles/${loadout.champion.name}_0.jpg`} height='100' width='100'/> */}
+                    <img src={`./champion_tiles/${loadout.champion.name}_0.jpg`} alt=""></img>
+                    <h3>{loadout && loadout.id ? loadout.champion.name : null}</h3>
+                    <p>{loadout && loadout.id ? loadout.user_name : null}</p>
                     <h2> Items</h2>
                     {this.renderLoadoutItems()}
+                    <h3>Total Cost</h3>
+                    <p>{this.renderTotalCost()}</p>
                     <button onClick={this.handleEditMode}> {this.state.editMode? 'Cancel Edit' :'Edit Loadout'} </button>
                     <button onClick={this.handleDelete}>Delete Loadout</button>
                     {this.editForm()}
@@ -183,7 +197,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
     deleteLoadoutFromDB: Actions.deleteLoadoutFromDB, 
-    updateLoadoutFromDB: Actions.updateLoadoutFromDB
+    updateLoadoutFromDB: Actions.updateLoadoutFromDB,
+    getLoadoutItems: Actions.getLoadoutItems
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoadoutCard)
