@@ -17,6 +17,7 @@ import LoadoutForm from './components/LoadoutForm';
 import ChampionCard from './components/champions/ChampionCard';
 import ItemCard from './components/items/ItemCard';
 import Profile from './components/user/Profile';
+import EditUserForm from './components/user/EditUserForm';
 
 
 
@@ -34,6 +35,14 @@ renderUser = (renderProps) => {
   const user = this.props.user.username === slug
   if (user) {
     return <Profile />
+  }
+}
+
+editUser = (renderProps) => {
+  const slug = renderProps.match.params.slug
+  const user = this.props.user.username === slug
+  if (user) {
+    return <EditUserForm  />
   }
 }
 
@@ -90,6 +99,7 @@ renderChampions = (renderProps) => {
         <Route path='/signup' component = {SignUpForm} />
         <Route path='/login' component={Login} />
         <Route path='/user/:slug' exact render={this.renderUser} /> 
+        <Route path='/user/:slug/edit' exact render={this.editUser} />
 
         <Route path='/champions' exact render={ () => <ChampionList />} />
         <Route path='/champions/:slug' exact render={this.renderChampions} /> 
