@@ -16,6 +16,7 @@ import LoadoutCard from './components/loadouts/LoadoutCard';
 import LoadoutForm from './components/LoadoutForm';
 import ChampionCard from './components/champions/ChampionCard';
 import ItemCard from './components/items/ItemCard';
+import Profile from './components/user/Profile';
 
 
 
@@ -28,6 +29,14 @@ export class App extends Component {
     this.props.fetchLoadoutsFromDB()
  }
 
+renderUser = (renderProps) => {
+  const slug = renderProps.match.params.slug
+  const user = this.props.user.username === slug
+  if (user) {
+    return <Profile />
+  }
+}
+
 renderItems = (renderProps) => {
   const slug = renderProps.match.params.slug
   const item = this.props.items.find(item => item.name === slug)
@@ -37,7 +46,6 @@ renderItems = (renderProps) => {
   else {
       return <div>Not Found</div>
   }
-
 }
 
 renderLoadout = (renderProps) => {
@@ -81,7 +89,8 @@ renderChampions = (renderProps) => {
         <Switch>
         <Route path='/signup' component = {SignUpForm} />
         <Route path='/login' component={Login} />
-       
+        <Route path='/user/:slug' exact render={this.renderUser} /> 
+
         <Route path='/champions' exact render={ () => <ChampionList />} />
         <Route path='/champions/:slug' exact render={this.renderChampions} /> 
         <Route path='/items' exact render={ () => <ItemList />} />
@@ -104,7 +113,8 @@ const mapStateToProps = (state) => {
   return {
      champions: state.champions,
      items: state.items,
-     loadouts: state.loadouts
+     loadouts: state.loadouts,
+     user: state.user
    }
 }
 

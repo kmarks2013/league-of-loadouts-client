@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {Route, NavLink, Link } from 'react-router-dom'
+import {NavLink } from 'react-router-dom'
 
 
 class LoadoutTile extends Component {
 
     renderLoadoutItems = () => {
-        console.log(this.props.loadout)
+        // console.log(this.props.loadout)
         return this.props.loadout.items.map(item => {
           return (
             <div>
-                <img src={`./items_images/${item.api_num}.png`} />
+                <img src={`./items_images/${item.api_num}.png`} alt="" />
                 <p>{item.name}</p>
             </div>
           )
@@ -23,8 +23,9 @@ class LoadoutTile extends Component {
         return (
             <div className='loadout-tile' >
             <NavLink to={`/loadouts/${loadout.id}`}>
-                <h2>{this.props.loadout.name}</h2>
-                <h6>{this.props.loadout.user.username}</h6>
+                <h2>{loadout.name}</h2>
+                <img src={`./champion_tiles/${loadout.champion.name}_0.jpg`} alt="" />
+                <h6>{loadout.user_name}</h6>
                 <ul>
                     {this.renderLoadoutItems()}
                 </ul>

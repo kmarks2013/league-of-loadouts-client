@@ -9,6 +9,7 @@ export default (state = initialState, { type, payload }) => {
           return payload;
         case 'CLEAR_USER':
           return {};
+
         default:
           return state;
       }

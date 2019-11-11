@@ -11,7 +11,7 @@ class ItemCard extends Component {
             <div className='content-container'>
                 <div className='item-card'>
                     <h2>{item.name }</h2>
-                    <img src={`./items_images/${item.api_num}.png`} />
+                    <img src={`./items_images/${item.api_num}.png`} alt=''/>
                     <h3>ItemDescription</h3>
                     <p>{item.description}</p>
                     <p>{item.plaintext}</p>

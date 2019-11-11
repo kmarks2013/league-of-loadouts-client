@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Actions from '../../Redux/userActions'
+import {withRouter } from 'react-router-dom'
+
 
 class Login extends Component {
     state = {
@@ -16,8 +18,12 @@ class Login extends Component {
         this.setState({
             username: '',
             password: ''
-        }) 
+            
+        })
+        this.props.history.push('/')
+        
     }
+    
 
     handleChange = (evt) => {
         console.log(evt.target.value)
@@ -57,4 +63,4 @@ const mapDispatchToProps = {
     loginUserToDB: Actions.loginUserToDB
 }
 
-export default connect(null, mapDispatchToProps)(Login)
+export default withRouter(connect(null, mapDispatchToProps)(Login))
