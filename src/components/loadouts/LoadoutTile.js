@@ -10,7 +10,7 @@ class LoadoutTile extends Component {
         return this.props.loadout.items.map(item => {
           return (
             <div>
-                <img src={`./items_images/${item.api_num}.png`} alt="" />
+                <img src={`/items_images/${item.api_num}.png`} alt="" />
                 <p>{item.name}</p>
             </div>
           )
@@ -24,7 +24,7 @@ class LoadoutTile extends Component {
             <div className='loadout-tile' >
             <NavLink to={`/loadouts/${loadout.id}`}>
                 <h2>{loadout.name}</h2>
-                <img src={`./champion_tiles/${loadout.champion.name}_0.jpg`} alt="" />
+                <img src={`/champion_tiles/${loadout.champion.name}_0.jpg`} alt="" />
                 <h6>{loadout.user_name}</h6>
                 <ul>
                     {this.renderLoadoutItems()}
