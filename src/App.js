@@ -89,6 +89,7 @@ renderChampions = (renderProps) => {
 }
 
   render() {
+    console.log(this.props.state)
     return (
       <div className='lol-wrapper'>
 
@@ -125,7 +126,8 @@ const mapStateToProps = (state) => {
      champions: state.champions,
      items: state.items,
      loadouts: state.loadouts,
-     user: state.user.user
+     user: state.user.user,
+     state: state
    }
 }
 

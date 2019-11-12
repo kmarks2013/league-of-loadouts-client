@@ -16,7 +16,8 @@ class SignUpForm extends Component {
         evt.preventDefault()
         console.log('i was submitted', localStorage)
         this.props.createNewUserToDB(this.state)
-        this.props.history.push('/loadouts')
+        this.props.history.push(`/user/${this.state.username}`)
+        console.log(this.props.state)
     }
 
     handleChange = (evt) => {
@@ -28,6 +29,7 @@ class SignUpForm extends Component {
 
 
     render() {
+        console.log(this.props.state)
         return (
             <div className='form-container'>
                 <div className='signup-form'>
@@ -70,12 +72,12 @@ class SignUpForm extends Component {
 
 }
 
-// const mapStateToProps = (state) => ({
-    
-// })
+const mapStateToProps = (state) => ({
+    state: state
+})
 
 const mapDispatchToProps = {
     createNewUserToDB: Actions.createNewUserToDB
 }
 
-export default withRouter(connect(null, mapDispatchToProps)(SignUpForm))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SignUpForm))

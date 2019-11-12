@@ -81,15 +81,17 @@ const createNewUserToDB = userData => dispatch => {
     fetch('http://localhost:3000/users', {
         method:  'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Accept': "application/json"
         },
         body: JSON.stringify(userData)
     })
     .then(res => res.json())
-    .then(data =>{
-            dispatch(setUserAction(data.user))
+    .then(data => {
+            console.log(data.user)
             localStorage.token = data.token
             localStorage.id = data.user.id
+            dispatch(setUserAction(data.user))
     })
 }
 

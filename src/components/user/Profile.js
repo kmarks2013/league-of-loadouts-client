@@ -8,7 +8,7 @@ import loadoutActions from '../../Redux/loadoutActions'
 export class Profile extends Component {
 
     renderLoadoutTiles = () => {
-        if (this.props.loadouts.length > 0){
+        if (this.props.loadouts && this.props.loadouts.length > 0){
             return this.props.loadouts.map(loadout => {
               return  <LoadoutTile key={loadout.id} loadout={loadout} />
             })
@@ -30,7 +30,8 @@ export class Profile extends Component {
     }
 
     renderEditDeleteButtons = () => {
-        if (this.props.user.id === parseInt(localStorage.id)){
+        if (this.props.user && this.props.user.id === parseInt(localStorage.id)){
+            console.log("🐳🐳🐳🐳🐳🐳🐳🐳🐳", localStorage.length)
             return (
                 <>
                 <NavLink to={`/user/${this.props.user.username}/edit`}>
@@ -42,7 +43,7 @@ export class Profile extends Component {
                 </>
             )
         } else {
-            return null
+            console.log("🐳🐳🐳🐳🐳🐳🐳🐳🐳", localStorage.length)
         }
 
 
@@ -67,7 +68,7 @@ export class Profile extends Component {
 
 const mapStateToProps = (state) => ({
     user: state.user.user,
-    loadouts: state.user.loadouts
+    loadouts: state.user.user.loadouts
 })
 
 const mapDispatchToProps = {
