@@ -78,7 +78,7 @@ export class NavBar extends Component {
     }
 }
 
-const mapStateToProps = state => ({user: state.user })
+const mapStateToProps = state => ({user: state.user.user })
 
 const mapDispatchToProps = {
     logoutUser: Actions.logoutUser,

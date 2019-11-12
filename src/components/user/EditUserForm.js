@@ -69,7 +69,7 @@ class EditUserForm extends Component {
 const mapStateToProps = (state) => ({
     // console.log(state)
    
-        user: state.user
+        user: state.user.user
 })
 
 const mapDispatchToProps = {

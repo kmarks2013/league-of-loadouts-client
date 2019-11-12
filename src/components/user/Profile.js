@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import LoadoutTile from '../loadouts/LoadoutTile'
 import userActions from '../../Redux/userActions'
-import { NavLink} from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
+import loadoutActions from '../../Redux/loadoutActions'
 
 export class Profile extends Component {
 
@@ -15,11 +16,17 @@ export class Profile extends Component {
             return null
 
     }
+    // removeUserLoadoutsFromState = () => {
+    //     this.props.user.
+    //     this.props.deleteLoadoutAction(this)
 
+    // }
 
     deleteClick = () => {
         console.log('i should delete a user profile')
+        this.props.clearLoadouts()
         this.props.deleteUserFromDB(this.props.user.id)
+        this.props.fetchLoadoutsFromDB()
     }
 
     renderEditDeleteButtons = () => {
@@ -29,7 +36,9 @@ export class Profile extends Component {
                 <NavLink to={`/user/${this.props.user.username}/edit`}>
                 <button >Edit Profile</button>
                 </NavLink>
+                <NavLink to='/'> 
                 <button onClick={this.deleteClick}>Delete Account</button>            
+                </NavLink>
                 </>
             )
         } else {
@@ -57,12 +66,14 @@ export class Profile extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    user: state.user,
+    user: state.user.user,
     loadouts: state.user.loadouts
 })
 
 const mapDispatchToProps = {
-    deleteUserFromDB: userActions.deleteUserFromDB
+    deleteUserFromDB: userActions.deleteUserFromDB,
+    clearLoadouts: loadoutActions.clearLoadouts,
+    fetchLoadoutsFromDB: loadoutActions.fetchLoadoutsFromDB
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile)

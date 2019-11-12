@@ -1,15 +1,20 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import LoadoutTile from './LoadoutTile'
+import loadoutActions from '../../Redux/loadoutActions'
 
 class LoadoutList extends Component {
-
+    componentDidMount() {
+        this.props.fetchLoadoutsFromDB()
+    }
     
     renderLoadoutTiles = () => {
         // console.log(this.props.loadouts)
-        return this.props.loadouts.map(loadout => {
-          return  <LoadoutTile key={loadout.id} loadout={loadout} />
-        })
+        if (this.props.loadouts.length > 0) {      
+            return this.props.loadouts.map(loadout => {
+                return  <LoadoutTile key={loadout.id} loadout={loadout} />
+            })
+        }
     }
 
     render() {
@@ -30,7 +35,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-
+    fetchLoadoutsFromDB: loadoutActions.fetchLoadoutsFromDB
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoadoutList)

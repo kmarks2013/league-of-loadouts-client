@@ -5,6 +5,7 @@ import {NavLink } from 'react-router-dom'
 
 class LoadoutTile extends Component {
 
+
     renderLoadoutItems = () => {
         // console.log(this.props.loadout)
         return this.props.loadout.items.map(item => {

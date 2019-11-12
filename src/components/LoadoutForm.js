@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Actions from '../Redux/loadoutActions'
+import {withRouter} from 'react-router-dom'
 
 class LoadoutForm extends Component {
     state = {
-        name: '',
+        name: "New Loadout",
         champion: 1
     }
 
@@ -69,7 +70,7 @@ class LoadoutForm extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    user: state.user,
+    user: state.user.user,
     champions: state.champions
 })
 
@@ -77,4 +78,4 @@ const mapDispatchToProps = {
     newLoadoutPost: Actions.newLoadoutPost
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoadoutForm)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LoadoutForm))

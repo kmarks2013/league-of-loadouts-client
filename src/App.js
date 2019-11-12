@@ -67,6 +67,7 @@ renderLoadout = (renderProps) => {
     return <LoadoutCard loadout={loadout} />
   }
   else {
+      console.log(loadout)
       return <div>Not Found</div>
   }
 
@@ -124,7 +125,7 @@ const mapStateToProps = (state) => {
      champions: state.champions,
      items: state.items,
      loadouts: state.loadouts,
-     user: state.user
+     user: state.user.user
    }
 }
 
