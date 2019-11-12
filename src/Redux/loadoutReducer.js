@@ -17,6 +17,8 @@ export default (state = initialState, { type, payload }) => {
         return handleUpdateLoadout(state, payload)
     case 'LOADOUT_ITEMS':
         return handleDeleteLoadoutItems(state,payload)
+    case 'CLEAR_LOADOUTS':
+        return []
     default:
         return state
     }

@@ -22,6 +22,10 @@ const deleteLoadoutAction = loadoutId => ({
     payload: loadoutId
 })
 
+const clearLoadouts = () => dispatch => dispatch({
+    type: 'CLEAR_LOADOUTS'
+})
+
 const updateLoadoutAction = loadout => ({
     type: "UPDATE_LOADOUT",
     payload: loadout
@@ -98,6 +102,7 @@ const getLoadoutItems = (loadoutId, itemId) => dispatch => {
 export default {
     fetchLoadoutsFromDB,
     newLoadoutPost,
+    clearLoadouts,
     getLoadoutItems,
     deleteLoadoutFromDB,
     updateLoadoutFromDB

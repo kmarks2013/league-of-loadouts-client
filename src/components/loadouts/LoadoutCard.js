@@ -5,19 +5,7 @@ import Actions from '../../Redux/loadoutActions'
 import {NavLink, withRouter} from 'react-router-dom'
 
 class LoadoutCard extends Component {
-    // editDeleteButtons = () =>  {
 
-    //     if (this.props.user && this.props.user.id === this.props.loadout.user.id){
-    //         return (  
-    //             <div>
-    //             <button> Edit Loadout </button>
-    //             <button >Delete Comment</button>
-    //             </div>
-    //         )
-    //     } else{
-    //         return null
-    //     }
-    // }
     state = {
         name: this.props.loadout.name,
         editMode: false,
@@ -56,6 +44,9 @@ class LoadoutCard extends Component {
         const loadoutItems = [this.state.item1, this.state.item2, this.state.item3, this.state.item4, this.state.item5, this.state.item6]
         const formData =  {loadout_id: this.props.loadout.id, items_array: loadoutItems}
         this.newLoadoutItemPost(formData)
+        this.setState({
+            editMode: false
+        })
         // console.log(loadoutItems)
     }
     
@@ -192,7 +183,7 @@ class LoadoutCard extends Component {
 }
 
 const mapStateToProps = (state) => ({
-   user: state.user,
+   user: state.user.user,
    items: state.items
 })
 

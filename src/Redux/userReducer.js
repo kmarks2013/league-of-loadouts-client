@@ -1,13 +1,13 @@
-const initialState = {
 
-}
 
-export default (state = initialState, { type, payload }) => {
+export default (state = { user: {}, errors: []}, { type, payload }) => {
     switch (type) {
-        case 'SET_USER':
-          
+        case 'SET_USER':  
           console.log(payload);
-          return payload;
+          return {...state, user: payload};
+        case 'USER_ERRORS':
+          console.log(payload)
+          return {...state, errors: payload}
         case 'CLEAR_USER':
           return {};
         default:

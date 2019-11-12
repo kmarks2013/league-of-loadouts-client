@@ -1,9 +1,15 @@
 
+
+
 const setUserAction = userObj => ({
     type: 'SET_USER',
     payload: userObj
 })
 
+const setErrorAction = errors => ({
+    type: "USER_ERRORS",
+    payload: errors
+})
 
 const clearUserAction = () => ({
     type: "CLEAR_USER"
@@ -50,15 +56,19 @@ const loginUserToDB = userData => dispatch => {
     })
     .then(res => res.json())
     .then(data =>{
-        // console.log(data)
-        fetch(`http://localhost:3000/users/${data.user.id}`)
-        .then(res => res.json())
-        .then(userObj => {
-            console.log(userObj)
-            dispatch(setUserAction(userObj))
-        })
-    localStorage.token = data.token
-    localStorage.id = data.user.id
+        if (data.errors){
+            console.log(data.errors)
+            dispatch(setErrorAction(data.errors))
+        } else {
+            fetch(`http://localhost:3000/users/${data.user.id}`)
+            .then(res => res.json())
+            .then(userObj => {
+                console.log(userObj)
+                dispatch(setUserAction(userObj))
+                localStorage.token = data.token
+                localStorage.id = data.user.id
+            })
+        }
     })
 }
 
@@ -106,8 +116,9 @@ const deleteUserFromDB = (userId) => dispatch => {
     fetch(`http://localhost:3000/users/${userId}`,{
         method: 'DELETE' 
     }).then(res => res.json())
-    .then( () => dispatch(clearUserAction()))       
+    .then( () => dispatch(clearUserAction())) 
     localStorage.clear() 
+
 }
  
 export default {
