@@ -21,7 +21,8 @@ class LoadoutForm extends Component {
             name: '',
             champion: 1
         })
-        // this.props.history.push(`/loadouts/${loadout.id}`)
+        this.props.history.push('/loadouts')
+        debugger
     }
 
     handleChange = (evt) => {

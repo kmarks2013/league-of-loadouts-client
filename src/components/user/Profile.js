@@ -31,7 +31,6 @@ export class Profile extends Component {
 
     renderEditDeleteButtons = () => {
         if (this.props.user && this.props.user.id === parseInt(localStorage.id)){
-            console.log("🐳🐳🐳🐳🐳🐳🐳🐳🐳", localStorage.length)
             return (
                 <>
                 <NavLink to={`/user/${this.props.user.username}/edit`}>
@@ -43,7 +42,7 @@ export class Profile extends Component {
                 </>
             )
         } else {
-            console.log("🐳🐳🐳🐳🐳🐳🐳🐳🐳", localStorage.length)
+            return null
         }
 
 

@@ -9,6 +9,7 @@ export default (state = initialState, { type, payload }) => {
         // console.log(payload, "i am not fetching right now?")
         return payload
     case "CREATE_LOADOUT":
+        console.log(state, payload)
         return [payload, ...state]
     case "DELETE_LOADOUT":
         // console.log(state)
