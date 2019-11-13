@@ -11,11 +11,6 @@ const createNewLoadout = loadout => ({
     payload: loadout
 })
 
-// const LoadoutItemsAction = loadout => ({
-//     type: "LOADOUT_ITEMS",
-//     payload: loadout
-// })
-
 
 const deleteLoadoutAction = loadoutId => ({
     type: "DELETE_LOADOUT",
@@ -41,19 +36,8 @@ const fetchLoadoutsFromDB = () => dispatch => {
     })
 }
 
-const newLoadoutPost = (loadoutData) => dispatch => {
-    fetch(url ,{
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            Application: 'application/json'
-        },
-        body: JSON.stringify(loadoutData)
-    })
-    .then(res => res.json())
-    .then(newLoadout => {
-        dispatch(createNewLoadout(newLoadout))
-    })
+const newLoadoutPost = (newLoadout) => dispatch => {  
+        dispatch(createNewLoadout(newLoadout)) 
 }
 
 const updateLoadoutFromDB = (loadout, payload) => dispatch => {
@@ -104,6 +88,7 @@ export default {
     newLoadoutPost,
     clearLoadouts,
     getLoadoutItems,
+    createNewLoadout,
     deleteLoadoutFromDB,
     updateLoadoutFromDB
 }

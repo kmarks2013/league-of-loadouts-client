@@ -47,6 +47,7 @@ class LoadoutCard extends Component {
         this.setState({
             editMode: false
         })
+        this.props.history.push(`/loadouts/${this.props.loadout.id}`)
         // console.log(loadoutItems)
     }
     

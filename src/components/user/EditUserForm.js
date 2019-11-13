@@ -14,9 +14,22 @@ class EditUserForm extends Component {
     handleSubmit = (evt) => {
         evt.preventDefault()
         // console.log('i was submitted', this.state)
-        this.props.updateUserInDB(this.props.user, this.state)
+        let formData = {...this.state}
+        fetch(`http://localhost:3000/users/${this.props.user.id}`,{
+            method: 'PATCH',
+            headers:{
+                'Content-Type': 'application/json',
+                Accept: 'application/json'
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(res => res.json())
+        .then(updatedUser => {
+            console.log(updatedUser.username)
+            this.props.updateUserInDB(updatedUser)
+            this.props.history.push(`/user/${updatedUser.username}`)
+        })
         // this.props.persistUserFromAPI()
-        this.props.history.push(`/user/${this.props.user.username}`)
     }
 
     

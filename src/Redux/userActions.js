@@ -64,9 +64,9 @@ const loginUserToDB = userData => dispatch => {
             .then(res => res.json())
             .then(userObj => {
                 console.log(userObj)
-                dispatch(setUserAction(userObj))
                 localStorage.token = data.token
                 localStorage.id = data.user.id
+                dispatch(setUserAction(userObj))
             })
         }
     })
@@ -95,21 +95,21 @@ const createNewUserToDB = userData => dispatch => {
     })
 }
 
-const updateUserInDB = (user, payload) => dispatch => {
-    console.log(user, payload)
-    fetch(`http://localhost:3000/users/${user.id}`,{
-        method: 'PATCH',
-        headers:{
-        'Content-Type': 'application/json',
-        Accept: 'application/json'
-        },
-        body: JSON.stringify(payload)
-    })
-    .then(res => res.json())
-    .then(updatedUser => {
+const updateUserInDB = (payload) => dispatch => {
+    // console.log(user, payload)
+    // fetch(`http://localhost:3000/users/${user.id}`,{
+    //     method: 'PATCH',
+    //     headers:{
+    //     'Content-Type': 'application/json',
+    //     Accept: 'application/json'
+    //     },
+    //     body: JSON.stringify(payload)
+    // })
+    // .then(res => res.json())
+    // .then(updatedUser => {
         // console.log(updatedUser)
-        dispatch(setUserAction(updatedUser))
-    })
+        dispatch(setUserAction(payload))
+    // }
 }
 
 

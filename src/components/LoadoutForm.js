@@ -16,13 +16,22 @@ class LoadoutForm extends Component {
         console.log(this.state.champion.id)
         const formData = {user_id: this.props.user.id, champion_id:this.state.champion, name:this.state.name}
         console.log(formData)
-        this.props.newLoadoutPost(formData)
-        this.setState({
-            name: '',
-            champion: 1
+        // this.props.newLoadoutPost(formData)
+        fetch('http://localhost:3000/loadouts' ,{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Application: 'application/json'
+            },
+            body: JSON.stringify(formData)
         })
-        this.props.history.push('/loadouts')
-        debugger
+        .then(res => res.json())
+        .then(newLoadout => {
+            console.log(newLoadout)
+            this.props.newLoadoutPost(newLoadout)
+            this.props.history.push(`/loadouts/${newLoadout.id}`)
+        })
+        
     }
 
     handleChange = (evt) => {
@@ -77,7 +86,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-    newLoadoutPost: Actions.newLoadoutPost
+    newLoadoutPost: Actions.newLoadoutPost,
+    createNewLoadout: Actions.newLoadoutPost,
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LoadoutForm))

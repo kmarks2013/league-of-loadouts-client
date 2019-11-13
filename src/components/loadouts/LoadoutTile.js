@@ -22,10 +22,10 @@ class LoadoutTile extends Component {
         // console.log(this.props)
         const {loadout} = this.props
         return (
-            <div className='loadout-tile' >
+            <div className='loadout-tile' title={loadout.name}>
             <NavLink to={`/loadouts/${loadout.id}`}>
                 <h2>{loadout.name}</h2>
-                <img src={`/champion_tiles/${loadout.champion.name}_0.jpg`} alt="" />
+                <img src={`/champion_tiles/${loadout.champion.name}_0.jpg`} alt=""  />
                 <h6>{loadout.user_name}</h6>
                 <ul>
                     {this.renderLoadoutItems()}
