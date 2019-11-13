@@ -7,16 +7,17 @@ export default class Sidebar extends Component {
         return (
             <div className='sidebar'>
                 <NavLink to='/loadouts'>
-                <button className='button'>Loadouts</button>
+                <h3 className='button'>Loadouts</h3>
+                <img className="button-image" src='/sidebar_buttons/champion1.png' alt="Loadouts" title='All Loadouts'/>
                 </NavLink>
                 <br></br>
                 <NavLink to='/champions'>
                 <h3>Champions</h3>
-                <img className="button-image" src='/sidebar_buttons/champion0.png' title='All Champions'/>
+                <img className="button-image" src='/sidebar_buttons/champion0.png' alt="Champions" title='All Champions'/>
                 </NavLink>
                 <NavLink to='/items'>
                 <h3>Items</h3>
-                <img className="button-image" src='/sidebar_buttons/item0.png'  title='All Items'/>
+                <img className="button-image" src='/sidebar_buttons/item0.png' alt="Items" title='All Items'/>
                 </NavLink>
             </div>
         )

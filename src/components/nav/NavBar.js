@@ -28,7 +28,7 @@ export class NavBar extends Component {
                         <NavLink to={`/user/${this.props.user.username}`}>
                         <button className='button' >Profile</button>
                         </NavLink>
-                        <button  className='button' >Logout</button>
+                        <button  className='button' onClick={this.logoutClick}>Logout</button>
                         <NavLink to='/loadouts/new'>
                         <button className='button' >New Loadout</button>
                         </NavLink>
@@ -53,6 +53,7 @@ export class NavBar extends Component {
 
 
     render() {
+        // console.log(this.props)
         return (
                 
                     <div className='navbar' >

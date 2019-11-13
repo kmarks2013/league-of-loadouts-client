@@ -20,7 +20,7 @@ import Profile from './components/user/Profile';
 import EditUserForm from './components/user/EditUserForm';
 
 
-
+const loadingGif = <div> <img src='/load01.gif' alt=""/> </div>
 
 export class App extends Component {
 
@@ -37,7 +37,7 @@ renderUser = (renderProps) => {
     return <Profile />
   }
   else {
-    return <div><img src='/load01.gif'/></div>
+    return loadingGif
   }
 }
 
@@ -48,7 +48,7 @@ editUser = (renderProps) => {
     return <EditUserForm  />
   }
   else {
-    return <div><img src='/load01.gif'/></div>
+    return loadingGif
   }
 }
 
@@ -59,7 +59,7 @@ renderItems = (renderProps) => {
     return <ItemCard item={item} />
   }
   else {
-      return <div><img src='/load01.gif'/></div>
+      return loadingGif
   }
 }
 
@@ -73,8 +73,7 @@ renderLoadout = (renderProps) => {
     return <LoadoutCard loadout={loadout} />
   }
   else {
-      console.log(loadout)
-      return <div><img src='/load01.gif'/></div>
+      return loadingGif
   }
 
 }
@@ -87,14 +86,13 @@ renderChampions = (renderProps) => {
     return <ChampionCard champion={champion}/>
   }
   else {
-    return <div><img src='/load01.gif'/></div>
+    return loadingGif
   }
   
 
 }
 
   render() {
-    console.log(this.props.state)
     return (
       <div className='lol-wrapper'>
 
