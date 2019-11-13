@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-// import LoadoutItemsForm from './LoadoutItemsForm'
 import Actions from '../../Redux/loadoutActions'
 import {NavLink, withRouter} from 'react-router-dom'
 
@@ -30,17 +29,13 @@ class LoadoutCard extends Component {
     }
 
     handleChange = (evt) => {
-        // console.log(evt.target.value, evt.target.name)
         this.setState({
             [evt.target.name]: evt.target.value
         })
     }
 
     handleSubmit = (evt) => {
-        
         evt.preventDefault()
-        // console.log(this.state, 'i should updage the loadout name and add items to the loadout')
-        // formData  
         this.props.updateLoadoutFromDB(this.props.loadout, this.state)
         const loadoutItems = [this.state.item1, this.state.item2, this.state.item3, this.state.item4, this.state.item5, this.state.item6]
         const formData =  {loadout_id: this.props.loadout.id, items_array: loadoutItems}
@@ -53,13 +48,11 @@ class LoadoutCard extends Component {
     }
     
     handleDelete = () => {
-        console.log('this loadout should be gone')
         this.props.deleteLoadoutFromDB(this.props.loadout.id)
         this.props.history.push('/loadouts')
     }
 
     handleEditMode = () => {
-        // console.log(this.state.editMode)
         this.setState({
             editMode: !this.state.editMode
         })
@@ -118,7 +111,6 @@ class LoadoutCard extends Component {
     }
 
     itemDoubleClick = (event, itemId, loadoutId) => {
-        console.log('i was clicked twice and i should be deleted', itemId, loadoutId, this.props.loadout.user_id)
         if (this.props.user.id === this.props.loadout.user_id) {
             fetch(`http://localhost:3000/loadout_items/`, {
                 method: 'DELETE',
@@ -142,7 +134,6 @@ class LoadoutCard extends Component {
 
 
     renderLoadoutItems = () => {
-        console.log(this.props.loadout.items, this.props.loadout.loadout_items)
         return this.props.loadout.items.map(item => {
           return (
                 <div className='loadout-item' onDoubleClick={ (evt) => this.itemDoubleClick(evt, item.id, this.props.loadout.id)}>
@@ -177,7 +168,6 @@ class LoadoutCard extends Component {
     
     render() {
         const {loadout} = this.props 
-        // console.log(this.props, this.props.user)
         return (
                 <div className='content-container'>
                     <div className='loadout-card'>

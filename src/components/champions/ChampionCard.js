@@ -7,11 +7,9 @@ import { connect } from 'react-redux'
     }
     
     loreClick = () => {
-        console.log('should render more info')
         this.setState({
             lore: !this.state.lore
         })
-        console.log(this.state.lore)
     }
 
     renderLore = () => {
@@ -19,7 +17,6 @@ import { connect } from 'react-redux'
     }
     
     render() {
-        // console.log(this.props.champion)
         return (
             <div className='content-container'>
                 <div className='champion-card'>
@@ -41,7 +38,6 @@ import { connect } from 'react-redux'
 }
 
 const mapStateToProps = (state) => ({
-    // champion: state.champion
 })
 
 const mapDispatchToProps = {

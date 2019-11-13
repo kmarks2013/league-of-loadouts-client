@@ -14,14 +14,11 @@ class SignUpForm extends Component {
 
     handleSubmit = (evt) => {
         evt.preventDefault()
-        console.log('i was submitted', localStorage)
         this.props.createNewUserToDB(this.state)
         this.props.history.push(`/user/${this.state.username}`)
-        console.log(this.props.state)
     }
 
     handleChange = (evt) => {
-        console.log(evt.target.value)
         this.setState({
             [evt.target.name] : evt.target.value
         })
@@ -29,7 +26,6 @@ class SignUpForm extends Component {
 
 
     render() {
-        console.log(this.props.state)
         return (
             <div className='form-container'>
                 <div className='signup-form'>

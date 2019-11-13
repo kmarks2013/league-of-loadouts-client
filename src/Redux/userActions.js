@@ -15,19 +15,6 @@ const clearUserAction = () => ({
     type: "CLEAR_USER"
 })
 
-// const persistUserFromAPI = () => dispatch => {
-//     fetch('http://localhost:3000/persist' , {
-//         headers: {
-//           'Content-Type': 'application/json',
-//           Authorization: 'bearer' + localStorage.token
-//         }
-//     })
-//     .then(res = res.json())
-//     .then(user => {
-//         dispatch(setUserAction(user))
-//     })
-// }
-
 const persistUserFromAPI = () => dispatch => {
     fetch('http://localhost:3000/persist', {
       headers: {
@@ -40,7 +27,6 @@ const persistUserFromAPI = () => dispatch => {
           fetch(`http://localhost:3000/users/${user.id}`)
           .then(res => res.json())
           .then(userObj => {
-              console.log(userObj)
               dispatch(setUserAction(userObj))
           })
       });
@@ -57,13 +43,11 @@ const loginUserToDB = userData => dispatch => {
     .then(res => res.json())
     .then(data =>{
         if (data.errors){
-            console.log(data.errors)
             dispatch(setErrorAction(data.errors))
         } else {
             fetch(`http://localhost:3000/users/${data.user.id}`)
             .then(res => res.json())
             .then(userObj => {
-                console.log(userObj)
                 localStorage.token = data.token
                 localStorage.id = data.user.id
                 dispatch(setUserAction(userObj))
@@ -88,7 +72,6 @@ const createNewUserToDB = userData => dispatch => {
     })
     .then(res => res.json())
     .then(data => {
-            console.log(data.user)
             localStorage.token = data.token
             localStorage.id = data.user.id
             dispatch(setUserAction(data.user))
@@ -96,25 +79,11 @@ const createNewUserToDB = userData => dispatch => {
 }
 
 const updateUserInDB = (payload) => dispatch => {
-    // console.log(user, payload)
-    // fetch(`http://localhost:3000/users/${user.id}`,{
-    //     method: 'PATCH',
-    //     headers:{
-    //     'Content-Type': 'application/json',
-    //     Accept: 'application/json'
-    //     },
-    //     body: JSON.stringify(payload)
-    // })
-    // .then(res => res.json())
-    // .then(updatedUser => {
-        // console.log(updatedUser)
         dispatch(setUserAction(payload))
-    // }
 }
 
 
 const deleteUserFromDB = (userId) => dispatch => {
-    console.log('i should dispatch the delete user action and clear local storage', userId) 
     fetch(`http://localhost:3000/users/${userId}`,{
         method: 'DELETE' 
     }).then(res => res.json())

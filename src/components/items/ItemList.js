@@ -8,6 +8,7 @@ class ItemList extends Component {
             return <ItemTile key={item.id}  item={item} />
         })
     }
+
     render() {
         return (
             
@@ -25,8 +26,6 @@ const mapStateToProps = (state) => {
     return {items: state.items}
 }
 
-const mapDispatchToProps = {
-    
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(ItemList)
+
+export default connect(mapStateToProps)(ItemList)

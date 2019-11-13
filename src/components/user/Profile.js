@@ -16,14 +16,8 @@ export class Profile extends Component {
             return null
 
     }
-    // removeUserLoadoutsFromState = () => {
-    //     this.props.user.
-    //     this.props.deleteLoadoutAction(this)
-
-    // }
 
     deleteClick = () => {
-        console.log('i should delete a user profile')
         this.props.clearLoadouts()
         this.props.deleteUserFromDB(this.props.user.id)
         this.props.fetchLoadoutsFromDB()
@@ -44,8 +38,6 @@ export class Profile extends Component {
         } else {
             return null
         }
-
-
     }
 
     render() {

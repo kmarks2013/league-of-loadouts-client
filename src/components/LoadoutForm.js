@@ -11,12 +11,7 @@ class LoadoutForm extends Component {
 
     handleSubmit = (evt) => {
         evt.preventDefault()
-        console.log('i was submitted', this.state.name)
-        console.log(this.props.user.id)
-        console.log(this.state.champion.id)
         const formData = {user_id: this.props.user.id, champion_id:this.state.champion, name:this.state.name}
-        console.log(formData)
-        // this.props.newLoadoutPost(formData)
         fetch('http://localhost:3000/loadouts' ,{
             method: 'POST',
             headers: {
@@ -27,7 +22,6 @@ class LoadoutForm extends Component {
         })
         .then(res => res.json())
         .then(newLoadout => {
-            console.log(newLoadout)
             this.props.newLoadoutPost(newLoadout)
             this.props.history.push(`/loadouts/${newLoadout.id}`)
         })
@@ -35,18 +29,12 @@ class LoadoutForm extends Component {
     }
 
     handleChange = (evt) => {
-        console.log(evt.target.value)
         this.setState({
             [evt.target.name]: evt.target.value
         })
     }
 
     championsSelection = () => {
-    
-        // return this.props.champions.forEach(champion => {
-        //     // console.log(champion.name)
-        //     return <option value='champion'>Aatrox</option>
-        // })
         return (
             <React.Fragment>
                 { 
@@ -59,7 +47,6 @@ class LoadoutForm extends Component {
     }
 
     render() {
-        console.log(this.props.champions)
         return (
             <div className='form-container'>
                 <div className='loadout-form'>
