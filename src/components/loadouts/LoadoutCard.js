@@ -26,6 +26,7 @@ class LoadoutCard extends Component {
             },
             body: JSON.stringify(formData)
         }).then(res => res.json())
+        .then(loadout => this.props.getLoadoutItems(loadout))
     }
 
     handleChange = (evt) => {
@@ -47,6 +48,7 @@ class LoadoutCard extends Component {
         this.setState({
             editMode: false
         })
+        // this.props.history.push(`/loadouts/${this.props.loadout.id}`)
         // console.log(loadoutItems)
     }
     
@@ -116,20 +118,26 @@ class LoadoutCard extends Component {
     }
 
     itemDoubleClick = (event, itemId, loadoutId) => {
-        console.log('i was clicked twice and i should be deleted', itemId, loadoutId)
-        fetch(`http://localhost:3000/loadout_items/`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-                Accept: 'application/json'
-            },
-            body: JSON.stringify({
-                item_id: itemId,
-                loadout_id: loadoutId
-                
+        console.log('i was clicked twice and i should be deleted', itemId, loadoutId, this.props.loadout.user_id)
+        if (this.props.user.id === this.props.loadout.user_id) {
+            fetch(`http://localhost:3000/loadout_items/`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Accept: 'application/json'
+                },
+                body: JSON.stringify({
+                    item_id: itemId,
+                    loadout_id: loadoutId
+                    
+                })
+            }).then(res => res.json())
+            .then( loadoutItem => {
+                this.props.getLoadoutItems(loadoutItem)
+    
             })
-        }).then(res => res.json())
-        .then(this.props.getLoadoutItems(loadoutId))
+        } else 
+             return null
     }
 
 
@@ -146,6 +154,17 @@ class LoadoutCard extends Component {
                 </div>
           )
         })
+    }
+
+    editDeleteButtons = () => {
+        if (this.props.user.id === this.props.loadout.user_id){
+            return (
+                <div>
+                    <button onClick={this.handleEditMode}> {this.state.editMode? 'Cancel Edit' :'Edit Loadout'} </button>
+                    <button onClick={this.handleDelete}>Delete Loadout</button>
+                </div>
+            )
+        }
     }
 
     renderTotalCost = () => {
@@ -172,10 +191,8 @@ class LoadoutCard extends Component {
                     {this.renderLoadoutItems()}
                     <h3>Total Cost</h3>
                     <p>{this.renderTotalCost()}</p>
-                    <button onClick={this.handleEditMode}> {this.state.editMode? 'Cancel Edit' :'Edit Loadout'} </button>
-                    <button onClick={this.handleDelete}>Delete Loadout</button>
                     {this.editForm()}
-                    {/* {this.editDeleteButtons()} */}
+                    {this.editDeleteButtons()}
                     </div>
                 </div>
         )

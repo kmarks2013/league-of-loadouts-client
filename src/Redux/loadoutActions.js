@@ -11,11 +11,6 @@ const createNewLoadout = loadout => ({
     payload: loadout
 })
 
-// const LoadoutItemsAction = loadout => ({
-//     type: "LOADOUT_ITEMS",
-//     payload: loadout
-// })
-
 
 const deleteLoadoutAction = loadoutId => ({
     type: "DELETE_LOADOUT",
@@ -31,6 +26,10 @@ const updateLoadoutAction = loadout => ({
     payload: loadout
 })
 
+const setLoadoutAction = loadout => ({
+    type: 'SET_LOADOUT',
+    payload:loadout
+})
  
 
 const fetchLoadoutsFromDB = () => dispatch => {
@@ -41,19 +40,8 @@ const fetchLoadoutsFromDB = () => dispatch => {
     })
 }
 
-const newLoadoutPost = (loadoutData) => dispatch => {
-    fetch(url ,{
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            Application: 'application/json'
-        },
-        body: JSON.stringify(loadoutData)
-    })
-    .then(res => res.json())
-    .then(newLoadout => {
-        dispatch(createNewLoadout(newLoadout))
-    })
+const newLoadoutPost = (newLoadout) => dispatch => {  
+        dispatch(createNewLoadout(newLoadout)) 
 }
 
 const updateLoadoutFromDB = (loadout, payload) => dispatch => {
@@ -82,28 +70,18 @@ const deleteLoadoutFromDB = loadoutId => dispatch => {
 // const fecthLoadout = () => dispatch => {
 //     fetch('url ')
 // }
-const getLoadoutItems = (loadoutId, itemId) => dispatch => {
-    fetch(`http://localhost:3000/loadout_items/`, {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json'
-        },
-        body: JSON.stringify({
-            item_id: itemId,
-            loadout_id: loadoutId
-            
-        })
-    }).then(res => res.json())
+const getLoadoutItems = (loadout) => dispatch => {
+     dispatch(updateLoadoutAction(loadout))
 }
  
-
+ 
 
 export default {
     fetchLoadoutsFromDB,
     newLoadoutPost,
     clearLoadouts,
     getLoadoutItems,
+    createNewLoadout,
     deleteLoadoutFromDB,
     updateLoadoutFromDB
 }

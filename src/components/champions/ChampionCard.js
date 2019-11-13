@@ -23,11 +23,15 @@ import { connect } from 'react-redux'
         return (
             <div className='content-container'>
                 <div className='champion-card'>
-                    <img src={this.props.champion && this.props.champion.id ? `/champion_tiles/${this.props.champion.name}_0.jpg` : null} alt={this.props.champion.name}/>
+                    <div className='champion-icon'>
+                    <img src={this.props.champion && this.props.champion.id ? `/champion_cards/${this.props.champion.name}_0.jpg` : null} alt={this.props.champion.name}/>
+                    </div>
+                    <div className='champion-info'>
                     <h2>{this.props.champion && this.props.champion.id ? this.props.champion.name: null }</h2>
                     
                     <h3>Lore</h3>
                     <p onClick={this.loreClick}>{this.renderLore()}</p>
+                    </div>
 
                 </div>
 

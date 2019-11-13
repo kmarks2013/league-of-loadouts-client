@@ -36,6 +36,9 @@ renderUser = (renderProps) => {
   if (user) {
     return <Profile />
   }
+  else {
+    return <div><img src='/load01.gif'/></div>
+  }
 }
 
 editUser = (renderProps) => {
@@ -43,6 +46,9 @@ editUser = (renderProps) => {
   const user = this.props.user.username === slug
   if (user) {
     return <EditUserForm  />
+  }
+  else {
+    return <div><img src='/load01.gif'/></div>
   }
 }
 
@@ -53,7 +59,7 @@ renderItems = (renderProps) => {
     return <ItemCard item={item} />
   }
   else {
-      return <div>Not Found</div>
+      return <div><img src='/load01.gif'/></div>
   }
 }
 
@@ -68,7 +74,7 @@ renderLoadout = (renderProps) => {
   }
   else {
       console.log(loadout)
-      return <div>Not Found</div>
+      return <div><img src='/load01.gif'/></div>
   }
 
 }
@@ -81,7 +87,7 @@ renderChampions = (renderProps) => {
     return <ChampionCard champion={champion}/>
   }
   else {
-    return <div>Not Found</div>
+    return <div><img src='/load01.gif'/></div>
   }
   // return "HELLO"
   
@@ -89,6 +95,7 @@ renderChampions = (renderProps) => {
 }
 
   render() {
+    console.log(this.props.state)
     return (
       <div className='lol-wrapper'>
 
@@ -125,7 +132,8 @@ const mapStateToProps = (state) => {
      champions: state.champions,
      items: state.items,
      loadouts: state.loadouts,
-     user: state.user.user
+     user: state.user.user,
+     state: state
    }
 }
 

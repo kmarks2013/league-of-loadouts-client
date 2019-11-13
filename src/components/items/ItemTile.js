@@ -10,7 +10,7 @@ class ItemTile extends Component {
             <div className='item-tile' >
             <NavLink to={`/items/${item.name}`} >
                 <h2> {item.name} </h2>
-                <img src={`/items_images/${item.api_num}.png`} alt=''/>
+                <img src={`/items_images/${item.api_num}.png`} alt='' title={item.plaintext}/>
                 {/* <p> {item.api_num} </p> */}
             </NavLink>
             </div>

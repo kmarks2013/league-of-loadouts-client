@@ -10,9 +10,8 @@ class LoadoutTile extends Component {
         // console.log(this.props.loadout)
         return this.props.loadout.items.map(item => {
           return (
-            <div>
+            <div className='loadout-tile-items'>
                 <img src={`/items_images/${item.api_num}.png`} alt="" />
-                <p>{item.name}</p>
             </div>
           )
         })
@@ -22,15 +21,15 @@ class LoadoutTile extends Component {
         // console.log(this.props)
         const {loadout} = this.props
         return (
-            <div className='loadout-tile' >
+            <div className='loadout-tile' title={loadout.name}>
             <NavLink to={`/loadouts/${loadout.id}`}>
                 <h2>{loadout.name}</h2>
-                <img src={`/champion_tiles/${loadout.champion.name}_0.jpg`} alt="" />
-                <h6>{loadout.user_name}</h6>
-                <ul>
+                <img src={`/champion_tiles/${loadout.champion.name}_0.jpg`} alt=""  />
+                <h6 className="loadout-tile-user">{loadout.user_name}</h6>
                     {this.renderLoadoutItems()}
-                </ul>
+             
             </NavLink>
+            <div></div>
             </div>
         )
     }

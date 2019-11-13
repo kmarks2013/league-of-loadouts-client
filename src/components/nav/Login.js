@@ -13,11 +13,11 @@ class Login extends Component {
 
     handleSubmit = (evt, ) => {
         evt.preventDefault()
-        console.log('i was submitted', this.state.username) 
-        this.props.loginUserToDB(this.state)  
+        // console.log('i was submitted', this.state.username) 
+        this.props.loginUserToDB(this.state)
         if (!this.props.errors.length){
-            console.log('here')
-            this.props.history.push('/')
+            // console.log('here')
+            this.props.history.push(`/user/${this.state.username}`)
         }
         // this.setState({
         //     username: '',
@@ -72,6 +72,7 @@ class Login extends Component {
 
 const mapStateToProps = (state) => ({
     errors: state.user.errors,
+    state: state
  })
 
 const mapDispatchToProps = {
