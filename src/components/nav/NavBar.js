@@ -8,19 +8,10 @@ import {NavLink, withRouter} from 'react-router-dom'
 export class NavBar extends Component {
 
     logoutClick = () => {
-        console.log('i should clear local storage')
         this.props.logoutUser()
         this.props.history.push('/')
     }
     
-    newLoadoutClick = () => {
-        console.log('i should open up a new loadout up form')
-    }
-
-    profileClick = () => {
-        console.log('take me to my profile')
-    }
-
     componentDidMount(){
         if (localStorage.token){
           this.props.persistUserFromAPI()
@@ -35,11 +26,11 @@ export class NavBar extends Component {
                 <p>{this.props.user.username} </p>
                     <div className='buttons'>
                         <NavLink to={`/user/${this.props.user.username}`}>
-                        <button className='button' onClick={this.profileClick}>Profile</button>
+                        <button className='button' >Profile</button>
                         </NavLink>
-                        <button  className='button' onClick={this.logoutClick}>Logout</button>
+                        <button  className='button' >Logout</button>
                         <NavLink to='/loadouts/new'>
-                        <button className='button' onClick={this.newLoadoutClick}>New Loadout</button>
+                        <button className='button' >New Loadout</button>
                         </NavLink>
                     </div>
                 </div>
@@ -62,7 +53,6 @@ export class NavBar extends Component {
 
 
     render() {
-        // console.log(this.props)
         return (
                 
                     <div className='navbar' >

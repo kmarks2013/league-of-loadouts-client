@@ -8,12 +8,11 @@ class EditUserForm extends Component {
         name: this.props.user.name,
         age: this.props.user.age,
         username: this.props.user.username,
-         }
+    }
 
 
     handleSubmit = (evt) => {
         evt.preventDefault()
-        // console.log('i was submitted', this.state)
         let formData = {...this.state}
         fetch(`http://localhost:3000/users/${this.props.user.id}`,{
             method: 'PATCH',
@@ -25,16 +24,13 @@ class EditUserForm extends Component {
         })
         .then(res => res.json())
         .then(updatedUser => {
-            console.log(updatedUser.username)
             this.props.updateUserInDB(updatedUser)
             this.props.history.push(`/user/${updatedUser.username}`)
         })
-        // this.props.persistUserFromAPI()
     }
 
     
     handleChange = (evt) => {
-        // console.log(evt.target.value)
         this.setState({
             [evt.target.name] : evt.target.value
         })
@@ -42,7 +38,6 @@ class EditUserForm extends Component {
 
 
     render() {
-        // console.log(this.props.user)
         return (
             <div className='form-container'>
                 <h1> Hello {this.props.user.username}! </h1>
@@ -80,8 +75,6 @@ class EditUserForm extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    // console.log(state)
-   
         user: state.user.user
 })
 

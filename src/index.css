@@ -65,6 +65,11 @@ code {
   background-color: red;
 }
 
+.button-image{
+  width: 100%;
+
+}
+
 .loadout-cards {
   border-style: solid black 1px;
 }

@@ -89,7 +89,6 @@ renderChampions = (renderProps) => {
   else {
     return <div><img src='/load01.gif'/></div>
   }
-  // return "HELLO"
   
 
 }
@@ -113,7 +112,6 @@ renderChampions = (renderProps) => {
         <Route path='/champions/:slug' exact render={this.renderChampions} /> 
         <Route path='/items' exact render={ () => <ItemList />} />
         <Route path='/items/:slug' exact render={this.renderItems} />
-        {/* <Route path='/loadouts/:id' render={() => <LoadoutInfo loadout={this.state.loadout}/>}/> */}
         
         <Route path='/loadouts' exact render={ () => <LoadoutList />} />
         <Route path='/loadouts/new' component={LoadoutForm} />
@@ -127,7 +125,6 @@ renderChampions = (renderProps) => {
 }
 
 const mapStateToProps = (state) => {
-  // console.log(state) 
   return {
      champions: state.champions,
      items: state.items,

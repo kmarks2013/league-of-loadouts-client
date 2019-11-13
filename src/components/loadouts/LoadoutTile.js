@@ -7,7 +7,6 @@ class LoadoutTile extends Component {
 
 
     renderLoadoutItems = () => {
-        // console.log(this.props.loadout)
         return this.props.loadout.items.map(item => {
           return (
             <div className='loadout-tile-items'>
@@ -18,7 +17,6 @@ class LoadoutTile extends Component {
     }
 
     render() {
-        // console.log(this.props)
         const {loadout} = this.props
         return (
             <div className='loadout-tile' title={loadout.name}>
@@ -35,12 +33,4 @@ class LoadoutTile extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-    
-})
-
-const mapDispatchToProps = {
-
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(LoadoutTile)
+export default (LoadoutTile)

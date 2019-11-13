@@ -4,7 +4,6 @@ import ChampionTile from './ChampionTile'
 
 class ChampionList extends Component {
     renderCharacterTiles = () => {
-        // console.log(this.props.champions)
         return this.props.champions.map(champion => {
           return  <ChampionTile key={champion.id} champion={champion} />
         })
@@ -23,15 +22,9 @@ class ChampionList extends Component {
 }
 
 const mapStateToProps = (state) => {
-    // console.log(state)
   return {
       champions: state.champions 
        
   }
 }
-
-// const mapDispatchToProps = {
-    
-// }
-
 export default connect(mapStateToProps)(ChampionList)
