@@ -26,6 +26,10 @@ const updateLoadoutAction = loadout => ({
     payload: loadout
 })
 
+const setLoadoutAction = loadout => ({
+    type: 'SET_LOADOUT',
+    payload:loadout
+})
  
 
 const fetchLoadoutsFromDB = () => dispatch => {
@@ -66,22 +70,11 @@ const deleteLoadoutFromDB = loadoutId => dispatch => {
 // const fecthLoadout = () => dispatch => {
 //     fetch('url ')
 // }
-const getLoadoutItems = (loadoutId, itemId) => dispatch => {
-    fetch(`http://localhost:3000/loadout_items/`, {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json'
-        },
-        body: JSON.stringify({
-            item_id: itemId,
-            loadout_id: loadoutId
-            
-        })
-    }).then(res => res.json())
+const getLoadoutItems = (loadout) => dispatch => {
+     dispatch(updateLoadoutAction(loadout))
 }
  
-
+ 
 
 export default {
     fetchLoadoutsFromDB,
