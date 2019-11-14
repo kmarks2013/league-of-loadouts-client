@@ -62,6 +62,9 @@ export class NavBar extends Component {
                         <button className='button' >Home</button>
                         </NavLink>
                         </div>
+                        <div className='title'>
+                            <h1> League of Loadouts</h1>
+                        </div>
                             {this.loginLogout()}
                     </div>
                 

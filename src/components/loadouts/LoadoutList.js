@@ -9,7 +9,6 @@ class LoadoutList extends Component {
     }
     
     renderLoadoutTiles = () => {
-        // console.log(this.props.loadouts)
         if (this.props.loadouts.length > 0) {      
             return this.props.loadouts.map(loadout => {
                 return  <LoadoutTile key={loadout.id} loadout={loadout} />
@@ -18,7 +17,6 @@ class LoadoutList extends Component {
     }
 
     render() {
-        // console.log(this.props)
         return (
             <div className='content-container'>
                 <div className='loadout-tiles'>

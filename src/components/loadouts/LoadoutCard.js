@@ -136,7 +136,7 @@ class LoadoutCard extends Component {
     renderLoadoutItems = () => {
         return this.props.loadout.items.map(item => {
           return (
-                <div className='loadout-item' onDoubleClick={ (evt) => this.itemDoubleClick(evt, item.id, this.props.loadout.id)}>
+                <div className='loadout-item-tile' onDoubleClick={ (evt) => this.itemDoubleClick(evt, item.id, this.props.loadout.id)}>
                 <img src={`/items_images/${item.api_num}.png`} alt="" />
                 <p>{item.name}</p>
                 <NavLink to={`/items/${item.name}`} >
@@ -171,16 +171,24 @@ class LoadoutCard extends Component {
         return (
                 <div className='content-container'>
                     <div className='loadout-card'>
+                    <div className='loadout-icon'>
                     <h1>{loadout && loadout.id ? loadout.name : null} </h1>
                     <h2>Champion</h2>
                     {/* <img src={`./champion_tiles/${loadout.champion.name}_0.jpg`} height='100' width='100'/> */}
                     <img src={`/champion_tiles/${loadout.champion.name}_0.jpg`} alt=""></img>
                     <h3>{loadout && loadout.id ? loadout.champion.name : null}</h3>
                     <p>{loadout && loadout.id ? loadout.user_name : null}</p>
-                    <h2> Items</h2>
-                    {this.renderLoadoutItems()}
-                    <h3>Total Cost</h3>
-                    <p>{this.renderTotalCost()}</p>
+                    </div>
+                    <div className='loadout-info'>
+                        <div className='loadout-all-items'>
+                        <h2> Items</h2>
+                        {this.renderLoadoutItems()}
+                        </div>
+                        <div className='loadout-total-cost'>
+                            <h3>Total Cost</h3>
+                            <p>{this.renderTotalCost()}</p>
+                        </div>
+                    </div>
                     {this.editForm()}
                     {this.editDeleteButtons()}
                     </div>

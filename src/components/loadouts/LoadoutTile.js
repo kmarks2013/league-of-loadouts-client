@@ -8,7 +8,7 @@ class LoadoutTile extends Component {
     renderLoadoutItems = () => {
         return this.props.loadout.items.map(item => {
           return (
-            <div className='loadout-tile-items'>
+            <div className='loadout-items'>
                 <img src={`/items_images/${item.api_num}.png`} alt="" />
             </div>
           )
