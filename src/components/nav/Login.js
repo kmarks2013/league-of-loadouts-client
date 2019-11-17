@@ -34,7 +34,7 @@ class Login extends Component {
     render() {
         return (
 
-            <div>
+            <div className='form-container'>
             {this.renderErrors()}
             <form onSubmit={this.handleSubmit}>
                 <label>Username</label>

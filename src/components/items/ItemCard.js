@@ -27,9 +27,9 @@ class ItemCard extends Component {
     render() {
 
         return (
-            <div>
+            <>
                 {this.renderItem()}
-            </div>
+            </>
         )
     }
 }

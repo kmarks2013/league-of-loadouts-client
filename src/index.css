@@ -1,6 +1,6 @@
 
 a {
-  color: gold;
+  color: goldenrod;
   text-decoration: none;
 }
 
@@ -37,37 +37,52 @@ code {
   height: auto;
   width: auto;
   grid-area: navbar;
-  background-color: gold;
+  background-color: #192C37;
   display: grid;
-  grid-template-columns: 50% 50% ;
+  grid-template-columns: 20% 60 20% ;
   grid-template-areas: 
-        'navbar-menu login';
+        'navbar-menu title login';
+  border: ridge goldenrod 5px;
 }
 
 .navbar-menu {
   display: inline-block;
   margin-left: 2%;
   grid-area: navbar-menu;
-  border-style: solid black 1px;
+
+  color: goldenrod;
 }
 
 .login {
   display: inline-block;
-  margin-left: 50%;
+  margin-left: 80%;
   grid-area: login;
-  border-style: solid black 1px;
+  color: goldenrod;
 }
-
+.title{
+  text-align: center;
+  color: goldenrod;
+}
 .sidebar {
   height: auto;
   width: auto;
   grid-area: sidebar;
-  background-color: red;
+  background-color: #192C37;
+  border-bottom: ridge goldenrod 5px;
+  border-right: ridge goldenrod 5px;
+  border-left: ridge goldenrod 5px;
+ 
+}
+
+.buttons{
+  margin-top: -10px;
+  display: inherit;
+  margin-left: -100px;
+  text-align: end;
 }
 
 .button-image{
   width: 100%;
-
 }
 
 .loadout-cards {
@@ -80,8 +95,8 @@ code {
   grid-area: content-container;
   display: inline-block;
   overflow: auto;
-  background-color: grey;
-  color: white;
+  background: linear-gradient(to right,  rgba(19,18,18, 1),  rgba(19,18,18, 1),  rgb(70, 67, 67), rgb(138, 135, 135));
+  color: goldenrod;
 }
 
 .champion-tile{
@@ -106,8 +121,13 @@ code {
   text-align: center;
 }
 
-.champion-ifno{
-  grid-area: champion-ifno;
+.champion-info{
+  grid-area: champion-info;
+  
+}
+
+.champion-info p {
+  width: 50%;
 }
 
 .item-tile{
@@ -120,13 +140,53 @@ code {
 }
 
 .loadout-tile{
-  border: solid 1px black  ;
-
+  border: ridge 3px #192C37  ;
+  height: 40%;
   
 }  
 
-.loadout-tile-items {
+.loadout-items {
   display: inline-block;
   padding: 1%;
 }
 
+.loadout-card{
+  max-width: 100%;
+  max-height: 100%;
+  display: grid;
+  grid-template-columns: 40% 60% ;
+  grid-template-areas: 
+        'loadout-icon loadout-info';
+}
+
+.loadout-icon{
+  grid-area: loadout-icon;
+  text-align: center;
+}
+
+.loadout-info{
+  grid-area: loadout-info;
+  display: grid;
+  grid-template-rows: 90% 10%;
+  grid-template-areas: 
+  'items'
+  'cost';
+  
+}
+
+.loadout-item-tile{
+  width: 20% auto;
+  text-align: center;
+  float: left;
+  margin: 40px;
+  box-shadow: 3px 3px 5px 6px #ccc;
+  border-radius: 15px;
+}
+
+.loadout-all-items{
+  grid-area: items;
+}
+
+.loadout-total-cost{
+  grid-area: cost;
+}
