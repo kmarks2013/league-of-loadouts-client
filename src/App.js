@@ -5,6 +5,7 @@ import NavBar from './components/nav/NavBar';
 import championActions from './Redux/championActions'
 import itemActions from './Redux/itemActions';
 import loadoutActions from './Redux/loadoutActions';
+import userActions from './Redux/userActions';
 import { Route, Switch } from 'react-router-dom'
 import SignUpForm from './components/SignUpForm';
 import LoadoutList from './components/loadouts/LoadoutList';
@@ -28,6 +29,7 @@ export class App extends Component {
     this.props.fetchChampionsFromDB()
     this.props.fetchItemsFromDB()
     this.props.fetchLoadoutsFromDB()
+    this.props.fetchUsersFromDB()
  }
 
 renderUser = (renderProps) => {
@@ -135,7 +137,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   fetchChampionsFromDB: championActions.fetchChampionsFromDB,
   fetchItemsFromDB: itemActions.fetchItemsFromDB,
-  fetchLoadoutsFromDB: loadoutActions.fetchLoadoutsFromDB
+  fetchLoadoutsFromDB: loadoutActions.fetchLoadoutsFromDB,
+  fetchUsersFromDB: userActions.fetchUsersFromDB
 
 }
 
