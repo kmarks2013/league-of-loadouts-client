@@ -93,7 +93,9 @@ code {
   height: auto;
   width: auto;
   grid-area: content-container;
-  display: inline-block;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
   overflow: auto;
   background: linear-gradient(to right,  rgba(19,18,18, 1),  rgba(19,18,18, 1),  rgb(70, 67, 67), rgb(138, 135, 135));
   color: goldenrod;
@@ -139,10 +141,40 @@ code {
   border-radius: 15px;
 }
 
+
+.item-card{
+  max-width: 100%;
+  max-height: 100%;
+  display: grid;
+  grid-template-columns: 40% 60% ;
+  grid-template-areas: 
+        'item-icon item-info';
+}
+
+.item-icon{
+  grid-area: item-icon;
+  text-align: center;
+}
+
+.item-info{
+  grid-area: item-info;
+  
+}
+
+.item-info p {
+  width: 50%;
+}
+
+
+
+
+
+
+
+
 .loadout-tile{
   border: ridge 3px #192C37  ;
-  height: 40%;
-  
+  width: 100%;
 }  
 
 .loadout-items {
@@ -151,6 +183,7 @@ code {
 }
 
 .loadout-card{
+  width: 100vw;
   max-width: 100%;
   max-height: 100%;
   display: grid;
@@ -184,6 +217,7 @@ code {
 }
 
 .loadout-all-items{
+  
   grid-area: items;
 }
 
