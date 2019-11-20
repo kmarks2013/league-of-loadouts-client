@@ -1,68 +1,55 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# League of Loadouts
 
-## Available Scripts
+## What is League of Loadouts? 
+League of Loadouts is a League of Legends companion web app that allows players to plan out a loadout for their champion of choice  a head of games.
 
-In the project directory, you can run:
+A user can create a loadout for any champion of their choosing, and add and delete items to that loadout.
 
-### `yarn start`
+### Motivation
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+As an avid gamer/MOBA player I wanted to create an app that would help players like myself plan out their matchs and create based on their playstyle accordingly.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### Front-end
 
-### `yarn test`
+League of Loadouts is built using React as its front end frame work and using Redux to contain majority of it's state.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Images are stored on the front end but were originally sourced through [Riot Games: League of Legends API](https://developer.riotgames.com/) . 
 
-### `yarn build`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Back-end
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+League of Loadouts API is built with Ruby on Rails.  For authentication, authorization and security it uses Bcrypt and JWT, and PostgresSql for its database.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+To see more information about the api please see below:
 
-### `yarn eject`
+[League of Loadouts Api](https://github.com/kmarks2013/league-of-loadouts-api)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Demo
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- to be added.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Screenshots
 
-## Learn More
+- to be added.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Installation
 
-### Code Splitting
+    Clone the repo and CD inside of the directory
+    npm install
+    npm start
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+Be sure to visit the repo for the [backend](https://github.com/kmarks2013/league-of-loadouts-api) and follow those instructions!
 
-### Analyzing the Bundle Size
+### Technologies Used
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+1. React
+2. React-Redux
+3. React-Router
+4. Redux-Thunk
+5. CSS
 
-### Making a Progressive Web App
+### Special Thanks
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+I would like to thank Riot Games for allwoing me access to their api to create this app. Without them this applicaiton would not exist. 
