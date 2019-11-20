@@ -7,7 +7,7 @@ A user can create a loadout for any champion of their choosing, and add and dele
 
 ### Motivation
 
-As an avid gamer/moba player I wanted to create an app that would help players like myself to plan out their match builds based on their playstyle accordingly.
+As an avid gamer/MOBA player I wanted to create an app that would help players like myself plan out their matchs and create based on their playstyle accordingly.
 
 ### Front-end
 
