@@ -15,6 +15,33 @@ body {
 
 }
 
+
+
+label {
+  margin: 2rem;
+}
+
+input[type=text] {
+  width: 20%;
+  padding: 4px 6px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+input[type=password] {
+  width: 20%;
+  padding: 4px 6px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+input[type=number] {
+  width: 20%;
+  padding: 4px 6px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
@@ -64,8 +91,8 @@ code {
   color: goldenrod;
 }
 .sidebar {
-  height: auto;
-  width: auto;
+  
+  width: 100%;
   grid-area: sidebar;
   background-color: #192C37;
   border-bottom: ridge goldenrod 5px;
@@ -85,13 +112,8 @@ code {
   width: 100%;
 }
 
-.loadout-cards {
-  border-style: solid black 1px;
-}
-
 .content-container {
-  height: auto;
-  width: auto;
+  width: 100%;
   grid-area: content-container;
   display: flex;
   flex-wrap: wrap;
@@ -102,10 +124,11 @@ code {
 }
 
 .champion-tile{
-  width: 30% auto;
+  width: 45% auto;
   text-align: center;
   float: left;
-  margin: 40px;
+  margin: 50px;
+  padding:10px;
   box-shadow: 3px 3px 5px 6px #ccc;
   border-radius: 15px;
 }
@@ -137,6 +160,8 @@ code {
   text-align: center;
   float: left;
   margin: 40px;
+  overflow-wrap: break-word;
+  padding: 10px;
   box-shadow: 3px 3px 5px 6px #ccc;
   border-radius: 15px;
 }
@@ -170,11 +195,14 @@ code {
 
 
 
-
+.loadout-tiles{
+  width:100%;
+}
 
 .loadout-tile{
   border: ridge 3px #192C37  ;
   width: 100%;
+  overflow-y: auto;
 }  
 
 .loadout-items {
@@ -223,4 +251,10 @@ code {
 
 .loadout-total-cost{
   grid-area: cost;
+}
+
+
+.form-container{
+  display: flexbox;
+  margin: 3%;
 }

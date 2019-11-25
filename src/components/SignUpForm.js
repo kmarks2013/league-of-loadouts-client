@@ -41,37 +41,38 @@ class SignUpForm extends Component {
     render() {
         return (
             <div className='form-container'>
+                <h2>Sign Up</h2>
                 {this.renderErrors()}
                 <div className='signup-form'>
                     <form onSubmit={this.handleSubmit}>
-                        <label>Name</label>
+                        <label>Name:</label>
                         <input
                             type="text"
                             value={this.state.name}
                             name="name"
                             onChange={this.handleChange}
-                        />
-                        <label>Age</label>
+                        /><br/>
+                        <label>Age:</label>
                         <input
                             type="number"
                             value={this.state.age}
                             name="age"
                             onChange={this.handleChange}
-                        />
-                        <label>Username</label>
+                        /><br/>
+                        <label>Username:</label>
                         <input
                             type="text"
                             value={this.state.username}
                             name="username"
                             onChange={this.handleChange}
-                        />
-                        <label>Password</label>
+                        /><br/>
+                        <label>Password:</label>
                         <input
                             type="password"
                             value={this.state.password}
                             name="password"
                             onChange={this.handleChange}
-                        />
+                        /><br/>
                         
                         <input type="submit" />
                     </form>
