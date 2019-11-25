@@ -45,7 +45,7 @@ const persistUserFromAPI = () => dispatch => {
   };
 
 const loginUserToDB = userData => dispatch => {
-    fetch('http://localhost:3000/login', {
+  return  fetch('http://localhost:3000/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -74,7 +74,7 @@ const  logoutUser = () => dispatch => {
 }
 
 const createNewUserToDB = userData => dispatch => {
-    fetch('http://localhost:3000/users', {
+   return fetch('http://localhost:3000/users', {
         method:  'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -84,9 +84,13 @@ const createNewUserToDB = userData => dispatch => {
     })
     .then(res => res.json())
     .then(data => {
+        if (data.errors){
+            dispatch(setErrorAction(data.errors))
+        } else {
             localStorage.token = data.token
             localStorage.id = data.user.id
             dispatch(setUserAction(data.user))
+        }
     })
 }
 

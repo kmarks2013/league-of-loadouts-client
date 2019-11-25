@@ -14,8 +14,15 @@ class SignUpForm extends Component {
 
     handleSubmit = (evt) => {
         evt.preventDefault()
-        this.props.createNewUserToDB(this.state)
-        this.props.history.push(`/user/${this.state.username}`)
+        this.props.createNewUserToDB(this.state).then(
+            () => {
+                if (!this.props.errors.length){
+                    console.log(this.props.erros)
+                    this.props.history.push(`/user/${this.state.username}`)
+                } else {
+                    this.props.history.push('/signup')
+                }
+            })
     }
 
     handleChange = (evt) => {
@@ -23,11 +30,18 @@ class SignUpForm extends Component {
             [evt.target.name] : evt.target.value
         })
     }
+       
+    renderErrors  = () => {
+        if (this.props.errors.length > 0) {
+            return this.props.errors.map(error => <p>{error}</p>)
+        }
+    }
 
 
     render() {
         return (
             <div className='form-container'>
+                {this.renderErrors()}
                 <div className='signup-form'>
                     <form onSubmit={this.handleSubmit}>
                         <label>Name</label>
@@ -69,7 +83,7 @@ class SignUpForm extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    state: state
+    errors : state.user.errors
 })
 
 const mapDispatchToProps = {
