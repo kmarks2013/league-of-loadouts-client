@@ -11,12 +11,18 @@ class Login extends Component {
         password: ''
     }
 
-    handleSubmit = (evt, ) => {
+    handleSubmit = (evt) => {
         evt.preventDefault()
-        this.props.loginUserToDB(this.state)
-        if (!this.props.errors.length){
-            this.props.history.push(`/user/${this.state.username}`)
-        }
+        this.props.loginUserToDB(this.state).then(
+           () => {
+
+               if (!this.props.errors.length){
+                   console.log(this.props.errors)
+                   this.props.history.push(`/user/${this.state.username}`)
+               } else {
+                   this.props.history.push('/login')
+               }
+           })
     }
     
     renderErrors  = () => {
