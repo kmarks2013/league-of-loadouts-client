@@ -28,15 +28,17 @@ class ChampionList extends Component {
     }
 
     render() {
-        console.log(this.state.filteredChampions)
-
         return (
             <div className='content-container'>
                 <div className='content-tiles'>
-                <h1> All Champions </h1> 
-                    <label>Search</label>
-                    <input type='text' value={this.state.searchValue} onChange={this.handleSearch}></input> <br></br>
-                    {this.renderCharacterTiles()}
+                    <div className='list-title'>
+                            <h1> All Champions </h1> 
+                            <label>Search</label>
+                            <input type='text' value={this.state.searchValue} onChange={this.handleSearch}></input>
+                    </div> 
+                    <div>
+                    {this.renderCharacterTiles()}    
+                    </div>
                 </div>
             </div>
         )

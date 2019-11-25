@@ -258,3 +258,15 @@ code {
   display: flexbox;
   margin: 3%;
 }
+
+.list-title{
+  width: 100%;
+  display: inline-block;
+}
+
+.list-title input[type=text] {
+  width: 20%;
+  padding: 4px 6px;
+  margin: 8px 0;
+  box-sizing: border-box;
+} 
