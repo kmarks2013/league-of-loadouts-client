@@ -137,7 +137,7 @@ class LoadoutCard extends Component {
         return this.props.loadout.items.map(item => {
           return (
                 <div className='loadout-item-tile' onDoubleClick={ (evt) => this.itemDoubleClick(evt, item.id, this.props.loadout.id)}>
-                <img src={`/items_images/${item.api_num}.png`} alt="" />
+                <img src={`/items_images/${item.image}`} alt="" />
                 <p>{item.name}</p>
                 <NavLink to={`/items/${item.name}`} >
                 <button>View Item info</button>
