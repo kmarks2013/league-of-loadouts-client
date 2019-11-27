@@ -177,6 +177,7 @@ class LoadoutCard extends Component {
                     {/* <img src={`./champion_tiles/${loadout.champion.name}_0.jpg`} height='100' width='100'/> */}
                     <img src={`/champion_tiles/${loadout.champion.name}_0.jpg`} alt=""></img>
                     <h3>{loadout && loadout.id ? loadout.champion.name : null}</h3>
+                    <h2> Level: <button>-</button> 1 <button>+</button></h2>
                     <p>{loadout && loadout.id ? loadout.user_name : null}</p>
                     </div>
                     <div className='loadout-info'>
