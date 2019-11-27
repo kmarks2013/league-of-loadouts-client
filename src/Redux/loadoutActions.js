@@ -53,7 +53,7 @@ const deleteLoadoutFromDB = loadoutId => dispatch => {
     fetch(url + `/${loadoutId}`, {
       method: 'DELETE'
     }).then(console.log('I deleted a laodout'))
-    // .then(() => {return dispatch(deleteLoadoutAction(loadoutId))});
+    .then(() => {return dispatch(deleteLoadoutAction(loadoutId))});
     // debugger
     // dispatch(deleteLoadoutAction(loadoutId))
   };

@@ -1,6 +1,6 @@
 
 
-export default (state =[] , { type, payload }) => {
+export default (state = [], { type, payload }) => {
     switch (type) {
     case "GET_LOADOUTS":
         console.log(state)
@@ -11,7 +11,8 @@ export default (state =[] , { type, payload }) => {
     case "DELETE_LOADOUT":
         return handleDeleteLoadout(state, payload)
     case "UPDATE_LOADOUT":
-        return handleUpdateLoadout(state, payload)
+        return handleUpdateLoadout(state, payload) 
+
     default:
         return state
     }
@@ -22,7 +23,7 @@ export default (state =[] , { type, payload }) => {
 
 
 const handleDeleteLoadout = (loadouts, loadoutId) => {
-    loadouts.filter(loadout => loadout.id !== loadoutId)
+   return loadouts.filter(loadout => loadout.id !== loadoutId)
 }
 
 const handleUpdateLoadout = (loadouts, updatedLoadout) =>
