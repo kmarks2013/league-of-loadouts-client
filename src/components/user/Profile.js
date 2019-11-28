@@ -19,12 +19,12 @@ export class Profile extends Component {
 
     deleteClick = () => {
         this.props.clearLoadouts()
-        this.props.deleteUserFromDB(this.props.user.id)
+        this.props.deleteUserFromDB(this.props.loggedInUser.id)
         this.props.fetchLoadoutsFromDB()
     }
 
     renderEditDeleteButtons = () => {
-        if (this.props.user && this.props.user.id === parseInt(localStorage.id)){
+        if (this.props.loggedInUser && this.props.loggedInUser.id === parseInt(localStorage.id)){
             return (
                 <>
                 <NavLink to={`/user/${this.props.user.username}/edit`}>
@@ -41,7 +41,8 @@ export class Profile extends Component {
     }
 
     render() {
-        const {user: {name, username, age }} = this.props
+        const {loggedInUser: {name, username, age }} = this.props
+    
         return (
             <div className="content-container">
                 <h1>Hello {username}!</h1>
@@ -55,10 +56,43 @@ export class Profile extends Component {
             </div>
         )
     }
+
+    // this conditiional is an attempt to render profile pages for users who arent logged in
+    // render() {
+    //     const {loggedInUser, user } = this.props
+    //     {if (loggedInUser === parseInt(localStorage.id)) {
+    //         return ( 
+    //             <div className="content-container">
+    //                 <h1>Hello {loggedInUser.username}!</h1>
+    //                 {this.renderEditDeleteButtons()}
+    //                 <h2>Bio</h2>
+    //                 <h4>Name: {loggedInUser.name}</h4>
+    //                 <h4>Age: {loggedInUser.age}</h4>
+                    
+    //                 <h2>View Your Loadouts</h2>
+    //                 {this.renderLoadoutTiles()}
+    //             </div>
+    //             )
+    //     }
+    //     else 
+    //         return (
+    //             <div className="content-container">
+    //                     <h1>Hello {user.username}!</h1>
+    //                     {this.renderEditDeleteButtons()}
+    //                     <h2>Bio</h2>
+    //                     <h4>Name: {user.name}</h4>
+    //                     <h4>Age: {user.age}</h4>
+                        
+    //                     <h2>View Your Loadouts</h2>
+    //                     {this.renderLoadoutTiles()}
+    //                 </div>
+    //         )
+    // }
+    // }
 }
 
 const mapStateToProps = (state) => ({
-    user: state.user.user,
+    loggedInUser: state.user.user,
     loadouts: state.user.user.loadouts
 })
 
