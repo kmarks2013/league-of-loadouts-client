@@ -11,12 +11,18 @@ class Login extends Component {
         password: ''
     }
 
-    handleSubmit = (evt, ) => {
+    handleSubmit = (evt) => {
         evt.preventDefault()
-        this.props.loginUserToDB(this.state)
-        if (!this.props.errors.length){
-            this.props.history.push(`/user/${this.state.username}`)
-        }
+        this.props.loginUserToDB(this.state).then(
+           () => {
+
+               if (!this.props.errors.length){
+                   console.log(this.props.errors)
+                   this.props.history.push(`/user/${this.state.username}`)
+               } else {
+                   this.props.history.push('/login')
+               }
+           })
     }
     
     renderErrors  = () => {
@@ -35,22 +41,23 @@ class Login extends Component {
         return (
 
             <div className='form-container'>
+            <h2>Login</h2>
             {this.renderErrors()}
             <form onSubmit={this.handleSubmit}>
-                <label>Username</label>
+                <label>Username:</label>
                 <input
                     type="text"
                     value={this.state.username}
                     name="username"
                     onChange={this.handleChange}
-                />
-                <label>Password</label>
+                /><br/>
+                <label>Password:</label>
                 <input
                     type="password"
                     value={this.state.password}
                     name="password"
                     onChange={this.handleChange}
-                />
+                /> <br/>
                 <input type="submit" />
             </form>
             </div>

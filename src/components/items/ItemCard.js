@@ -10,7 +10,7 @@ class ItemCard extends Component {
                 <div className='item-card'>
                     <div className='item-icon'>
                         <h2>{item.name }</h2>
-                        <img src={`/items_images/${item.api_num}.png`} alt=''/>
+                        <img src={`/items_images/${item.image}`} alt=''/>
                     </div>
                     <div className='item-info'>
                         <h3>ItemDescription</h3>
