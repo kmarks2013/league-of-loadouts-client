@@ -29,6 +29,39 @@ import { connect } from 'react-redux'
                     <h3>Lore</h3>
                     <p onClick={this.loreClick}>{this.renderLore()}</p>
                     <h3>Base Stats</h3>
+                    <table className='base-stats'>
+                        <tr>
+                            <th>Name</th>
+                            <th>Base Value</th>
+                            <th>Increase Per Level</th>
+                        </tr>
+                        <tr>
+                            <td>Health</td>
+                            <td>{this.props.champion && this.props.champion.id ? this.props.champion.stats.hp: null}</td> 
+                            <td>+{this.props.champion && this.props.champion.id ? this.props.champion.stats.hpperlevel: null}</td> 
+
+                        </tr>
+                        <tr>
+                            <td>Health Regen</td> 
+                            <td>{this.props.champion && this.props.champion.id ? this.props.champion.stats.hpregen: null}</td> 
+                            <td>+{this.props.champion && this.props.champion.id ? this.props.champion.stats.hpregenperlevel: null}</td> 
+                        </tr>
+                        <tr>
+                            <td>Armor</td> 
+                            <td>{this.props.champion && this.props.champion.id ? this.props.champion.stats.armor: null}</td> 
+                            <td>+{this.props.champion && this.props.champion.id ? this.props.champion.stats.armorperlevel: null}</td> 
+                        </tr>
+                        <tr>
+                            <td>Attack Damage</td> 
+                            <td>{this.props.champion && this.props.champion.id ? this.props.champion.stats.attackdamage: null}</td> 
+                            <td>+{this.props.champion && this.props.champion.id ? this.props.champion.stats.attackdamageperlevel: null}</td> 
+                        </tr>
+                        <tr>
+                            <td>Attack Speed</td> 
+                            <td>{this.props.champion && this.props.champion.id ? this.props.champion.stats.attackspeed: null}</td> 
+                            <td>+{this.props.champion && this.props.champion.id ? this.props.champion.stats.attackspeedperlevel: null}</td> 
+                        </tr>
+                    </table>
                     </div>
 
                 </div>

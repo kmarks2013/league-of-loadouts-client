@@ -270,3 +270,8 @@ code {
   margin: 8px 0;
   box-sizing: border-box;
 } 
+
+.base-stats{
+  width: 50%;
+  text-align: left;
+}
