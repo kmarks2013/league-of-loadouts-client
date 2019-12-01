@@ -275,3 +275,8 @@ code {
   width: 50%;
   text-align: left;
 }
+
+.profile-info{
+  display: block;
+  width:100%
+}
