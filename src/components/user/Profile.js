@@ -27,7 +27,7 @@ export class Profile extends Component {
         if (this.props.loggedInUser && this.props.loggedInUser.id === parseInt(localStorage.id)){
             return (
                 <>
-                <NavLink to={`/user/${this.props.user.username}/edit`}>
+                <NavLink to={`/user/${this.props.loggedInUser.username}/edit`}>
                 <button >Edit Profile</button>
                 </NavLink>
                 <NavLink to='/'> 
@@ -39,17 +39,21 @@ export class Profile extends Component {
             return null
         }
     }
-
-    render() {
-        const {loggedInUser: {name, username, age }} = this.props
     
+    render() {
+        // debugger
+        const {loggedInUser: {name, username, age }} = this.props
+        
         return (
             <div className="content-container">
+                <div className='profile-info'>
                 <h1>Hello {username}!</h1>
                 {this.renderEditDeleteButtons()}
-                <h2>Bio</h2>
+                <h2>Bio:</h2>
                 <h4>Name: {name}</h4>
                 <h4>Age: {age}</h4>
+
+                </div>
                 
                 <h2>View Your Loadouts</h2>
                 {this.renderLoadoutTiles()}
@@ -93,7 +97,8 @@ export class Profile extends Component {
 
 const mapStateToProps = (state) => ({
     loggedInUser: state.user.user,
-    loadouts: state.user.user.loadouts
+    loadouts: state.user.user.loadouts,
+    users: state.user.users
 })
 
 const mapDispatchToProps = {

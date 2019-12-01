@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Profile } from './Profile'
+import UserTile from './UserTile'
 
 export default function UserList({users}) {
+    // {console.log(users)}
     return (
         <div>
             {users.map(user => {
-                <Profile user={user} />
-            })}
+                <UserTile user={user} />
+            )}
+            }
         </div>
     )
 }

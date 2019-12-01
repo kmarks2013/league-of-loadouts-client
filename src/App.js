@@ -34,9 +34,9 @@ export class App extends Component {
 
 renderUser = (renderProps) => {
   const slug = renderProps.match.params.slug
-  const user = this.props.user.username === slug
+  const user = this.props.users.find(user => user.username === slug)
   if (user) {
-    return <Profile />
+    return <Profile user={user} />
   }
   else {
     return loadingGif
@@ -45,7 +45,7 @@ renderUser = (renderProps) => {
 
 editUser = (renderProps) => {
   const slug = renderProps.match.params.slug
-  const user = this.props.user.username === slug
+  const user = this.props.loggedInUser.username === slug
   if (user) {
     return <EditUserForm  />
   }
@@ -129,7 +129,8 @@ const mapStateToProps = (state) => {
      champions: state.champions,
      items: state.items,
      loadouts: state.loadouts,
-     user: state.user.user,
+     loggedInUser: state.user.user,
+     users: state.user.users,
      state: state
    }
 }

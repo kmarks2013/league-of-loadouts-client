@@ -19,26 +19,32 @@ class LoadoutItemsForm extends Component {
               {/* <form onSubmit={this.handleSubmit}> */}
                     <label>Item 1 </label> 
                     <select name='item' onChange={this.handleChange}>
+                        <option> </option>
                         {this.itemsSelection()}
                     </select>
                     <label>Item 2 </label> 
                     <select name='item' onChange={this.handleChange}>
+                        <option> </option>
                         {this.itemsSelection()}
                     </select>
                     <label>Item 3 </label> 
                     <select name='item' onChange={this.handleChange}>
+                    <option> </option>
                         {this.itemsSelection()}
                     </select>
                     <label>Item 4 </label> 
                     <select name='item' onChange={this.handleChange}>
+                        <option> </option>
                         {this.itemsSelection()}
                     </select>
                     <label>Item 5 </label> 
                     <select name='item' onChange={this.handleChange}>
+                        <option> </option>
                         {this.itemsSelection()}
                     </select>
                     <label>Item 6 </label> 
                     <select name='item' onChange={this.handleChange}>
+                        <option> </option>
                         {this.itemsSelection()}
                     </select>
             </React.Fragment>

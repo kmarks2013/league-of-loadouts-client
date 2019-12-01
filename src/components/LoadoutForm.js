@@ -57,6 +57,7 @@ class LoadoutForm extends Component {
 
                         <label>Select a Champion</label>
                         <select name='champion' onChange={this.handleChange}>
+                            <option></option>
                             {this.championsSelection()}
                         </select>
                         <input type='submit'></input>
