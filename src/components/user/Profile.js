@@ -98,7 +98,6 @@ export class Profile extends Component {
 const mapStateToProps = (state) => ({
     loggedInUser: state.user.user,
     loadouts: state.user.user.loadouts,
-    users: state.user.users
 })
 
 const mapDispatchToProps = {
