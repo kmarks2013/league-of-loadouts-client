@@ -29,12 +29,11 @@ export class App extends Component {
     this.props.fetchChampionsFromDB()
     this.props.fetchItemsFromDB()
     this.props.fetchLoadoutsFromDB()
-    this.props.fetchUsersFromDB()
  }
 
 renderUser = (renderProps) => {
   const slug = renderProps.match.params.slug
-  const user = this.props.users.find(user => user.username === slug)
+  const user = this.props.user.username === slug
   if (user) {
     return <Profile user={user} />
   }
@@ -45,7 +44,7 @@ renderUser = (renderProps) => {
 
 editUser = (renderProps) => {
   const slug = renderProps.match.params.slug
-  const user = this.props.loggedInUser.username === slug
+  const user = this.props.user.username === slug
   if (user) {
     return <EditUserForm  />
   }
@@ -129,8 +128,8 @@ const mapStateToProps = (state) => {
      champions: state.champions,
      items: state.items,
      loadouts: state.loadouts,
-     loggedInUser: state.user.user,
-     users: state.user.users,
+     user: state.user.user,
+  
      state: state
    }
 }
@@ -139,7 +138,7 @@ const mapDispatchToProps = {
   fetchChampionsFromDB: championActions.fetchChampionsFromDB,
   fetchItemsFromDB: itemActions.fetchItemsFromDB,
   fetchLoadoutsFromDB: loadoutActions.fetchLoadoutsFromDB,
-  fetchUsersFromDB: userActions.fetchUsersFromDB
+ 
 
 }
 
