@@ -2,6 +2,14 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Actions from '../../Redux/loadoutActions'
 import {NavLink, withRouter} from 'react-router-dom'
+import ReactHover from 'react-hover'
+import LoadoutItems from './LoadoutItems'
+
+const optionsCursorTrueWithMargin = {
+    followCursor: true,
+    shiftX: 20,
+    shiftY: 0
+  }
 
 class LoadoutCard extends Component {
 
@@ -135,14 +143,24 @@ class LoadoutCard extends Component {
 
     renderLoadoutItems = () => {
         return this.props.loadout.items.map(item => {
-          return (
-                <div className='loadout-item-tile' onDoubleClick={ (evt) => this.itemDoubleClick(evt, item.id, this.props.loadout.id)}>
-                <img src={`/items_images/${item.image}`} alt="" />
-                <p>{item.name}</p>
-                <NavLink to={`/items/${item.name}`} >
-                <button>View Item info</button>
-                </NavLink>
-                </div>
+            return (
+                <ReactHover options={optionsCursorTrueWithMargin}>
+                    <ReactHover.Trigger type='trigger'>
+                        <div className='loadout-item-tile trigger' onDoubleClick={ (evt) => this.itemDoubleClick(evt, item.id, this.props.loadout.id)}>
+                {/* trigger goes here */}
+                        <img src={`/items_images/${item.image}`} alt="" />
+                        <p>{item.name}</p>
+                    {/* hover should go here? */}
+                        
+                        <NavLink to={`/items/${item.name}`} >
+                        <button>View Item info</button>
+                        </NavLink>
+                        </div>
+                    </ReactHover.Trigger>
+                    <ReactHover.Hover type='hover'>
+                        <LoadoutItems/>
+                    </ReactHover.Hover>
+                </ReactHover>
           )
         })
     }
