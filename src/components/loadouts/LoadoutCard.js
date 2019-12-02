@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import Actions from '../../Redux/loadoutActions'
 import {NavLink, withRouter} from 'react-router-dom'
 import ReactHover from 'react-hover'
-import LoadoutItems from './LoadoutItems'
+import LoadoutItem from './LoadoutItem'
 
 const optionsCursorTrueWithMargin = {
     followCursor: true,
@@ -146,7 +146,7 @@ class LoadoutCard extends Component {
             return (
                 <ReactHover options={optionsCursorTrueWithMargin}>
                     <ReactHover.Trigger type='trigger'>
-                        <div className='loadout-item-tile trigger' onDoubleClick={ (evt) => this.itemDoubleClick(evt, item.id, this.props.loadout.id)}>
+                        <div className='loadout-item-tile' onDoubleClick={ (evt) => this.itemDoubleClick(evt, item.id, this.props.loadout.id)}>
                 {/* trigger goes here */}
                         <img src={`/items_images/${item.image}`} alt="" />
                         <p>{item.name}</p>
@@ -158,7 +158,7 @@ class LoadoutCard extends Component {
                         </div>
                     </ReactHover.Trigger>
                     <ReactHover.Hover type='hover'>
-                        <LoadoutItems/>
+                        <LoadoutItem item={item}/>
                     </ReactHover.Hover>
                 </ReactHover>
           )
