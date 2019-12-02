@@ -54,7 +54,6 @@ const deleteLoadoutFromDB = loadoutId => dispatch => {
       method: 'DELETE'
     }).then(console.log('I deleted a laodout'))
     .then(() => {return dispatch(deleteLoadoutAction(loadoutId))});
-    // debugger
     // dispatch(deleteLoadoutAction(loadoutId))
   };
 

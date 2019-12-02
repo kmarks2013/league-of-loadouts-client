@@ -41,7 +41,6 @@ export class Profile extends Component {
     }
     
     render() {
-        // debugger
         const {loggedInUser: {name, username, age }} = this.props
         
         return (
