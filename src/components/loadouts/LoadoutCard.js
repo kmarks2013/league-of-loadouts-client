@@ -7,7 +7,7 @@ import LoadoutItem from './LoadoutItem'
 
 const optionsCursorTrueWithMargin = {
     followCursor: true,
-    shiftX: 20,
+    shiftX: 30,
     shiftY: 0
   }
 
@@ -147,11 +147,8 @@ class LoadoutCard extends Component {
                 <ReactHover options={optionsCursorTrueWithMargin}>
                     <ReactHover.Trigger type='trigger'>
                         <div className='loadout-item-tile' onDoubleClick={ (evt) => this.itemDoubleClick(evt, item.id, this.props.loadout.id)}>
-                {/* trigger goes here */}
                         <img src={`/items_images/${item.image}`} alt="" />
-                        <p>{item.name}</p>
-                    {/* hover should go here? */}
-                        
+                        <p>{item.name}</p>                        
                         <NavLink to={`/items/${item.name}`} >
                         <button>View Item info</button>
                         </NavLink>
