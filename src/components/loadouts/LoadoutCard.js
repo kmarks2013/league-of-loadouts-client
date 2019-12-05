@@ -118,7 +118,8 @@ class LoadoutCard extends Component {
         return null
     }
 
-    itemDoubleClick = (event, itemId, loadoutId) => {
+    deleteItem = (event, itemId, loadoutId) => {
+        console.log('i have been clicked', event.target, itemId, loadoutId)
         if (this.props.user.id === this.props.loadout.user_id) {
             fetch(`http://localhost:3000/loadout_items/`, {
                 method: 'DELETE',
@@ -137,7 +138,7 @@ class LoadoutCard extends Component {
     
             })
         } else 
-             return null
+             console.log('null')
     }
 
 
@@ -146,8 +147,9 @@ class LoadoutCard extends Component {
             return (
                 <ReactHover options={optionsCursorTrueWithMargin}>
                     <ReactHover.Trigger type='trigger'>
-                        <div className='loadout-item-tile' onDoubleClick={ (evt) => this.itemDoubleClick(evt, item.id, this.props.loadout.id)}>
+                        <div className='loadout-item-tile'>
                         <img src={`/items_images/${item.image}`} alt="" />
+                        {this.props.user.id? <button onClick={ (evt) => this.deleteItem(evt, item.id, this.props.loadout.id)}>x</button> : null}
                         <p>{item.name}</p>                        
                         <NavLink to={`/items/${item.name}`} >
                         <button>View Item info</button>
@@ -189,13 +191,10 @@ class LoadoutCard extends Component {
                     <div className='loadout-icon'>
                     <h1>{loadout && loadout.id ? loadout.name : null} </h1>
                     <h2>Champion</h2>
-                    {/* <img src={`./champion_tiles/${loadout.champion.name}_0.jpg`} height='100' width='100'/> */}
                     <img src={`/champion_tiles/${loadout.champion.name}_0.jpg`} alt=""></img>
                     <h3>{loadout && loadout.id ? loadout.champion.name : null}</h3>
                     <h2> Level: <button>-</button> 1 <button>+</button></h2>
-
-                    <p>{loadout && loadout.id ? loadout.user_name : null}</p>
-              
+                    <p>{loadout && loadout.id ? loadout.user_name : null}</p>              
                     </div>
                     <div className='loadout-info'>
                         <div className='loadout-all-items'>

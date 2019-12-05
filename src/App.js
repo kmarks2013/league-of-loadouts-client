@@ -5,7 +5,6 @@ import NavBar from './components/nav/NavBar';
 import championActions from './Redux/championActions'
 import itemActions from './Redux/itemActions';
 import loadoutActions from './Redux/loadoutActions';
-import userActions from './Redux/userActions';
 import { Route, Switch } from 'react-router-dom'
 import SignUpForm from './components/SignUpForm';
 import LoadoutList from './components/loadouts/LoadoutList';
