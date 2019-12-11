@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 export class LoadoutItem extends Component {
     render() {
-        console.log(this.props)
+        // console.log(this.props)
         const { item } = this.props 
         if (item && item.id ){
         return (

@@ -4,6 +4,7 @@ import Actions from '../../Redux/loadoutActions'
 import {NavLink, withRouter} from 'react-router-dom'
 import ReactHover from 'react-hover'
 import LoadoutItem from './LoadoutItem'
+import levelActions from '../../Redux/levelActions'
 
 const optionsCursorTrueWithMargin = {
     followCursor: true,
@@ -119,7 +120,7 @@ class LoadoutCard extends Component {
     }
 
     deleteItem = (event, itemId, loadoutId) => {
-        console.log('i have been clicked', event.target, itemId, loadoutId)
+        // console.log('i have been clicked', event.target, itemId, loadoutId)
         if (this.props.user.id === this.props.loadout.user_id) {
             fetch(`http://localhost:3000/loadout_items/`, {
                 method: 'DELETE',
@@ -183,8 +184,14 @@ class LoadoutCard extends Component {
         return totalCost
     }
     
+    addClick = () =>{
+        console.log('add click clicked', this.props.level)
+        this.props.addLevel()
+    }
+
     render() {
-        const {loadout} = this.props 
+        const {loadout, level, addLevel} = this.props 
+        
         return (
                 <div className='content-container'>
                     <div className='loadout-card'>
@@ -193,7 +200,7 @@ class LoadoutCard extends Component {
                     <h2>Champion</h2>
                     <img src={`/champion_tiles/${loadout.champion.name}_0.jpg`} alt=""></img>
                     <h3>{loadout && loadout.id ? loadout.champion.name : null}</h3>
-                    <h2> Level: <button>-</button> 1 <button>+</button></h2>
+                    <h2> Level: <button onClick={() => console.log(' - clicked', this.props.level)}>- </button> {level} <button onClick={this.addClick} >+</button></h2>
                     <p>{loadout && loadout.id ? loadout.user_name : null}</p>              
                     </div>
                     <div className='loadout-info'>
@@ -216,13 +223,17 @@ class LoadoutCard extends Component {
 
 const mapStateToProps = (state) => ({
    user: state.user.user,
-   items: state.items
+   items: state.items,
+   level: state.level
+
 })
 
 const mapDispatchToProps = {
     deleteLoadoutFromDB: Actions.deleteLoadoutFromDB, 
     updateLoadoutFromDB: Actions.updateLoadoutFromDB,
-    getLoadoutItems: Actions.getLoadoutItems
+    getLoadoutItems: Actions.getLoadoutItems,
+    addLevel: levelActions.addLevel,
+    subtractLevel: levelActions.subtractLevel
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LoadoutCard))
