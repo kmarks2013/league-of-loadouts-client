@@ -185,13 +185,21 @@ class LoadoutCard extends Component {
     }
     
     addClick = () =>{
-        console.log('add click clicked', this.props.level)
-        this.props.addLevel()
+        if (this.props.level < 18){
+            return this.props.addLevel()
+        } else{
+           return  null
+        }
+    }
+    subtractClick = () =>{
+        if (this.props.level > 1)
+            return this.props.subtractLevel()
+        else 
+            return null
     }
 
     render() {
-        const {loadout, level, addLevel} = this.props 
-        
+        const {loadout, level} = this.props 
         return (
                 <div className='content-container'>
                     <div className='loadout-card'>
@@ -200,7 +208,7 @@ class LoadoutCard extends Component {
                     <h2>Champion</h2>
                     <img src={`/champion_tiles/${loadout.champion.name}_0.jpg`} alt=""></img>
                     <h3>{loadout && loadout.id ? loadout.champion.name : null}</h3>
-                    <h2> Level: <button onClick={() => console.log(' - clicked', this.props.level)}>- </button> {level} <button onClick={this.addClick} >+</button></h2>
+                    <h2> Level: <button onClick={this.subtractClick}>- </button> {level} <button onClick={this.addClick} >+</button></h2>
                     <p>{loadout && loadout.id ? loadout.user_name : null}</p>              
                     </div>
                     <div className='loadout-info'>
