@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 export class LoadoutItem extends Component {
     render() {
-        console.log(this.props)
+        // console.log(this.props)
         const { item } = this.props 
         if (item && item.id ){
         return (
@@ -13,7 +13,7 @@ export class LoadoutItem extends Component {
             </div>
             <div className='item-info'>
                 <h3>ItemDescription</h3>
-                <p>{item.description}</p>
+                {/* <p>{item.description}</p> */}
                 <p>{item.plaintext}</p>
                 <h3>Cost</h3>
                 <p>{item.cost}</p>

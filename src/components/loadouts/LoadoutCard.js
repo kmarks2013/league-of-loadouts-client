@@ -4,10 +4,11 @@ import Actions from '../../Redux/loadoutActions'
 import {NavLink, withRouter} from 'react-router-dom'
 import ReactHover from 'react-hover'
 import LoadoutItem from './LoadoutItem'
+import levelActions from '../../Redux/levelActions'
 
 const optionsCursorTrueWithMargin = {
     followCursor: true,
-    shiftX: 20,
+    shiftX: 30,
     shiftY: 0
   }
 
@@ -118,7 +119,8 @@ class LoadoutCard extends Component {
         return null
     }
 
-    itemDoubleClick = (event, itemId, loadoutId) => {
+    deleteItem = (event, itemId, loadoutId) => {
+        // console.log('i have been clicked', event.target, itemId, loadoutId)
         if (this.props.user.id === this.props.loadout.user_id) {
             fetch(`http://localhost:3000/loadout_items/`, {
                 method: 'DELETE',
@@ -137,7 +139,7 @@ class LoadoutCard extends Component {
     
             })
         } else 
-             return null
+             console.log('null')
     }
 
 
@@ -146,12 +148,10 @@ class LoadoutCard extends Component {
             return (
                 <ReactHover options={optionsCursorTrueWithMargin}>
                     <ReactHover.Trigger type='trigger'>
-                        <div className='loadout-item-tile' onDoubleClick={ (evt) => this.itemDoubleClick(evt, item.id, this.props.loadout.id)}>
-                {/* trigger goes here */}
+                        <div className='loadout-item-tile'>
                         <img src={`/items_images/${item.image}`} alt="" />
-                        <p>{item.name}</p>
-                    {/* hover should go here? */}
-                        
+                        {this.props.user.id? <button onClick={ (evt) => this.deleteItem(evt, item.id, this.props.loadout.id)}>x</button> : null}
+                        <p>{item.name}</p>                        
                         <NavLink to={`/items/${item.name}`} >
                         <button>View Item info</button>
                         </NavLink>
@@ -184,21 +184,24 @@ class LoadoutCard extends Component {
         return totalCost
     }
     
+    addClick = () =>{
+        console.log('add click clicked', this.props.level)
+        this.props.addLevel()
+    }
+
     render() {
-        const {loadout} = this.props 
+        const {loadout, level, addLevel} = this.props 
+        
         return (
                 <div className='content-container'>
                     <div className='loadout-card'>
                     <div className='loadout-icon'>
                     <h1>{loadout && loadout.id ? loadout.name : null} </h1>
                     <h2>Champion</h2>
-                    {/* <img src={`./champion_tiles/${loadout.champion.name}_0.jpg`} height='100' width='100'/> */}
                     <img src={`/champion_tiles/${loadout.champion.name}_0.jpg`} alt=""></img>
                     <h3>{loadout && loadout.id ? loadout.champion.name : null}</h3>
-                    <h2> Level: <button>-</button> 1 <button>+</button></h2>
-
-                    <p>{loadout && loadout.id ? loadout.user_name : null}</p>
-              
+                    <h2> Level: <button onClick={() => console.log(' - clicked', this.props.level)}>- </button> {level} <button onClick={this.addClick} >+</button></h2>
+                    <p>{loadout && loadout.id ? loadout.user_name : null}</p>              
                     </div>
                     <div className='loadout-info'>
                         <div className='loadout-all-items'>
@@ -220,13 +223,17 @@ class LoadoutCard extends Component {
 
 const mapStateToProps = (state) => ({
    user: state.user.user,
-   items: state.items
+   items: state.items,
+   level: state.level
+
 })
 
 const mapDispatchToProps = {
     deleteLoadoutFromDB: Actions.deleteLoadoutFromDB, 
     updateLoadoutFromDB: Actions.updateLoadoutFromDB,
-    getLoadoutItems: Actions.getLoadoutItems
+    getLoadoutItems: Actions.getLoadoutItems,
+    addLevel: levelActions.addLevel,
+    subtractLevel: levelActions.subtractLevel
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LoadoutCard))

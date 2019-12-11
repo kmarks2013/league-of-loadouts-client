@@ -3,7 +3,7 @@
 export default (state = [], { type, payload }) => {
     switch (type) {
     case "GET_LOADOUTS":
-        console.log(state)
+        // console.log(state)
         return payload
     case "CREATE_LOADOUT":
         console.log(state, payload)
