@@ -53,9 +53,34 @@ import { connect } from 'react-redux'
                                 <td>+{this.props.champion && this.props.champion.id ? this.props.champion.stats.armorperlevel: null}</td> 
                             </tr>
                             <tr>
+                                <td>Spell Block</td> 
+                                <td>{this.props.champion && this.props.champion.id ? this.props.champion.stats.spellblock: null}</td> 
+                                <td>+{this.props.champion && this.props.champion.id ? this.props.champion.stats.spellblockperlevel: null}</td> 
+                            </tr>
+                            <tr>
+                                <td>Movement Speed</td> 
+                                <td>{this.props.champion && this.props.champion.id ? this.props.champion.stats.movespeed: null}</td> 
+                                <td>+{this.props.champion && this.props.champion.id ? 0 : null}</td> 
+                            </tr>
+                            <tr>
+                                <td>Mana</td> 
+                                <td>{this.props.champion && this.props.champion.id ? this.props.champion.stats.mp: null}</td> 
+                                <td>+{this.props.champion && this.props.champion.id ? this.props.champion.stats.mpperlevel: null}</td> 
+                            </tr>
+                            <tr>
+                                <td>Attack Range</td> 
+                                <td>{this.props.champion && this.props.champion.id ? this.props.champion.stats.attackrange: null}</td> 
+                                <td>+{this.props.champion && this.props.champion.id ? 0 : null}</td> 
+                            </tr>
+                            <tr>
                                 <td>Attack Damage</td> 
                                 <td>{this.props.champion && this.props.champion.id ? this.props.champion.stats.attackdamage: null}</td> 
                                 <td>+{this.props.champion && this.props.champion.id ? this.props.champion.stats.attackdamageperlevel: null}</td> 
+                            </tr>
+                            <tr>
+                                <td>Crit Chance</td> 
+                                <td>{this.props.champion && this.props.champion.id ? `${this.props.champion.stats.crit}%`: null}</td> 
+                                <td>+{this.props.champion && this.props.champion.id ? this.props.champion.stats.critperlevel : null}</td> 
                             </tr>
                             <tr>
                                 <td>Attack Speed</td> 
