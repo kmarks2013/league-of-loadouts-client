@@ -185,13 +185,21 @@ class LoadoutCard extends Component {
     }
     
     addClick = () =>{
-        console.log('add click clicked', this.props.level)
-        this.props.addLevel()
+        if (this.props.level < 18){
+            return this.props.addLevel()
+        } else{
+           return  null
+        }
+    }
+    subtractClick = () =>{
+        if (this.props.level > 1)
+            return this.props.subtractLevel()
+        else 
+            return null
     }
 
     render() {
-        const {loadout, level, addLevel} = this.props 
-        
+        const {loadout, level} = this.props 
         return (
                 <div className='content-container'>
                     <div className='loadout-card'>
@@ -200,8 +208,44 @@ class LoadoutCard extends Component {
                     <h2>Champion</h2>
                     <img src={`/champion_tiles/${loadout.champion.name}_0.jpg`} alt=""></img>
                     <h3>{loadout && loadout.id ? loadout.champion.name : null}</h3>
-                    <h2> Level: <button onClick={() => console.log(' - clicked', this.props.level)}>- </button> {level} <button onClick={this.addClick} >+</button></h2>
-                    <p>{loadout && loadout.id ? loadout.user_name : null}</p>              
+                    <h2> Level: <button onClick={this.subtractClick}>- </button> {level} <button onClick={this.addClick} >+</button></h2>
+                    <p>{loadout && loadout.id ? loadout.user_name : null}</p>
+                    <h3>Base Stats</h3>
+                    <table className='base-stats'>
+                        <tbody>
+                            <tr>
+                                <th>Name</th>
+                                <th>Base Value</th>
+                                <th>Increase Per Level</th>
+                            </tr>
+                            <tr>
+                                <td>Health</td>
+                                <td>{loadout.champion && loadout.champion.id ? loadout.champion.stats.hp + (loadout.champion.stats.hpperlevel * (level-1)): null}</td> 
+                                <td>+{loadout.champion && loadout.champion.id ? loadout.champion.stats.hpperlevel: null}</td> 
+
+                            </tr>
+                            <tr>
+                                <td>Health Regen</td> 
+                                <td>{loadout.champion && loadout.champion.id ? loadout.champion.stats.hpregen + (loadout.champion.stats.hpregen + (level - 1)) :  null}</td> 
+                                <td>+{loadout.champion && loadout.champion.id ? loadout.champion.stats.hpregenperlevel: null}</td> 
+                            </tr>
+                            <tr>
+                                <td>Armor</td> 
+                                <td>{loadout.champion && loadout.champion.id ? loadout.champion.stats.armor + (loadout.champion.stats.armorperlevel * (level -1)): null}</td> 
+                                <td>+{loadout.champion && loadout.champion.id ? loadout.champion.stats.armorperlevel: null}</td> 
+                            </tr>
+                            <tr>
+                                <td>Attack Damage</td> 
+                                <td>{loadout.champion && loadout.champion.id ? loadout.champion.stats.attackdamage + (loadout.champion.stats.attackdamageperlevel * (level -1)): null}</td> 
+                                <td>+{loadout.champion && loadout.champion.id ? loadout.champion.stats.attackdamageperlevel: null}</td> 
+                            </tr>
+                            <tr>
+                                <td>Attack Speed</td> 
+                                <td>{loadout.champion && loadout.champion.id ? loadout.champion.stats.attackspeed: null} </td> 
+                                <td>+{loadout.champion && loadout.champion.id ? loadout.champion.stats.attackspeedperlevel: null}</td> 
+                            </tr>
+                        </tbody>
+                    </table>              
                     </div>
                     <div className='loadout-info'>
                         <div className='loadout-all-items'>
