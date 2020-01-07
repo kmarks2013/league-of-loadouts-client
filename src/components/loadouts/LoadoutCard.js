@@ -13,7 +13,6 @@ const optionsCursorTrueWithMargin = {
   }
 
 class LoadoutCard extends Component {
-
     state = {
         name: this.props.loadout.name,
         editMode: false,
@@ -222,7 +221,6 @@ class LoadoutCard extends Component {
                                 <td>Health</td>
                                 <td>{loadout.champion && loadout.champion.id ? loadout.champion.stats.hp + (loadout.champion.stats.hpperlevel * (level - 1)): null}</td> 
                                 <td>+{loadout.champion && loadout.champion.id ? loadout.champion.stats.hpperlevel: null}</td> 
-
                             </tr>
                             <tr>
                                 <td>Health Regen</td> 
