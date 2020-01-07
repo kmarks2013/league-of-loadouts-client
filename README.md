@@ -50,6 +50,14 @@ Be sure to visit the repo for the [backend](https://github.com/kmarks2013/league
 4. Redux-Thunk
 5. CSS
 
+### Future Updates
+
+1. User Profiles
+2. Copy feature for other users loadouts
+3. Loadout descriptiosn and playstyle instructions.
+4. Champion Abilities
+5. Items impact on player stats.
+
 ### Special Thanks
 
 I would like to thank Riot Games for allwoing me access to their api to create this app. Without them this applicaiton would not exist. 
