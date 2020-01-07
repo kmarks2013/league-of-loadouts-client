@@ -85,7 +85,7 @@ import { connect } from 'react-redux'
                             <tr>
                                 <td>Attack Speed</td> 
                                 <td>{this.props.champion && this.props.champion.id ? this.props.champion.stats.attackspeed: null}</td> 
-                                <td>+{this.props.champion && this.props.champion.id ? this.props.champion.stats.attackspeedperlevel: null}</td> 
+                                <td>+{this.props.champion && this.props.champion.id ? this.props.champion.stats.attackspeedperlevel: null}</td>
                             </tr>
                         </tbody>
                     </table>
