@@ -17,7 +17,6 @@ const clearUserAction = () => ({
 const allUsersAction = users => ({
     type: "ALL_USERS",
     payload: users
-
 })
 
 const persistUserFromAPI = () => dispatch => {

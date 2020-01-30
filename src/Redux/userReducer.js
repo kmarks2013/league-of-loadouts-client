@@ -1,6 +1,4 @@
-
-
-export default (state = { user: {}, errors: []}, { type, payload }) => {
+export default (state = { user: {}, errors: [], allUsers:[]}, { type, payload }) => {
     switch (type) {
         case 'SET_USER':  
           return {...state, user: payload, errors:[]};
