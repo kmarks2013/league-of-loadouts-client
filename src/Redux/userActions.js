@@ -14,12 +14,11 @@ const clearUserAction = () => ({
     type: "CLEAR_USER"
 })
 
-const allUsersAction = usersarr => ({
+const allUsersAction = users => ({
     type: "ALL_USERS",
-    payload: usersarr
+    payload: users
 
 })
-
 
 const persistUserFromAPI = () => dispatch => {
     fetch('http://localhost:3000/persist', {
@@ -100,6 +99,14 @@ const deleteUserFromDB = (userId) => dispatch => {
     .then( () => dispatch(clearUserAction())) 
     localStorage.clear() 
 
+}
+
+const fetchAllUsers = () => dispatch => {
+    fetch('http://localhost:3000/users')
+    .then(res => res.json())
+    .then( usersarr => {
+        console.log(usersarr)
+    })
 }
  
 export default {
