@@ -130,7 +130,7 @@ const mapStateToProps = (state) => {
      items: state.items,
      loadouts: state.loadouts,
      user: state.user.user,
-  
+     allUsers: state.allUsers,
      state: state
    }
 }
