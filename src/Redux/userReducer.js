@@ -8,8 +8,8 @@ export default (state = { user: {}, errors: [], allUsers:[]}, { type, payload })
         case 'CLEAR_USER':
           return {...state, user: {}};
         case 'ALL_USERS':
-          console.log(payload);
-          return {...state}
+          // console.log(payload)
+          return {...state, allUsers:payload}
         default:
           return state;
       }
