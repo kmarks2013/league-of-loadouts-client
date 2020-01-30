@@ -7,6 +7,7 @@ const fetchAllUsers = () => dispatch => {
     fetch('http://localhost:3000/users')
     .then(res => res.json())
     .then( usersarr => {
+        // console.log(usersarr)
        dispatch(allUsersAction(usersarr))
     })
 }
