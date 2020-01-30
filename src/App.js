@@ -29,7 +29,7 @@ export class App extends Component {
     this.props.fetchChampionsFromDB()
     this.props.fetchItemsFromDB()
     this.props.fetchLoadoutsFromDB()
-    this.props.fetchAllUsers()
+    // this.props.fetchAllUsers()
  }
 
 renderUser = (renderProps) => {
@@ -139,7 +139,7 @@ const mapDispatchToProps = {
   fetchChampionsFromDB: championActions.fetchChampionsFromDB,
   fetchItemsFromDB: itemActions.fetchItemsFromDB,
   fetchLoadoutsFromDB: loadoutActions.fetchLoadoutsFromDB,
-  fetchAllUsers: userActions.fetchAllUsers
+  // fetchAllUsers: userActions.fetchAllUsers
 
 }
 
