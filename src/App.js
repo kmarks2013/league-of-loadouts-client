@@ -18,7 +18,7 @@ import ChampionCard from './components/champions/ChampionCard';
 import ItemCard from './components/items/ItemCard';
 import Profile from './components/user/Profile';
 import EditUserForm from './components/user/EditUserForm';
-import userActions from './Redux/userActions';
+import allUsersActions from './Redux/allUsersActions';
 
 
 const loadingGif = <div> <img src='/load01.gif' alt=""/> </div>
@@ -29,7 +29,7 @@ export class App extends Component {
     this.props.fetchChampionsFromDB()
     this.props.fetchItemsFromDB()
     this.props.fetchLoadoutsFromDB()
-    // this.props.fetchAllUsers()
+    this.props.fetchAllUsers()
  }
 
 renderUser = (renderProps) => {
@@ -139,8 +139,7 @@ const mapDispatchToProps = {
   fetchChampionsFromDB: championActions.fetchChampionsFromDB,
   fetchItemsFromDB: itemActions.fetchItemsFromDB,
   fetchLoadoutsFromDB: loadoutActions.fetchLoadoutsFromDB,
-  // fetchAllUsers: userActions.fetchAllUsers
-
+  fetchAllUsers: allUsersActions.fetchAllUsers
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
