@@ -1,5 +1,3 @@
-
-
 const setUserAction = userObj => ({
     type: 'SET_USER',
     payload: userObj
@@ -114,6 +112,5 @@ export default {
     logoutUser,
     createNewUserToDB,
     updateUserInDB,
-    deleteUserFromDB,
-    fetchAllUsers
+    deleteUserFromDB
 }
