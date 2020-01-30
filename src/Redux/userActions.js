@@ -14,6 +14,13 @@ const clearUserAction = () => ({
     type: "CLEAR_USER"
 })
 
+const allUsersAction = usersarr => ({
+    type: "ALL_USERS",
+    payload: usersarr
+
+})
+
+
 const persistUserFromAPI = () => dispatch => {
     fetch('http://localhost:3000/persist', {
       headers: {
