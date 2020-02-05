@@ -1,5 +1,3 @@
-
-
 const setUserAction = userObj => ({
     type: 'SET_USER',
     payload: userObj
@@ -13,6 +11,11 @@ const setErrorAction = errors => ({
 const clearUserAction = () => ({
     type: "CLEAR_USER"
 })
+
+// const allUsersAction = users => ({
+//     type: "ALL_USERS",
+//     payload: users
+// })
 
 const persistUserFromAPI = () => dispatch => {
     fetch('http://localhost:3000/persist', {
@@ -94,6 +97,14 @@ const deleteUserFromDB = (userId) => dispatch => {
     localStorage.clear() 
 
 }
+
+// const fetchAllUsers = () => dispatch => {
+//     fetch('http://localhost:3000/users')
+//     .then(res => res.json())
+//     .then( usersarr => {
+//        dispatch(allUsersAction(usersarr))
+//     })
+// }
  
 export default {
     persistUserFromAPI,
@@ -101,5 +112,5 @@ export default {
     logoutUser,
     createNewUserToDB,
     updateUserInDB,
-    deleteUserFromDB,
+    deleteUserFromDB
 }
