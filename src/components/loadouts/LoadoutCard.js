@@ -28,6 +28,8 @@ class LoadoutCard extends Component {
         item4: 1,
         item5: 1,
         item6: 1,
+        xCoord: 0, 
+        yCoord: 0
     }
 
     newLoadoutItemPost = (formData) => {
@@ -144,7 +146,18 @@ class LoadoutCard extends Component {
         } else 
             console.log('null')
     }
+    
+    // attemptiong to get hover to flip between left and right side of cursor
+    // mouseMove = (evt) => {
+    //     this.setState({
+    //         xCoord: evt.screenX,
+    //         yCoord: evt.screenY
+    //     })
+    // }
 
+    // hoverPlacement = () => {
+    //     this.state.x > 1000 ? optionsCursorTrueWithMarginLeft() : optionsCursorTrueWithMarginRight()
+    // }
 
     renderLoadoutItems = () => {
         return this.props.loadout.items.map(item => {
@@ -201,10 +214,13 @@ class LoadoutCard extends Component {
             return null
     }
 
+
     render() {
+        console.log("x", this.state.xCoord) 
+        console.log("y",this.state.yCoord)
         const {loadout, level} = this.props 
         return (
-                <div className='content-container'>
+                <div onMouseMove={this.mouseMove} className='content-container'>
                     <div className='loadout-card'>
                     <div className='loadout-icon'>
                     <h1>{loadout && loadout.id ? loadout.name : null} </h1>
