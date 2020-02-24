@@ -39,6 +39,7 @@ renderUser = (renderProps) => {
     return <Profile user={user} />
   }
   else {
+    console.log( "user", user.id)
     return loadingGif
   }
 }
