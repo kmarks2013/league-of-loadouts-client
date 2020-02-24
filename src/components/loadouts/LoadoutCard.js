@@ -6,11 +6,17 @@ import ReactHover from 'react-hover'
 import LoadoutItem from './LoadoutItem'
 import levelActions from '../../Redux/levelActions'
 
-const optionsCursorTrueWithMargin = {
+// const optionsCursorTrueWithMarginRight = {
+//     followCursor: true,
+//     shiftX: 30,
+//     shiftY: 0
+//   }
+
+const optionsCursorTrueWithMarginLeft = {
     followCursor: true,
-    shiftX: 30,
+    shiftX: -530,
     shiftY: 0
-  }
+}
 
 class LoadoutCard extends Component {
     state = {
@@ -22,6 +28,8 @@ class LoadoutCard extends Component {
         item4: 1,
         item5: 1,
         item6: 1,
+        // xCoord: 0, 
+        // yCoord: 0
     }
 
     newLoadoutItemPost = (formData) => {
@@ -129,23 +137,32 @@ class LoadoutCard extends Component {
                 },
                 body: JSON.stringify({
                     item_id: itemId,
-                    loadout_id: loadoutId
-                    
+                    loadout_id: loadoutId        
                 })
             }).then(res => res.json())
             .then( loadoutItem => {
                 this.props.getLoadoutItems(loadoutItem)
-    
             })
         } else 
-             console.log('null')
+            console.log('null')
     }
+    
+    // attemptiong to get hover to flip between left and right side of cursor
+    // mouseMove = (evt) => {
+    //     this.setState({
+    //         xCoord: evt.screenX,
+    //         yCoord: evt.screenY
+    //     })
+    // }
 
+    // hoverPlacement = () => {
+    //     this.state.x > 1000 ? optionsCursorTrueWithMarginLeft() : optionsCursorTrueWithMarginRight()
+    // }
 
     renderLoadoutItems = () => {
         return this.props.loadout.items.map(item => {
             return (
-                <ReactHover options={optionsCursorTrueWithMargin}>
+                <ReactHover options={optionsCursorTrueWithMarginLeft}>
                     <ReactHover.Trigger type='trigger'>
                         <div className='loadout-item-tile'>
                         <img src={`/items_images/${item.image}`} alt="" />
@@ -197,10 +214,13 @@ class LoadoutCard extends Component {
             return null
     }
 
+
     render() {
+        // console.log("x", this.state.xCoord) 
+        // console.log("y",this.state.yCoord)
         const {loadout, level} = this.props 
         return (
-                <div className='content-container'>
+                <div /*onMouseMove={this.mouseMove}*/ className='content-container'>
                     <div className='loadout-card'>
                     <div className='loadout-icon'>
                     <h1>{loadout && loadout.id ? loadout.name : null} </h1>
