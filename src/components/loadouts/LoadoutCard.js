@@ -6,11 +6,17 @@ import ReactHover from 'react-hover'
 import LoadoutItem from './LoadoutItem'
 import levelActions from '../../Redux/levelActions'
 
-const optionsCursorTrueWithMargin = {
+// const optionsCursorTrueWithMarginRight = {
+//     followCursor: true,
+//     shiftX: 30,
+//     shiftY: 0
+//   }
+
+const optionsCursorTrueWithMarginLeft = {
     followCursor: true,
-    shiftX: 30,
+    shiftX: -530,
     shiftY: 0
-  }
+}
 
 class LoadoutCard extends Component {
     state = {
@@ -143,7 +149,7 @@ class LoadoutCard extends Component {
     renderLoadoutItems = () => {
         return this.props.loadout.items.map(item => {
             return (
-                <ReactHover options={optionsCursorTrueWithMargin}>
+                <ReactHover options={optionsCursorTrueWithMarginLeft}>
                     <ReactHover.Trigger type='trigger'>
                         <div className='loadout-item-tile'>
                         <img src={`/items_images/${item.image}`} alt="" />
