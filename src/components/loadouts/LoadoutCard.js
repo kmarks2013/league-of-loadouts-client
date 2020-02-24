@@ -129,16 +129,14 @@ class LoadoutCard extends Component {
                 },
                 body: JSON.stringify({
                     item_id: itemId,
-                    loadout_id: loadoutId
-                    
+                    loadout_id: loadoutId        
                 })
             }).then(res => res.json())
             .then( loadoutItem => {
                 this.props.getLoadoutItems(loadoutItem)
-    
             })
         } else 
-             console.log('null')
+            console.log('null')
     }
 
 
