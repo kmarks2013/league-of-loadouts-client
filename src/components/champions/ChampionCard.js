@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import ChampionStatTable from './championCardInfo/ChampionStatTable'
 import ChampionImg from './championCardInfo/ChampionImg'
+import ChampionInfo from './championCardInfo/ChampionInfo'
 
  class ChampionCard extends Component {
     state = {
@@ -26,6 +27,7 @@ import ChampionImg from './championCardInfo/ChampionImg'
                     <ChampionImg champion={this.props.champion}/>
                     </div>
                     <div className='champion-info'>
+                    <ChampionInfo champion={this.props.champion} />
                     <h2>{this.props.champion && this.props.champion.id ? this.props.champion.name: null }, {this.props.champion && this.props.champion.id ? this.props.champion.title: null } </h2>
                     <h3>Lore</h3>
                     <p onClick={this.loreClick}>{this.renderLore()}</p>
