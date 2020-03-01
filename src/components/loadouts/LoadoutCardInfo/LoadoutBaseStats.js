@@ -1,6 +1,6 @@
 import React from 'react'
 
-function LoadoutBaseStats() {
+function LoadoutBaseStats({loadout, level}) {
     return (
             <div className='loadout-stats'>
                 <h3>Base Stats</h3>
