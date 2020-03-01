@@ -1,6 +1,6 @@
 import React from 'react'
 
-function ItemInfo() {
+function ItemInfo({item}) {
     return (
         <div className='item-icon'>
             <h2>{item.name }</h2>
