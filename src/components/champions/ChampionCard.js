@@ -28,9 +28,6 @@ import ChampionInfo from './championCardInfo/ChampionInfo'
                     </div>
                     <div className='champion-info'>
                     <ChampionInfo champion={this.props.champion} loreClick={this.loreClick} renderLore={this.renderLore} />
-                    <h2>{this.props.champion && this.props.champion.id ? this.props.champion.name: null }, {this.props.champion && this.props.champion.id ? this.props.champion.title: null } </h2>
-                    <h3>Lore</h3>
-                    <p onClick={this.loreClick}>{this.renderLore()}</p>
                     <ChampionStatTable champion={this.props.champion} />
                     </div>
                 </div>
