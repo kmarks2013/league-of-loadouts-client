@@ -6,6 +6,7 @@ import ReactHover from 'react-hover'
 import LoadoutItem from './LoadoutItem'
 import levelActions from '../../Redux/levelActions'
 import LoadoutBaseStats from './LoadoutCardInfo/LoadoutBaseStats'
+import LoadoutIcon from './LoadoutCardInfo/LoadoutIcon'
 
 
 const optionsCursorTrueWithMarginLeft = {
@@ -189,6 +190,7 @@ class LoadoutCard extends Component {
            return  null
         }
     }
+
     subtractClick = () =>{
         if (this.props.level > 1)
             return this.props.subtractLevel()
@@ -196,13 +198,13 @@ class LoadoutCard extends Component {
             return null
     }
 
-
     render() {
         const {loadout, level} = this.props 
         return (
                 <div className='content-container'>
                     <div className='loadout-card'>
-                    <div className='loadout-icon'>
+                        <LoadoutIcon loadout={loadout} level={level} addClick={this.addClick} subtractClick={this.subtractClick} />
+                    {/* <div className='loadout-icon'>
                     <h1>{loadout && loadout.id ? loadout.name : null} </h1>
                     <h2>Champion</h2>
                     <img src={`/champion_tiles/${loadout.champion.name}_0.jpg`} alt=""></img>
@@ -213,7 +215,7 @@ class LoadoutCard extends Component {
                         <button onClick={this.addClick} > + </button>
                     </h2>
                     <p>{loadout && loadout.id ? loadout.user_name : null}</p>
-                    </div>
+                    </div> */}
                         <LoadoutBaseStats loadout={loadout} level={level}/>
                     <div className='loadout-info'>
                         <div className='loadout-all-items'>
