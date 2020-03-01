@@ -7,15 +7,12 @@ class ChampionList extends Component {
         searchValue:'',
     }
 
-    
     handleSearch = (evt) => {
         console.log(evt.target.value, this.state.searchValue)
         this.setState({
             searchValue: evt.target.value
         })
     }
-
-
 
     renderCharacterTiles = () => {
         const serachedChampions = this.props.champions.filter( champion => {
