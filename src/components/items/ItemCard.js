@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ItemStats from './itemCardInfo/ItemStats'
+import ItemInfo from './itemCardInfo/ItemInfo'
 
 class ItemCard extends Component {
     
@@ -9,10 +10,7 @@ class ItemCard extends Component {
            return (
             <div className='content-container'>
                 <div className='item-card'>
-                    <div className='item-icon'>
-                        <h2>{item.name }</h2>
-                        <img src={`/items_images/${item.image}`} alt=''/>
-                    </div>
+                    <ItemInfo item={item} />
                     <ItemStats item={item} />
                 </div>
             </div>
