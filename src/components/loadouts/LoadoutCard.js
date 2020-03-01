@@ -214,7 +214,7 @@ class LoadoutCard extends Component {
                     </h2>
                     <p>{loadout && loadout.id ? loadout.user_name : null}</p>
                     </div>
-                    <LoadoutBaseStats loadout={loadout} level={level}/>
+                        <LoadoutBaseStats loadout={loadout} level={level}/>
                     <div className='loadout-info'>
                         <div className='loadout-all-items'>
                         <h2> Items</h2>
