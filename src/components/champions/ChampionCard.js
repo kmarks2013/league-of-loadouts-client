@@ -26,7 +26,6 @@ import ChampionStatTable from './championCardInfo/ChampionStatTable'
                     </div>
                     <div className='champion-info'>
                     <h2>{this.props.champion && this.props.champion.id ? this.props.champion.name: null }, {this.props.champion && this.props.champion.id ? this.props.champion.title: null } </h2>
-                    
                     <h3>Lore</h3>
                     <p onClick={this.loreClick}>{this.renderLore()}</p>
                     <ChampionStatTable champion={this.props.champion} />
