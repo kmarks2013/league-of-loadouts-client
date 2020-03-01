@@ -14,13 +14,6 @@ class ItemCard extends Component {
                         <img src={`/items_images/${item.image}`} alt=''/>
                     </div>
                     <ItemStats item={item} />
-                    {/* <div className='item-info'>
-                        <h3>ItemDescription</h3>
-                        <p>{item.description}</p>
-                        <p>{item.plaintext}</p>
-                        <h3>Cost</h3>
-                        <p>{item.cost}</p>
-                    </div> */}
                 </div>
             </div>
            )
