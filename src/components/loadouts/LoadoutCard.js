@@ -6,11 +6,6 @@ import ReactHover from 'react-hover'
 import LoadoutItem from './LoadoutItem'
 import levelActions from '../../Redux/levelActions'
 
-// const optionsCursorTrueWithMarginRight = {
-//     followCursor: true,
-//     shiftX: 30,
-//     shiftY: 0
-//   }
 
 const optionsCursorTrueWithMarginLeft = {
     followCursor: true,
@@ -28,8 +23,6 @@ class LoadoutCard extends Component {
         item4: 1,
         item5: 1,
         item6: 1,
-        // xCoord: 0, 
-        // yCoord: 0
     }
 
     newLoadoutItemPost = (formData) => {
@@ -147,18 +140,6 @@ class LoadoutCard extends Component {
             console.log('null')
     }
     
-    // attemptiong to get hover to flip between left and right side of cursor
-    // mouseMove = (evt) => {
-    //     this.setState({
-    //         xCoord: evt.screenX,
-    //         yCoord: evt.screenY
-    //     })
-    // }
-
-    // hoverPlacement = () => {
-    //     this.state.x > 1000 ? optionsCursorTrueWithMarginLeft() : optionsCursorTrueWithMarginRight()
-    // }
-
     renderLoadoutItems = () => {
         return this.props.loadout.items.map(item => {
             return (
@@ -216,11 +197,9 @@ class LoadoutCard extends Component {
 
 
     render() {
-        // console.log("x", this.state.xCoord) 
-        // console.log("y",this.state.yCoord)
         const {loadout, level} = this.props 
         return (
-                <div /*onMouseMove={this.mouseMove}*/ className='content-container'>
+                <div className='content-container'>
                     <div className='loadout-card'>
                     <div className='loadout-icon'>
                     <h1>{loadout && loadout.id ? loadout.name : null} </h1>
