@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import ChampionStatTable from './championCardInfo/ChampionStatTable'
+import ChampionImg from './championCardInfo/ChampionImg'
 
  class ChampionCard extends Component {
     state = {
@@ -22,7 +23,7 @@ import ChampionStatTable from './championCardInfo/ChampionStatTable'
             <div className='content-container'>
                 <div className='champion-card'>
                     <div className='champion-icon'>
-                    <img src={this.props.champion && this.props.champion.id ? `/champion_cards/${this.props.champion.name}_0.jpg` : null} alt={this.props.champion.name}/>
+                    <ChampionImg champion={this.props.champion}/>
                     </div>
                     <div className='champion-info'>
                     <h2>{this.props.champion && this.props.champion.id ? this.props.champion.name: null }, {this.props.champion && this.props.champion.id ? this.props.champion.title: null } </h2>
