@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import ChampionStatTable from './championCardInfo/ChampionStatTable'
 
  class ChampionCard extends Component {
     state = {
@@ -28,6 +29,7 @@ import { connect } from 'react-redux'
                     
                     <h3>Lore</h3>
                     <p onClick={this.loreClick}>{this.renderLore()}</p>
+                    <ChampionStatTable champion={this.props.champion} />
                     <h3>Base Stats</h3>
                     <table className='base-stats'>
                         <tbody>
