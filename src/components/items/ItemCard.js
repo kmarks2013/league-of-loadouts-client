@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ItemStats from './itemCardInfo/ItemStats'
 
 class ItemCard extends Component {
     
@@ -12,13 +13,14 @@ class ItemCard extends Component {
                         <h2>{item.name }</h2>
                         <img src={`/items_images/${item.image}`} alt=''/>
                     </div>
-                    <div className='item-info'>
+                    <ItemStats item={item} />
+                    {/* <div className='item-info'>
                         <h3>ItemDescription</h3>
                         <p>{item.description}</p>
                         <p>{item.plaintext}</p>
                         <h3>Cost</h3>
                         <p>{item.cost}</p>
-                    </div>
+                    </div> */}
                 </div>
             </div>
            )

@@ -1,6 +1,6 @@
 import React from 'react'
 
-function ItemStats() {
+function ItemStats({item}) {
     return (
         <div className='item-info'>
             <h3>ItemDescription</h3>
