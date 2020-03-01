@@ -208,6 +208,8 @@ class LoadoutCard extends Component {
                     <h3>{loadout && loadout.id ? loadout.champion.name : null}</h3>
                     <h2> Level: <button onClick={this.subtractClick}>- </button> {level} <button onClick={this.addClick} >+</button></h2>
                     <p>{loadout && loadout.id ? loadout.user_name : null}</p>
+                    </div>
+                    <div className='loadout-stats'>
                     <h3>Base Stats</h3>
                     <table className='base-stats'>
                         <tbody>
@@ -218,7 +220,7 @@ class LoadoutCard extends Component {
                             </tr>
                             <tr>
                                 <td>Health</td>
-                                <td>{loadout.champion && loadout.champion.id ? loadout.champion.stats.hp + (loadout.champion.stats.hpperlevel * (level - 1)): null}</td> 
+                                <td>{loadout.champion && loadout.champion.id ? loadout.champion.stats.hp + (loadout.champion.stats.hpperlevel * (level - 1)): null}</td>
                                 <td>+{loadout.champion && loadout.champion.id ? loadout.champion.stats.hpperlevel: null}</td> 
                             </tr>
                             <tr>
@@ -238,18 +240,16 @@ class LoadoutCard extends Component {
                             </tr>
                             <tr>
                                 <td>Movement Speed</td> 
-                                <td>{loadout.champion && loadout.champion.id ? loadout.champion.stats.movespeed : null}</td> 
-                                {/* <td>+{loadout.champion && loadout.champion.id ? loadout.champion.stats.spellblockperlevel: null}</td>  */}
+                                <td>{loadout.champion && loadout.champion.id ? loadout.champion.stats.movespeed : null}</td>
                             </tr>
                             <tr>
-                                <td>Mana</td> 
-                                <td>{loadout.champion && loadout.champion.id ? loadout.champion.stats.mp + (loadout.champion.stats.mpperlevel * (level - 1)): null}</td> 
-                                <td>+{loadout.champion && loadout.champion.id ? loadout.champion.stats.mpperlevel: null}</td> 
+                                <td>Mana</td>
+                                <td>{loadout.champion && loadout.champion.id ? loadout.champion.stats.mp + (loadout.champion.stats.mpperlevel * (level - 1)): null}</td>
+                                <td>+{loadout.champion && loadout.champion.id ? loadout.champion.stats.mpperlevel: null}</td>
                             </tr>
                             <tr>
-                                <td>Attack Range</td> 
-                                <td>{loadout.champion && loadout.champion.id ? loadout.champion.stats.attackrange : null}</td> 
-                                {/* <td>+{loadout.champion && loadout.champion.id ? loadout.champion.stats.mpperlevel: null}</td>  */}
+                                <td>Attack Range</td>
+                                <td>{loadout.champion && loadout.champion.id ? loadout.champion.stats.attackrange : null}</td>
                             </tr>
                             <tr>
                                 <td>Attack Damage</td> 
