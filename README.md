@@ -27,12 +27,7 @@ To see more information about the api please see below:
 
 ### Demo
 
-- to be added.
-
-### Screenshots
-
-- to be added.
-
+[League of Loadouts Demo](https://youtu.be/FIUhRvYNhzo)
 
 ### Installation
 
