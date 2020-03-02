@@ -5,12 +5,9 @@ import {NavLink, withRouter} from 'react-router-dom'
 import ReactHover from 'react-hover'
 import LoadoutItem from './LoadoutItem'
 import levelActions from '../../Redux/levelActions'
+import LoadoutBaseStats from './LoadoutCardInfo/LoadoutBaseStats'
+import LoadoutIcon from './LoadoutCardInfo/LoadoutIcon'
 
-// const optionsCursorTrueWithMarginRight = {
-//     followCursor: true,
-//     shiftX: 30,
-//     shiftY: 0
-//   }
 
 const optionsCursorTrueWithMarginLeft = {
     followCursor: true,
@@ -28,8 +25,6 @@ class LoadoutCard extends Component {
         item4: 1,
         item5: 1,
         item6: 1,
-        // xCoord: 0, 
-        // yCoord: 0
     }
 
     newLoadoutItemPost = (formData) => {
@@ -147,18 +142,6 @@ class LoadoutCard extends Component {
             console.log('null')
     }
     
-    // attemptiong to get hover to flip between left and right side of cursor
-    // mouseMove = (evt) => {
-    //     this.setState({
-    //         xCoord: evt.screenX,
-    //         yCoord: evt.screenY
-    //     })
-    // }
-
-    // hoverPlacement = () => {
-    //     this.state.x > 1000 ? optionsCursorTrueWithMarginLeft() : optionsCursorTrueWithMarginRight()
-    // }
-
     renderLoadoutItems = () => {
         return this.props.loadout.items.map(item => {
             return (
@@ -207,6 +190,7 @@ class LoadoutCard extends Component {
            return  null
         }
     }
+
     subtractClick = () =>{
         if (this.props.level > 1)
             return this.props.subtractLevel()
@@ -214,82 +198,13 @@ class LoadoutCard extends Component {
             return null
     }
 
-
     render() {
-        // console.log("x", this.state.xCoord) 
-        // console.log("y",this.state.yCoord)
         const {loadout, level} = this.props 
         return (
-                <div /*onMouseMove={this.mouseMove}*/ className='content-container'>
+                <div className='content-container'>
                     <div className='loadout-card'>
-                    <div className='loadout-icon'>
-                    <h1>{loadout && loadout.id ? loadout.name : null} </h1>
-                    <h2>Champion</h2>
-                    <img src={`/champion_tiles/${loadout.champion.name}_0.jpg`} alt=""></img>
-                    <h3>{loadout && loadout.id ? loadout.champion.name : null}</h3>
-                    <h2> Level: <button onClick={this.subtractClick}>- </button> {level} <button onClick={this.addClick} >+</button></h2>
-                    <p>{loadout && loadout.id ? loadout.user_name : null}</p>
-                    <h3>Base Stats</h3>
-                    <table className='base-stats'>
-                        <tbody>
-                            <tr>
-                                <th>Name</th>
-                                <th>Base Value</th>
-                                <th>Increase Per Level</th>
-                            </tr>
-                            <tr>
-                                <td>Health</td>
-                                <td>{loadout.champion && loadout.champion.id ? loadout.champion.stats.hp + (loadout.champion.stats.hpperlevel * (level - 1)): null}</td> 
-                                <td>+{loadout.champion && loadout.champion.id ? loadout.champion.stats.hpperlevel: null}</td> 
-                            </tr>
-                            <tr>
-                                <td>Health Regen</td> 
-                                <td>{loadout.champion && loadout.champion.id ? loadout.champion.stats.hpregen + (loadout.champion.stats.hpregen + (level - 1)) :  null}</td> 
-                                <td>+{loadout.champion && loadout.champion.id ? loadout.champion.stats.hpregenperlevel: null}</td> 
-                            </tr>
-                            <tr>
-                                <td>Armor</td> 
-                                <td>{loadout.champion && loadout.champion.id ? loadout.champion.stats.armor + (loadout.champion.stats.armorperlevel * (level - 1)): null}</td> 
-                                <td>+{loadout.champion && loadout.champion.id ? loadout.champion.stats.armorperlevel: null}</td> 
-                            </tr>
-                            <tr>
-                                <td>Spell Block</td> 
-                                <td>{loadout.champion && loadout.champion.id ? loadout.champion.stats.spellblock + (loadout.champion.stats.spellblockperlevel * (level - 1)): null}</td> 
-                                <td>+{loadout.champion && loadout.champion.id ? loadout.champion.stats.spellblockperlevel: null}</td> 
-                            </tr>
-                            <tr>
-                                <td>Movement Speed</td> 
-                                <td>{loadout.champion && loadout.champion.id ? loadout.champion.stats.movespeed : null}</td> 
-                                {/* <td>+{loadout.champion && loadout.champion.id ? loadout.champion.stats.spellblockperlevel: null}</td>  */}
-                            </tr>
-                            <tr>
-                                <td>Mana</td> 
-                                <td>{loadout.champion && loadout.champion.id ? loadout.champion.stats.mp + (loadout.champion.stats.mpperlevel * (level - 1)): null}</td> 
-                                <td>+{loadout.champion && loadout.champion.id ? loadout.champion.stats.mpperlevel: null}</td> 
-                            </tr>
-                            <tr>
-                                <td>Attack Range</td> 
-                                <td>{loadout.champion && loadout.champion.id ? loadout.champion.stats.attackrange : null}</td> 
-                                {/* <td>+{loadout.champion && loadout.champion.id ? loadout.champion.stats.mpperlevel: null}</td>  */}
-                            </tr>
-                            <tr>
-                                <td>Attack Damage</td> 
-                                <td>{loadout.champion && loadout.champion.id ? loadout.champion.stats.attackdamage + (loadout.champion.stats.attackdamageperlevel * (level - 1)): null}</td> 
-                                <td>+{loadout.champion && loadout.champion.id ? loadout.champion.stats.attackdamageperlevel: null}</td> 
-                            </tr>
-                            <tr>
-                                <td>Crit Chance</td> 
-                                <td>{loadout.champion && loadout.champion.id ? `${loadout.champion.stats.crit + (loadout.champion.stats.critperlevel * (level - 1) ) }%`: null}</td> 
-                                <td>+{loadout.champion && loadout.champion.id ? loadout.champion.stats.critperlevel : null}</td> 
-                            </tr>
-                            <tr>
-                                <td>Attack Speed</td> 
-                                <td>{loadout.champion && loadout.champion.id ? loadout.champion.stats.attackspeed + (loadout.champion.stats.attackspeedperlevel * (level - 1)): null} </td> 
-                                <td>+{loadout.champion && loadout.champion.id ? loadout.champion.stats.attackspeedperlevel: null}</td> 
-                            </tr>
-                        </tbody>
-                    </table>              
-                    </div>
+                        <LoadoutIcon loadout={loadout} level={level} addClick={this.addClick} subtractClick={this.subtractClick} />
+                        <LoadoutBaseStats loadout={loadout} level={level}/>
                     <div className='loadout-info'>
                         <div className='loadout-all-items'>
                         <h2> Items</h2>
