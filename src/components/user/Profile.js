@@ -18,7 +18,6 @@ export class Profile extends Component {
     }
 
     deleteClick = () => {
-        this.props.clearLoadouts()
         this.props.deleteUserFromDB(this.props.loggedInUser.id)
         this.props.fetchLoadoutsFromDB()
     }
@@ -101,7 +100,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
     deleteUserFromDB: userActions.deleteUserFromDB,
-    clearLoadouts: loadoutActions.clearLoadouts,
     fetchLoadoutsFromDB: loadoutActions.fetchLoadoutsFromDB
 }
 

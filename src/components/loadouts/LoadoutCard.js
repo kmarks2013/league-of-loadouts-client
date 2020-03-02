@@ -204,18 +204,6 @@ class LoadoutCard extends Component {
                 <div className='content-container'>
                     <div className='loadout-card'>
                         <LoadoutIcon loadout={loadout} level={level} addClick={this.addClick} subtractClick={this.subtractClick} />
-                    {/* <div className='loadout-icon'>
-                    <h1>{loadout && loadout.id ? loadout.name : null} </h1>
-                    <h2>Champion</h2>
-                    <img src={`/champion_tiles/${loadout.champion.name}_0.jpg`} alt=""></img>
-                    <h3>{loadout && loadout.id ? loadout.champion.name : null}</h3>
-                    <h2> Level: 
-                        <button onClick={this.subtractClick}> - </button>
-                            {level}
-                        <button onClick={this.addClick} > + </button>
-                    </h2>
-                    <p>{loadout && loadout.id ? loadout.user_name : null}</p>
-                    </div> */}
                         <LoadoutBaseStats loadout={loadout} level={level}/>
                     <div className='loadout-info'>
                         <div className='loadout-all-items'>
