@@ -1,4 +1,4 @@
-const url= 'http://localhost:3000/loadouts'
+const url= 'https://league-of-loadouts.herokuapp.com/loadouts'
 
 
 const getLoadoutsAction = loadouts => ({

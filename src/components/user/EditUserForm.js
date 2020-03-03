@@ -14,7 +14,7 @@ class EditUserForm extends Component {
     handleSubmit = (evt) => {
         evt.preventDefault()
         let formData = {...this.state}
-        fetch(`http://localhost:3000/users/${this.props.user.id}`,{
+        fetch(`https://league-of-loadouts.herokuapp.com/users/${this.props.user.id}`,{
             method: 'PATCH',
             headers:{
                 'Content-Type': 'application/json',

@@ -3,7 +3,7 @@ const getItemsAction = items => ({
     payload: items
 })
 const fetchItemsFromDB = () => dispatch => {
-    fetch('http://localhost:3000/items')
+    fetch('https://league-of-loadouts.herokuapp.com/items')
     .then(res => res.json())
     .then(itemsArr =>{
         dispatch(getItemsAction(itemsArr))

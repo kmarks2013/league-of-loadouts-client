@@ -28,7 +28,7 @@ class LoadoutCard extends Component {
     }
 
     newLoadoutItemPost = (formData) => {
-        fetch('http://localhost:3000/loadout_items',{
+        fetch('https://league-of-loadouts.herokuapp.com/loadout_items',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -124,7 +124,7 @@ class LoadoutCard extends Component {
     deleteItem = (event, itemId, loadoutId) => {
         // console.log('i have been clicked', event.target, itemId, loadoutId)
         if (this.props.user.id === this.props.loadout.user_id) {
-            fetch(`http://localhost:3000/loadout_items/`, {
+            fetch(`https://league-of-loadouts.herokuapp.com/loadout_items/`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',

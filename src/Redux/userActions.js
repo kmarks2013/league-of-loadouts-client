@@ -18,7 +18,7 @@ const clearUserAction = () => ({
 // })
 
 const persistUserFromAPI = () => dispatch => {
-    fetch('http://localhost:3000/persist', {
+    fetch('https://league-of-loadouts.herokuapp.com/persist', {
       headers: {
         'Content-Type': 'application/json',
         Authorization: 'bearer ' + localStorage.token
@@ -26,7 +26,7 @@ const persistUserFromAPI = () => dispatch => {
     })
       .then(r => r.json())
       .then(user => {
-          fetch(`http://localhost:3000/users/${user.id}`)
+          fetch(`https://league-of-loadouts.herokuapp.com/users/${user.id}`)
           .then(res => res.json())
           .then(userObj => {
               dispatch(setUserAction(userObj))
@@ -35,7 +35,7 @@ const persistUserFromAPI = () => dispatch => {
   };
 
 const loginUserToDB = userData => dispatch => {
-  return  fetch('http://localhost:3000/login', {
+  return  fetch('https://league-of-loadouts.herokuapp.com/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -47,7 +47,7 @@ const loginUserToDB = userData => dispatch => {
         if (data.errors){
             dispatch(setErrorAction(data.errors))
         } else {
-            fetch(`http://localhost:3000/users/${data.user.id}`)
+            fetch(`https://league-of-loadouts.herokuapp.com/users/${data.user.id}`)
             .then(res => res.json())
             .then(userObj => {
                 localStorage.token = data.token
@@ -64,7 +64,7 @@ const  logoutUser = () => dispatch => {
 }
 
 const createNewUserToDB = userData => dispatch => {
-   return fetch('http://localhost:3000/users', {
+   return fetch('https://league-of-loadouts.herokuapp.com/users', {
         method:  'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -90,7 +90,7 @@ const updateUserInDB = (payload) => dispatch => {
 
 
 const deleteUserFromDB = (userId) => dispatch => {
-    fetch(`http://localhost:3000/users/${userId}`,{
+    fetch(`https://league-of-loadouts.herokuapp.com/users/${userId}`,{
         method: 'DELETE' 
     }).then(res => res.json())
     .then( () => dispatch(clearUserAction())) 

@@ -12,7 +12,7 @@ class LoadoutForm extends Component {
     handleSubmit = (evt) => {
         evt.preventDefault()
         const formData = {user_id: this.props.user.id, champion_id:this.state.champion, name:this.state.name}
-        fetch('http://localhost:3000/loadouts' ,{
+        fetch('https://league-of-loadouts.herokuapp.com/loadouts' ,{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

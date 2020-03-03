@@ -4,7 +4,7 @@ const getChampionsAction = champions => ({
 })
 
 const fetchChampionsFromDB = () => dispatch => {
-    fetch('http://localhost:3000/champions')
+    fetch('https://league-of-loadouts.herokuapp.com/champions')
     .then(res => res.json())
     .then(champsArr =>{
         dispatch(getChampionsAction(champsArr))
