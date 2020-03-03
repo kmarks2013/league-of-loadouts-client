@@ -4,7 +4,7 @@ const allUsersAction = users => ({
 })
 
 const fetchAllUsers = () => dispatch => {
-    fetch('http://localhost:3000/users')
+    fetch('https://league-of-loadouts.herokuapp.com/users')
     .then(res => res.json())
     .then( usersarr => {
         // console.log(usersarr)
