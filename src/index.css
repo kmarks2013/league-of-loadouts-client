@@ -250,6 +250,7 @@ code {
 
 .loadout-total-cost{
   grid-area: cost;
+  margin: 0;
 }
 
 .loadout-item-hover{
