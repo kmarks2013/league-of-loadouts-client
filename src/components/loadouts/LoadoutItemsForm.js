@@ -14,6 +14,7 @@ class LoadoutItemsForm extends Component {
             </React.Fragment>
         )
     }
+    
     render() {
         return (
             <React.Fragment>

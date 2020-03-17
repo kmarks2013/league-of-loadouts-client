@@ -114,7 +114,6 @@ class LoadoutCard extends Component {
                     </select>
             <input type='submit'></input> 
         </form>
-
         </React.Fragment>
         )
         else
