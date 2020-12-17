@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { ItemSelection } from './ItemSelection/ItemSelection'
 
 class LoadoutItemsForm extends Component {
     itemsSelection = () => {
@@ -13,6 +14,7 @@ class LoadoutItemsForm extends Component {
             </React.Fragment>
         )
     }
+    
     render() {
         return (
             <React.Fragment>
@@ -20,7 +22,8 @@ class LoadoutItemsForm extends Component {
                     <label>Item 1 </label> 
                     <select name='item' onChange={this.handleChange}>
                         <option> </option>
-                        {this.itemsSelection()}
+                        
+                        <ItemSelection items={this.props.items} />
                     </select>
                     <label>Item 2 </label> 
                     <select name='item' onChange={this.handleChange}>
