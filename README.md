@@ -13,8 +13,7 @@ As an avid gamer/MOBA player I wanted to create an app that would help players l
 
 League of Loadouts is built using React as its front end frame work and using Redux to contain majority of it's state.
 
-Images are stored on the front end but were originally sourced through [Riot Games: League of Legends API](https://developer.riotgames.com/) . 
-
+Images are stored on the front end but were originally sourced through [Riot Games: League of Legends API](https://developer.riotgames.com/). 
 
 ### Back-end
 

@@ -17,9 +17,9 @@ class SignUpForm extends Component {
         this.props.createNewUserToDB(this.state).then(
             () => {
                 if (!this.props.errors.length){
-                    console.log(this.props.erros)
                     this.props.history.push(`/user/${this.state.username}`)
                 } else {
+                    console.log(this.props.errors)
                     this.props.history.push('/signup')
                 }
             })
