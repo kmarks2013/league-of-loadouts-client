@@ -77,9 +77,13 @@ const createNewUserToDB = userData => dispatch => {
         if (data.errors){
             dispatch(setErrorAction(data.errors))
         } else {
-            localStorage.token = data.token
-            localStorage.id = data.user.id
-            dispatch(setUserAction(data.user))
+            if (data.user && data.user.id){
+                localStorage.token = data.token
+                localStorage.id = data.user.id
+                dispatch(setUserAction(data.user))
+            } else {
+                console.log(data)
+            }
         }
     })
 }
